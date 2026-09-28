@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Partnerschaft (Stunde 3)</title>
+<style>
+  :root {
+    --ink: #20293a;
+    --muted: #5b6472;
+    --coral: #e0654a;
+    --coral-light: #fbe9e4;
+    --teal: #0f8b8d;
+    --teal-light: #e3f3f2;
+    --gold: #d9a441;
+    --gold-light: #faf1de;
+    --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f2efe9;
+    color: var(--ink);
+    padding: 32px 16px 60px;
+  }
+  .seite {
+    background: white;
+    max-width: 880px;
+    margin: 0 auto 20px;
+    padding: 30px 34px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(32,41,58,0.10);
+  }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn {
+    flex-shrink: 0;
+    background: var(--coral);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .download-btn:hover { background: #c9502f; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  h2 { font-size: 1.05rem; margin: 0 0 14px; color: var(--coral); }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+
+  .karten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .karte {
+    border: 1.5px dashed var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+  }
+  .karte.these { background: var(--coral-light); font-weight: 700; text-align: center; justify-content: center; }
+  .karte.baustein { background: var(--teal-light); text-align: center; justify-content: center; min-height: 55px; }
+  .karte.zitat { background: var(--gold-light); font-style: italic; }
+  .karte.zitat .wer { display: block; margin-top: 8px; font-style: normal; font-weight: 700; font-size: 0.82rem; color: var(--gold); }
+
+  .haus-vorlage {
+    border: 2px dashed var(--teal);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .haus-dach {
+    background: var(--coral-light);
+    border-radius: 8px 8px 0 0;
+    padding: 14px;
+    font-weight: 700;
+    color: var(--coral);
+    margin-bottom: 4px;
+  }
+  .haus-mitte {
+    background: #f7f5ef;
+    padding: 30px 14px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .haus-fundament {
+    background: var(--teal-light);
+    border-radius: 0 0 8px 8px;
+    padding: 14px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-top: 4px;
+  }
+
+  .matching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .matching-karte {
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    padding: 16px 16px;
+    background: var(--gold-light);
+  }
+  .matching-karte .frage { font-size: 0.82rem; font-weight: 700; color: var(--gold); margin-bottom: 6px; }
+  .matching-karte .linie { border-bottom: 1px solid #c9a55f; height: 18px; margin-top: 6px; }
+
+  .fundament-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .fundament-karte {
+    border: 2px solid var(--teal);
+    border-radius: 14px;
+    padding: 16px 16px;
+    min-height: 120px;
+    background: var(--teal-light);
+  }
+  .fundament-karte .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--teal); font-weight: 700; }
+  .fundament-karte .linie { border-bottom: 1px solid #9fc9c9; height: 18px; margin-top: 8px; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; break-after: page; }
+    .seite:last-child { break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Seite 1: Barometer-Aussagen -->
+<div class="seite" id="barometer">
+  <div class="seite-kopf">
+    <h1>Meinungslinie: Aussagenkarten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('barometer')">Als PDF herunterladen</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 3 · Einstieg</p>
+  <p class="hinweis">Für die Lehrkraft zum Vorlesen, eine Aussage nach der anderen.</p>
+  <div class="karten-grid">
+    <div class="karte these">Man muss mit dem Partner alles teilen.</div>
+    <div class="karte these">Gegensätze ziehen sich an.</div>
+    <div class="karte these">Streit gehört zu jeder Partnerschaft dazu.</div>
+    <div class="karte these">Man sollte auch als Paar eigene Hobbys behalten.</div>
+  </div>
+</div>
+
+<!-- Seite 2: Beziehungshaus -->
+<div class="seite" id="beziehungshaus">
+  <div class="seite-kopf">
+    <h1>Beziehungshaus: Vorlage &amp; Bausteine</h1>
+    <button class="download-btn no-print" onclick="druckeNur('beziehungshaus')">Als PDF herunterladen</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 3 · Arbeitsphase A</p>
+  <p class="hinweis">Bausteine ausschneiden und beschriften, dann auf der Hausvorlage einsortieren.</p>
+
+  <div class="haus-vorlage">
+    <div class="haus-dach">DACH – schön, aber nicht überlebenswichtig</div>
+    <div class="haus-mitte">MITTE – wichtig, aber verhandelbar</div>
+    <div class="haus-fundament">FUNDAMENT – ohne das geht gar nichts</div>
+  </div>
+
+  <h2>Leere Baustein-Karten zum Beschriften</h2>
+  <div class="karten-grid">
+    <div class="karte baustein">___________________</div>
+    <div class="karte baustein">___________________</div>
+    <div class="karte baustein">___________________</div>
+    <div class="karte baustein">___________________</div>
+    <div class="karte baustein">___________________</div>
+    <div class="karte baustein">___________________</div>
+    <div class="karte baustein">___________________</div>
+    <div class="karte baustein">___________________</div>
+  </div>
+</div>
+
+<!-- Seite 3: Zitate + Matching-Karten -->
+<div class="seite" id="zitate-matching">
+  <div class="seite-kopf">
+    <h1>Jugendzitate &amp; Partner-Matching-Karten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('zitate-matching')">Als PDF herunterladen</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 3 · Arbeitsphase B</p>
+  <p class="hinweis">Zitate zum Vorlesen, Matching-Karten eine pro Schüler:in.</p>
+
+  <h2>Drei echte Jugendzitate</h2>
+  <div class="karten-grid">
+    <div class="karte zitat">"Ein Mädchen soll Verständnis für mich aufbringen, wenn ich Probleme habe. Sie soll mir zuhören und mich trösten können."<span class="wer">Alexander, 16 Jahre</span></div>
+    <div class="karte zitat">"Am wichtigsten ist, dass man ehrlich ist und nicht einfach sagt: 'Ich will dich nicht mehr so oft sehen', oder ähnliche Ausreden benutzt."<span class="wer">Ulla, 14 Jahre</span></div>
+    <div class="karte zitat">"Ich erwarte schon, dass wir absprechen, was wir unternehmen wollen. Es darf nicht nur einer bestimmen. Die Entscheidungen sollten wir gemeinsam treffen."<span class="wer">Selim, 15 Jahre</span></div>
+  </div>
+
+  <h2 style="margin-top:24px;">Partner-Matching-Karten (anonym)</h2>
+  <div class="matching-grid">
+    <div class="matching-karte">
+      <div class="frage">3 Eigenschaften, die mir bei einem Partner wichtig sind</div>
+      <div class="linie"></div><div class="linie"></div><div class="linie"></div>
+    </div>
+    <div class="matching-karte">
+      <div class="frage">3 Eigenschaften, die ich selbst mitbringen würde</div>
+      <div class="linie"></div><div class="linie"></div><div class="linie"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Seite 4: Ecken-Thesen -->
+<div class="seite" id="ecken-thesen">
+  <div class="seite-kopf">
+    <h1>4-Ecken-Diskussion: Thesen</h1>
+    <button class="download-btn no-print" onclick="druckeNur('ecken-thesen')">Als PDF herunterladen</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 3 · Diskussionsphase</p>
+  <p class="hinweis">4 Karten großformatig ausdrucken und in die vier Raumecken hängen.</p>
+  <div class="karten-grid">
+    <div class="karte these">Gegensätze ziehen sich an.</div>
+    <div class="karte these">Streit gehört dazu.</div>
+    <div class="karte these">Ohne Vertrauen geht nichts.</div>
+    <div class="karte these">Man sollte sich niemals völlig aufgeben für den Partner.</div>
+  </div>
+</div>
+
+<!-- Seite 5: Fundament-Karten -->
+<div class="seite" id="fundament-karten">
+  <div class="seite-kopf">
+    <h1>Fundament-Karten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('fundament-karten')">Als PDF herunterladen</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 3 · Sicherungsphase</p>
+  <p class="hinweis">Eine Karte pro Schüler:in ausdrucken.</p>
+  <div class="fundament-grid">
+    <div class="fundament-karte"><span class="label">Mein Beziehungs-Fundament</span><div class="linie"></div><div class="linie"></div><div class="linie"></div></div>
+    <div class="fundament-karte"><span class="label">Mein Beziehungs-Fundament</span><div class="linie"></div><div class="linie"></div><div class="linie"></div></div>
+    <div class="fundament-karte"><span class="label">Mein Beziehungs-Fundament</span><div class="linie"></div><div class="linie"></div><div class="linie"></div></div>
+    <div class="fundament-karte"><span class="label">Mein Beziehungs-Fundament</span><div class="linie"></div><div class="linie"></div><div class="linie"></div></div>
+  </div>
+</div>
+
+<script>
+  function druckeNur(id) {
+    document.querySelectorAll('.seite').forEach(function(el) {
+      el.style.display = (el.id === id) ? '' : 'none';
+    });
+    window.print();
+  }
+  window.onafterprint = function() {
+    document.querySelectorAll('.seite').forEach(function(el) { el.style.display = ''; });
+  };
+</script>
+
+</body>
+</html>
