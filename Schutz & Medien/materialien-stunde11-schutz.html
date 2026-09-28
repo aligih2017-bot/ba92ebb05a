@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Schutz & Medien (Stunde 11)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --coral: #e0654a; --coral-light: #fbe9e4;
+    --teal: #0f8b8d; --teal-light: #e3f3f2; --gold: #d9a441; --gold-light: #faf1de; --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--coral); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #c9502f; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  h2 { font-size: 1.05rem; margin: 0 0 14px; color: var(--coral); }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  ul.liste { line-height: 1.9; padding-left: 22px; font-size: 0.92rem; columns: 2; column-gap: 30px; }
+  .skript-box { background: var(--teal-light); border-radius: 12px; padding: 18px 20px; font-size: 0.92rem; line-height: 1.7; }
+  .skript-box ol { padding-left: 20px; }
+  .placemat-wrap { display: grid; grid-template-columns: 1fr 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; max-width: 620px; margin: 0 auto; }
+  .pm-feld { border: 1.5px dashed var(--border); border-radius: 8px; padding: 10px; font-size: 0.78rem; color: var(--muted); text-align: center; display: flex; align-items: center; justify-content: center; min-height: 90px; }
+  .pm-mitte { grid-row: span 2; background: var(--coral-light); font-weight: 700; color: var(--coral); }
+  .pm-top { grid-column: 2; }
+  .pm-bottom { grid-column: 2; }
+  .pm-left1 { grid-column: 1; grid-row: 1; }
+  .pm-left2 { grid-column: 1; grid-row: 2; }
+  .pm-right1 { grid-column: 3; grid-row: 1; }
+  .pm-right2 { grid-column: 3; grid-row: 2; }
+  @media print {
+    @page { size: landscape; }
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; break-after: page; }
+    .seite:last-child { break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="seite" id="handlungsliste">
+  <div class="seite-kopf">
+    <h1>Handlungsliste: Sexuelle Belästigung?</h1>
+    <button class="download-btn no-print" onclick="druckeNur('handlungsliste')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 11 · Arbeitsphase A</p>
+  <p class="hinweis">Gemeinsam durchgehen: alle diese Punkte zählen tatsächlich zu sexueller Belästigung.</p>
+  <ul class="liste">
+    <li>Bewertung von Menschen nach ihren körperlichen Eigenschaften</li>
+    <li>Erzählen sexueller oder schmutziger Witze</li>
+    <li>Zeigen oder Verteilen sexuell eindeutiger Bilder</li>
+    <li>Aufforderung, Nacktbilder zu schicken</li>
+    <li>Sexuelle Kommentare über Kleidung oder Aussehen</li>
+    <li>Digitales Senden unerwünschter Nacktbilder</li>
+    <li>Pfeifen oder Nachrufen</li>
+    <li>Unerwünschte Fragen über das Sexualleben</li>
+    <li>Sexuell eindeutige Geräusche oder Gesten</li>
+    <li>Wiederholtes Fragen nach Sex</li>
+    <li>Offensives Anstarren</li>
+    <li>Unangebrachte Berührungen, Umarmen, Streicheln im Vorbeigehen</li>
+    <li>Stalking</li>
+    <li>Sexuelle Beschimpfungen und Beleidigungen</li>
+  </ul>
+</div>
+
+<div class="seite" id="neinskript">
+  <div class="seite-kopf">
+    <h1>Nein-Stopp-Nein-Skriptvorlage</h1>
+    <button class="download-btn no-print" onclick="druckeNur('neinskript')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 11 · Arbeitsphase B</p>
+  <div class="skript-box">
+    <strong>Baut euren Nein-Sage-Dialog nach diesem Muster:</strong>
+    <ol>
+      <li>Ich sage gezielt, was ich nicht möchte.</li>
+      <li>Ich benenne klar: "Stopp."</li>
+      <li>Ich sage noch einmal deutlich Nein und verlasse, wenn nötig, die Situation.</li>
+    </ol>
+    Übt den Dialog zu zweit, einmal in der Rolle der Person, die eine Grenze setzt, einmal in der Rolle der Person, die die Grenze respektiert.
+  </div>
+</div>
+
+<div class="seite" id="placemat">
+  <div class="seite-kopf">
+    <h1>Placemat-Vorlage: Wortschatz der Sequenz</h1>
+    <button class="download-btn no-print" onclick="druckeNur('placemat')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 11 · Sicherungsphase</p>
+  <p class="hinweis">Zu viert: jede:r wählt einen Begriff aus der ganzen Reihe (z. B. Freundschaft, Partnerschaft, Beziehungshaus, Gleichberechtigung, Homosexualität, Cybergrooming, sexuelle Belästigung) und schreibt in sein Feld Gedanken dazu. Danach gemeinsam die Mitte ausfüllen.</p>
+  <div class="placemat-wrap">
+    <div class="pm-feld pm-top">Schüler:in 1</div>
+    <div class="pm-feld pm-left1">Schüler:in 4</div>
+    <div class="pm-feld pm-mitte">Gemeinsame Mitte</div>
+    <div class="pm-feld pm-right1">Schüler:in 2</div>
+    <div class="pm-feld pm-left2"></div>
+    <div class="pm-feld pm-right2"></div>
+    <div class="pm-feld pm-bottom">Schüler:in 3</div>
+  </div>
+</div>
+
+<script>
+  function druckeNur(id) {
+    document.querySelectorAll('.seite').forEach(function(el) {
+      el.style.display = (el.id === id) ? '' : 'none';
+    });
+    window.print();
+  }
+  window.onafterprint = function() {
+    document.querySelectorAll('.seite').forEach(function(el) { el.style.display = ''; });
+  };
+</script>
+
+</body>
+</html>

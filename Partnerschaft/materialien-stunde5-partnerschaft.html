@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Partnerschaft (Stunde 5)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --coral: #e0654a; --coral-light: #fbe9e4;
+    --teal: #0f8b8d; --teal-light: #e3f3f2; --gold: #d9a441; --gold-light: #faf1de; --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--coral); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #c9502f; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  h2 { font-size: 1.05rem; margin: 0 0 14px; color: var(--coral); }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  .karten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .karte { border: 1.5px dashed var(--border); border-radius: 12px; padding: 16px 18px; font-size: 0.92rem; line-height: 1.45; min-height: 80px; display: flex; align-items: center; }
+  .karte.situation { background: #f7f5ef; }
+  .karte.perspektive { background: var(--teal-light); }
+  .karte.perspektive h3 { margin: 0 0 6px; font-size: 0.95rem; color: var(--teal); }
+  .karte.zeitreise { background: var(--coral-light); text-align: center; justify-content: center; font-weight: 600; }
+  .karte.dialog { background: var(--gold-light); font-style: italic; }
+  .info-kasten { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 16px 20px; font-size: 0.92rem; line-height: 1.6; margin-top: 16px; }
+  .grenzen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grenzen-karte { border: 2px solid var(--coral); border-radius: 14px; padding: 18px; min-height: 90px; background: var(--coral-light); display: flex; flex-direction: column; justify-content: space-between; }
+  .grenzen-karte .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--coral); font-weight: 700; }
+  .grenzen-karte .linie { border-bottom: 1px solid #eab6a5; height: 20px; margin-top: 8px; }
+  @media print {
+    @page { size: landscape; }
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; break-after: page; }
+    .seite:last-child { break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="seite" id="ampel">
+  <div class="seite-kopf">
+    <h1>Ampel-Situationen</h1>
+    <button class="download-btn no-print" onclick="druckeNur('ampel')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 5 · Einstieg</p>
+  <p class="hinweis">Zum Vorlesen. Grün = okay, Gelb = kommt drauf an, Rot = nicht okay.</p>
+  <div class="karten-grid">
+    <div class="karte situation">Jemand fragt, ob er/sie deine Hand halten darf.</div>
+    <div class="karte situation">Jemand fasst dich an, ohne vorher zu fragen.</div>
+    <div class="karte situation">Dein Partner möchte etwas, du sagst "nein" und er/sie akzeptiert das sofort.</div>
+    <div class="karte situation">Jemand macht weiter, obwohl du "nein" gesagt hast.</div>
+  </div>
+</div>
+
+<div class="seite" id="perspektiven">
+  <div class="seite-kopf">
+    <h1>Silvie &amp; Hannes: Zwei Perspektiven</h1>
+    <button class="download-btn no-print" onclick="druckeNur('perspektiven')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 5 · Arbeitsphase A</p>
+  <p class="hinweis">Beide Karten pro Gruppe austeilen.</p>
+  <div class="karten-grid">
+    <div class="karte perspektive"><h3>Silvies Sicht</h3>Hannes versuchte im Dunkeln, unter meinen Rock zu greifen. Ich wollte das nicht, hatte aber Angst, als Langweilerin dazustehen. Als er immer heftiger wurde, fühlte ich mich unwohl. Ich stammelte, er solle aufhören, aber er nahm das nicht ernst. Erst als ich laut "Nein, ich will das nicht!" schrie, hörte er auf.</div>
+    <div class="karte perspektive"><h3>Hannes' Sicht</h3>Es hat richtig cool begonnen, die Stimmung war super. Irgendwann haben wir ein bisschen rumgemacht, bis sie plötzlich austickte. Zuerst habe ich gar nicht mitbekommen, was ihr Problem war. Und dann schreit sie mich an, dass ich aufhören soll. Ich weiß bis heute nicht, was verkehrt gelaufen ist.</div>
+  </div>
+</div>
+
+<div class="seite" id="zeitreise">
+  <div class="seite-kopf">
+    <h1>Rollenbilder-Zeitreise &amp; Gleichberechtigung</h1>
+    <button class="download-btn no-print" onclick="druckeNur('zeitreise')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 5 · Arbeitsphase B</p>
+  <p class="hinweis">Kärtchen ausschneiden, Gruppen ordnen sie "früher" oder "heute" zu (mehrere Zuordnungen möglich).</p>
+  <div class="karten-grid">
+    <div class="karte zeitreise">Die Frau kümmert sich um Haushalt und Kinder, der Mann verdient das Geld.</div>
+    <div class="karte zeitreise">Eine Frau leitet einen großen Konzern.</div>
+    <div class="karte zeitreise">Eine Frau darf ohne Erlaubnis ihres Ehemanns nicht arbeiten.</div>
+    <div class="karte zeitreise">Ein Vater bleibt zuhause und kümmert sich um das Baby.</div>
+  </div>
+  <div class="info-kasten">
+    <strong>Gleichberechtigung (Art. 3 Abs. 2 Grundgesetz):</strong> Männer und Frauen sind gleichberechtigt. Der Staat fördert die tatsächliche Durchsetzung der Gleichberechtigung und wirkt auf die Beseitigung bestehender Nachteile hin. Das Frauenwahlrecht in Deutschland ist gerade einmal gut 100 Jahre alt.
+  </div>
+</div>
+
+<div class="seite" id="vorurteile">
+  <div class="seite-kopf">
+    <h1>Dialogkarte: Unterschiedliche Erwartungen</h1>
+    <button class="download-btn no-print" onclick="druckeNur('vorurteile')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 5 · Diskussionsphase</p>
+  <div class="karte dialog">"Musst du denn nicht zu Hause helfen? Das erlaubt dir deine Mutter, abends wegzugehen? Darfst du dich alleine mit Jungs treffen?" — "Nein, für meine Geschwister bin ich nicht verantwortlich. Und klar, dass ich mit Jungs weggehe. Warum auch nicht, wieso darfst du das nicht?"</div>
+</div>
+
+<div class="seite" id="grenzensatz">
+  <div class="seite-kopf">
+    <h1>Grenzen-Satz-Karten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('grenzensatz')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 5 · Sicherungsphase</p>
+  <p class="hinweis">Eine Karte pro Schüler:in ausdrucken.</p>
+  <div class="grenzen-grid">
+    <div class="grenzen-karte"><span class="label">Mein Grenzen-Satz</span><div class="linie"></div><div class="linie"></div></div>
+    <div class="grenzen-karte"><span class="label">Mein Grenzen-Satz</span><div class="linie"></div><div class="linie"></div></div>
+    <div class="grenzen-karte"><span class="label">Mein Grenzen-Satz</span><div class="linie"></div><div class="linie"></div></div>
+    <div class="grenzen-karte"><span class="label">Mein Grenzen-Satz</span><div class="linie"></div><div class="linie"></div></div>
+  </div>
+</div>
+
+<script>
+  function druckeNur(id) {
+    document.querySelectorAll('.seite').forEach(function(el) {
+      el.style.display = (el.id === id) ? '' : 'none';
+    });
+    window.print();
+  }
+  window.onafterprint = function() {
+    document.querySelectorAll('.seite').forEach(function(el) { el.style.display = ''; });
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Liebe (Stunde 6)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --coral: #e0654a; --coral-light: #fbe9e4;
+    --teal: #0f8b8d; --teal-light: #e3f3f2; --gold: #d9a441; --gold-light: #faf1de; --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--coral); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #c9502f; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  h2 { font-size: 1.05rem; margin: 0 0 14px; color: var(--coral); }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  .text-box { background: var(--gold-light); border-radius: 12px; padding: 20px 22px; font-size: 0.95rem; line-height: 1.65; }
+  .text-box .autor { text-align: right; font-style: italic; margin-top: 10px; color: var(--gold); font-weight: 700; }
+  .karten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .karte { border: 1.5px dashed var(--border); border-radius: 12px; padding: 16px 18px; font-size: 0.92rem; line-height: 1.45; min-height: 80px; display: flex; align-items: center; }
+  .karte.sortier { background: #f7f5ef; }
+  .steckbrief-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .steckbrief-karte { border: 2px solid var(--coral); border-radius: 14px; padding: 18px; min-height: 140px; background: var(--coral-light); }
+  .steckbrief-karte .frage { font-size: 0.82rem; font-weight: 700; color: var(--coral); margin-bottom: 6px; }
+  .steckbrief-karte .linie { border-bottom: 1px solid #eab6a5; height: 18px; margin-top: 6px; }
+  @media print {
+    @page { size: landscape; }
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; break-after: page; }
+    .seite:last-child { break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="seite" id="textauszug">
+  <div class="seite-kopf">
+    <h1>Textauszug: Ist es Liebe?</h1>
+    <button class="download-btn no-print" onclick="druckeNur('textauszug')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Liebe, Stunde 6 · Arbeitsphase A</p>
+  <div class="text-box">
+    "Ich krieg schon wieder dieses warme Gefühl im Bauch, das schon... aber ich weiß schon, was du meinst. Ich fühle das manchmal auch, aber ich glaube nicht, dass man das Verliebtsein nennen kann." "Warum nicht?", fragt Dini wieder. Helma jauchzt: "Was ist das alles bloß für ein Blödsinn. Verliebt ist verliebt, fertig aus." Sie stupst Dini verspielt in die Seite. Dini kann für einen Moment gar nichts sagen. Denn sie spürt sofort wieder den Stein in ihrer Magengegend. Ihr Kopf, ihr Hals, ihre Arme, alles wird ganz warm. "Wie soll man das nennen?", denkt Dini.
+    <div class="autor">Marion Bloem</div>
+  </div>
+</div>
+
+<div class="seite" id="sortierspiel">
+  <div class="seite-kopf">
+    <h1>Liebes-Sortierspiel</h1>
+    <button class="download-btn no-print" onclick="druckeNur('sortierspiel')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Liebe, Stunde 6 · Arbeitsphase B</p>
+  <p class="hinweis">Karten ausschneiden, Gruppen ordnen sie den Begriffen Sympathie / Verliebtheit / Liebe zu.</p>
+  <div class="karten-grid">
+    <div class="karte sortier">Du findest jemanden auf Anhieb nett, ohne genau zu wissen warum.</div>
+    <div class="karte sortier">Du denkst dauernd an die Person, auch wenn sie nicht da ist.</div>
+    <div class="karte sortier">Ihr kennt euch schon lange und vertraut euch komplett.</div>
+    <div class="karte sortier">Dein Herz schlägt schneller, wenn die Person den Raum betritt.</div>
+    <div class="karte sortier">Ihr habt schon viele schwierige Zeiten gemeinsam durchgestanden.</div>
+    <div class="karte sortier">Du findest jemanden auf den ersten Blick sympathisch.</div>
+  </div>
+</div>
+
+<div class="seite" id="steckbrief">
+  <div class="seite-kopf">
+    <h1>Mein Liebes-Steckbrief</h1>
+    <button class="download-btn no-print" onclick="druckeNur('steckbrief')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Liebe, Stunde 6 · Sicherungsphase</p>
+  <p class="hinweis">Eine Karte pro Schüler:in, bleibt privat.</p>
+  <div class="steckbrief-grid">
+    <div class="steckbrief-karte"><div class="frage">Für mich fühlt sich Verliebtsein so an:</div><div class="linie"></div><div class="linie"></div></div>
+    <div class="steckbrief-karte"><div class="frage">Das würde ich gern noch verstehen:</div><div class="linie"></div><div class="linie"></div></div>
+  </div>
+</div>
+
+<script>
+  function druckeNur(id) {
+    document.querySelectorAll('.seite').forEach(function(el) {
+      el.style.display = (el.id === id) ? '' : 'none';
+    });
+    window.print();
+  }
+  window.onafterprint = function() {
+    document.querySelectorAll('.seite').forEach(function(el) { el.style.display = ''; });
+  };
+</script>
+
+</body>
+</html>

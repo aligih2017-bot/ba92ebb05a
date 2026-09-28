@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Schutz & Medien (Stunde 9)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --coral: #e0654a; --coral-light: #fbe9e4;
+    --teal: #0f8b8d; --teal-light: #e3f3f2; --gold: #d9a441; --gold-light: #faf1de; --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--coral); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #c9502f; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  h2 { font-size: 1.05rem; margin: 0 0 14px; color: var(--coral); }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  .info-kasten { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 16px 20px; font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; }
+  .karten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .karte { border: 1.5px dashed var(--border); border-radius: 12px; padding: 16px 18px; font-size: 0.9rem; line-height: 1.45; min-height: 80px; display: flex; align-items: center; }
+  .karte.szenario { background: #f7f5ef; }
+  .merksatz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .merksatz-karte { border: 2px solid var(--gold); border-radius: 14px; padding: 18px; min-height: 100px; background: var(--gold-light); }
+  .merksatz-karte .linie { border-bottom: 1px solid #c9a55f; height: 20px; margin-top: 8px; }
+  @media print {
+    @page { size: landscape; }
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; break-after: page; }
+    .seite:last-child { break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="seite" id="definition">
+  <div class="seite-kopf">
+    <h1>Definition &amp; Gesetzestext</h1>
+    <button class="download-btn no-print" onclick="druckeNur('definition')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 9 · Arbeitsphase A</p>
+  <div class="info-kasten">
+    <strong>Pornografie</strong> ist die direkte Darstellung der menschlichen Sexualität oder des Sexualakts, in der Regel mit dem Ziel, den Betrachter sexuell zu erregen.
+  </div>
+  <div class="info-kasten">
+    <strong>§ 184 StGB (Auszug, sinngemäß):</strong> Wer pornografische Inhalte Personen unter 18 Jahren anbietet, zugänglich macht oder überlässt, wird mit Freiheitsstrafe bis zu einem Jahr oder mit Geldstrafe bestraft.
+  </div>
+  <p class="hinweis">Aufgabe: fasst die wesentlichen Aussagen in 2-3 eigenen Sätzen zusammen.</p>
+</div>
+
+<div class="seite" id="strafbar">
+  <div class="seite-kopf">
+    <h1>Strafbar oder nicht? Szenarien</h1>
+    <button class="download-btn no-print" onclick="druckeNur('strafbar')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 9 · Arbeitsphase B</p>
+  <p class="hinweis">Karten ausschneiden, mit Begründung einordnen.</p>
+  <div class="karten-grid">
+    <div class="karte szenario">Ein vermeintlich witziges Bild mit sexuellem Inhalt an die ganze Klassengruppe weiterschicken.</div>
+    <div class="karte szenario">Ein Nacktbild bekommen, das man selbst nicht angefordert hat.</div>
+    <div class="karte szenario">Ein Nacktbild eines Mitschülers/einer Mitschülerin ohne dessen Wissen weiterleiten.</div>
+    <div class="karte szenario">Ein unerwartetes Pop-up-Fenster mit sexuellen Inhalten sofort schließen und niemandem zeigen.</div>
+  </div>
+</div>
+
+<div class="seite" id="merksatz">
+  <div class="seite-kopf">
+    <h1>Merksatz-Karten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('merksatz')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 9 · Sicherungsphase</p>
+  <p class="hinweis">Eine Karte pro Schüler:in ausdrucken.</p>
+  <div class="merksatz-grid">
+    <div class="merksatz-karte">Wenn ich ungewollt mit solchem Bildmaterial konfrontiert werde, tue ich:<div class="linie"></div><div class="linie"></div></div>
+    <div class="merksatz-karte">Wenn ich ungewollt mit solchem Bildmaterial konfrontiert werde, tue ich:<div class="linie"></div><div class="linie"></div></div>
+    <div class="merksatz-karte">Wenn ich ungewollt mit solchem Bildmaterial konfrontiert werde, tue ich:<div class="linie"></div><div class="linie"></div></div>
+    <div class="merksatz-karte">Wenn ich ungewollt mit solchem Bildmaterial konfrontiert werde, tue ich:<div class="linie"></div><div class="linie"></div></div>
+  </div>
+</div>
+
+<script>
+  function druckeNur(id) {
+    document.querySelectorAll('.seite').forEach(function(el) {
+      el.style.display = (el.id === id) ? '' : 'none';
+    });
+    window.print();
+  }
+  window.onafterprint = function() {
+    document.querySelectorAll('.seite').forEach(function(el) { el.style.display = ''; });
+  };
+</script>
+
+</body>
+</html>
