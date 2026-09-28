@@ -24,18 +24,6 @@
     color: var(--ink);
     padding: 32px 16px 60px;
   }
-  .download-btn {
-    display: block;
-    margin: 0 auto 24px;
-    background: var(--coral);
-    color: white;
-    border: none;
-    padding: 11px 22px;
-    border-radius: 999px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-  }
   .seite {
     background: white;
     max-width: 880px;
@@ -44,6 +32,20 @@
     border-radius: 14px;
     box-shadow: 0 10px 30px rgba(32,41,58,0.10);
   }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn {
+    flex-shrink: 0;
+    background: var(--coral);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .download-btn:hover { background: #c9502f; }
   h1 { font-size: 1.4rem; margin: 0 0 4px; }
   .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
   h2 { font-size: 1.05rem; margin: 0 0 14px; color: var(--coral); }
@@ -120,11 +122,12 @@
 </head>
 <body>
 
-<button class="download-btn no-print" onclick="window.print()">Als PDF herunterladen</button>
-
 <!-- Seite 1: Standbild-Karten -->
-<div class="seite">
-  <h1>Standbild-Situationskarten</h1>
+<div class="seite" id="standbild-karten">
+  <div class="seite-kopf">
+    <h1>Standbild-Situationskarten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('standbild-karten')">Als PDF herunterladen</button>
+  </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 1 · Arbeitsphase A</p>
   <p class="hinweis">Ausdrucken und an den gestrichelten Linien zerschneiden. 8 Karten für bis zu 8 Gruppen, bei kleineren Klassen reicht eine Auswahl.</p>
   <div class="karten-grid">
@@ -140,8 +143,11 @@
 </div>
 
 <!-- Seite 2: Diamond Ranking -->
-<div class="seite">
-  <h1>Diamond Ranking: Freundschafts-Eigenschaften</h1>
+<div class="seite" id="diamond-ranking">
+  <div class="seite-kopf">
+    <h1>Diamond Ranking: Freundschafts-Eigenschaften</h1>
+    <button class="download-btn no-print" onclick="druckeNur('diamond-ranking')">Als PDF herunterladen</button>
+  </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 1 · Arbeitsphase B</p>
   <div class="diamond-anleitung">
     <strong>Anleitung für die Gruppen:</strong> Schneidet die 9 Karten aus. Ordnet sie in Diamantform an: oben die Eigenschaft, die euch in einer Freundschaft am wichtigsten ist, unten die am wenigsten wichtige, dazwischen abgestuft. Ihr müsst euch als Gruppe einigen, es gibt keine "richtige" Lösung.
@@ -168,8 +174,11 @@
 </div>
 
 <!-- Seite 3: Kugellager-Fragen -->
-<div class="seite">
-  <h1>Kugellager: Diskussionsfragen</h1>
+<div class="seite" id="kugellager-fragen">
+  <div class="seite-kopf">
+    <h1>Kugellager: Diskussionsfragen</h1>
+    <button class="download-btn no-print" onclick="druckeNur('kugellager-fragen')">Als PDF herunterladen</button>
+  </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 1 · Diskussionsphase</p>
   <p class="hinweis">Für die Lehrkraft zum Vorlesen, eine Frage pro Runde. Nicht zerschneiden nötig, einfach der Reihe nach vorlesen.</p>
   <div class="karten-grid">
@@ -182,8 +191,11 @@
 </div>
 
 <!-- Seite 4: Motto-Karten -->
-<div class="seite">
-  <h1>Freundschafts-Motto-Karten</h1>
+<div class="seite" id="motto-karten">
+  <div class="seite-kopf">
+    <h1>Freundschafts-Motto-Karten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('motto-karten')">Als PDF herunterladen</button>
+  </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 1 · Sicherungsphase</p>
   <p class="hinweis">Eine Karte pro Schüler:in ausdrucken (oder auf Zuruf per Zettel selbst gestalten lassen).</p>
   <div class="motto-grid">
@@ -195,6 +207,18 @@
     <div class="motto-karte"><span class="label">Mein Freundschafts-Motto</span><div class="linie"></div><div class="linie"></div></div>
   </div>
 </div>
+
+<script>
+  function druckeNur(id) {
+    document.querySelectorAll('.seite').forEach(function(el) {
+      el.style.display = (el.id === id) ? '' : 'none';
+    });
+    window.print();
+  }
+  window.onafterprint = function() {
+    document.querySelectorAll('.seite').forEach(function(el) { el.style.display = ''; });
+  };
+</script>
 
 </body>
 </html>

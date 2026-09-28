@@ -24,18 +24,6 @@
     color: var(--ink);
     padding: 32px 16px 60px;
   }
-  .download-btn {
-    display: block;
-    margin: 0 auto 24px;
-    background: var(--coral);
-    color: white;
-    border: none;
-    padding: 11px 22px;
-    border-radius: 999px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-  }
   .seite {
     background: white;
     max-width: 880px;
@@ -44,6 +32,20 @@
     border-radius: 14px;
     box-shadow: 0 10px 30px rgba(32,41,58,0.10);
   }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn {
+    flex-shrink: 0;
+    background: var(--coral);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .download-btn:hover { background: #c9502f; }
   h1 { font-size: 1.4rem; margin: 0 0 4px; }
   .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
   h2 { font-size: 1.05rem; margin: 0 0 14px; color: var(--coral); }
@@ -111,11 +113,12 @@
 </head>
 <body>
 
-<button class="download-btn no-print" onclick="window.print()">Als PDF herunterladen</button>
-
 <!-- Seite 1: Impulskarten -->
-<div class="seite">
-  <h1>Einstiegs-Impulskarten</h1>
+<div class="seite" id="impulskarten">
+  <div class="seite-kopf">
+    <h1>Einstiegs-Impulskarten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('impulskarten')">Als PDF herunterladen</button>
+  </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 2 · Einstieg</p>
   <p class="hinweis">Beide Karten nebeneinander zeigen (Beamer/Ausdruck), Klasse sammelt spontan Vermutungen.</p>
   <div class="impuls-grid">
@@ -133,8 +136,11 @@
 </div>
 
 <!-- Seite 2: Kurzgeschichten -->
-<div class="seite">
-  <h1>Kurzgeschichten für die Gruppenarbeit</h1>
+<div class="seite" id="kurzgeschichten">
+  <div class="seite-kopf">
+    <h1>Kurzgeschichten für die Gruppenarbeit</h1>
+    <button class="download-btn no-print" onclick="druckeNur('kurzgeschichten')">Als PDF herunterladen</button>
+  </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 2 · Arbeitsphase A</p>
   <p class="hinweis">4 Karten, eine pro Gruppe. Bei mehr als 4 Gruppen Karten doppelt vergeben.</p>
 
@@ -164,8 +170,11 @@
 </div>
 
 <!-- Seite 3: Tipp-Karten -->
-<div class="seite">
-  <h1>Tipp-Karten</h1>
+<div class="seite" id="tipp-karten">
+  <div class="seite-kopf">
+    <h1>Tipp-Karten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('tipp-karten')">Als PDF herunterladen</button>
+  </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 2 · Sicherungsphase</p>
   <p class="hinweis">Eine Karte pro Schüler:in ausdrucken.</p>
   <div class="tipp-grid">
@@ -177,6 +186,18 @@
     <div class="tipp-karte"><span class="label">Mein Tipp</span><span class="frage">Was würdest du jemandem raten, der gerade eine Freundschaft verliert?</span><div class="linie"></div><div class="linie"></div></div>
   </div>
 </div>
+
+<script>
+  function druckeNur(id) {
+    document.querySelectorAll('.seite').forEach(function(el) {
+      el.style.display = (el.id === id) ? '' : 'none';
+    });
+    window.print();
+  }
+  window.onafterprint = function() {
+    document.querySelectorAll('.seite').forEach(function(el) { el.style.display = ''; });
+  };
+</script>
 
 </body>
 </html>
