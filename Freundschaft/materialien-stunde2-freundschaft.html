@@ -104,6 +104,7 @@
   .tipp-karte .linie { border-bottom: 1px solid #c9a55f; height: 20px; margin-top: 8px; }
 
   @media print {
+    @page { size: landscape; }
     body { background: white; padding: 0; }
     .no-print { display: none !important; }
     .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; break-after: page; }
@@ -117,7 +118,7 @@
 <div class="seite" id="impulskarten">
   <div class="seite-kopf">
     <h1>Einstiegs-Impulskarten</h1>
-    <button class="download-btn no-print" onclick="druckeNur('impulskarten')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('impulskarten')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 2 · Einstieg</p>
   <p class="hinweis">Beide Karten nebeneinander zeigen (Beamer/Ausdruck), Klasse sammelt spontan Vermutungen.</p>
@@ -139,7 +140,7 @@
 <div class="seite" id="kurzgeschichten">
   <div class="seite-kopf">
     <h1>Kurzgeschichten für die Gruppenarbeit</h1>
-    <button class="download-btn no-print" onclick="druckeNur('kurzgeschichten')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('kurzgeschichten')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 2 · Arbeitsphase A</p>
   <p class="hinweis">4 Karten, eine pro Gruppe. Bei mehr als 4 Gruppen Karten doppelt vergeben.</p>
@@ -173,7 +174,7 @@
 <div class="seite" id="tipp-karten">
   <div class="seite-kopf">
     <h1>Tipp-Karten</h1>
-    <button class="download-btn no-print" onclick="druckeNur('tipp-karten')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('tipp-karten')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 2 · Sicherungsphase</p>
   <p class="hinweis">Eine Karte pro Schüler:in ausdrucken.</p>

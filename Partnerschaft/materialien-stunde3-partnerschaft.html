@@ -119,6 +119,7 @@
   .fundament-karte .linie { border-bottom: 1px solid #9fc9c9; height: 18px; margin-top: 8px; }
 
   @media print {
+    @page { size: landscape; }
     body { background: white; padding: 0; }
     .no-print { display: none !important; }
     .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; break-after: page; }
@@ -132,7 +133,7 @@
 <div class="seite" id="barometer">
   <div class="seite-kopf">
     <h1>Meinungslinie: Aussagenkarten</h1>
-    <button class="download-btn no-print" onclick="druckeNur('barometer')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('barometer')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 3 · Einstieg</p>
   <p class="hinweis">Für die Lehrkraft zum Vorlesen, eine Aussage nach der anderen.</p>
@@ -148,7 +149,7 @@
 <div class="seite" id="beziehungshaus">
   <div class="seite-kopf">
     <h1>Beziehungshaus: Vorlage &amp; Bausteine</h1>
-    <button class="download-btn no-print" onclick="druckeNur('beziehungshaus')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('beziehungshaus')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 3 · Arbeitsphase A</p>
   <p class="hinweis">Bausteine ausschneiden und beschriften, dann auf der Hausvorlage einsortieren.</p>
@@ -176,7 +177,7 @@
 <div class="seite" id="zitate-matching">
   <div class="seite-kopf">
     <h1>Jugendzitate &amp; Partner-Matching-Karten</h1>
-    <button class="download-btn no-print" onclick="druckeNur('zitate-matching')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('zitate-matching')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 3 · Arbeitsphase B</p>
   <p class="hinweis">Zitate zum Vorlesen, Matching-Karten eine pro Schüler:in.</p>
@@ -205,7 +206,7 @@
 <div class="seite" id="ecken-thesen">
   <div class="seite-kopf">
     <h1>4-Ecken-Diskussion: Thesen</h1>
-    <button class="download-btn no-print" onclick="druckeNur('ecken-thesen')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('ecken-thesen')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 3 · Diskussionsphase</p>
   <p class="hinweis">4 Karten großformatig ausdrucken und in die vier Raumecken hängen.</p>
@@ -221,7 +222,7 @@
 <div class="seite" id="fundament-karten">
   <div class="seite-kopf">
     <h1>Fundament-Karten</h1>
-    <button class="download-btn no-print" onclick="druckeNur('fundament-karten')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('fundament-karten')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Partnerschaft, Stunde 3 · Sicherungsphase</p>
   <p class="hinweis">Eine Karte pro Schüler:in ausdrucken.</p>

@@ -113,6 +113,7 @@
   .motto-karte .linie { border-bottom: 1px solid #c9a55f; height: 22px; margin-top: 10px; }
 
   @media print {
+    @page { size: landscape; }
     body { background: white; padding: 0; }
     .no-print { display: none !important; }
     .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; break-after: page; }
@@ -126,7 +127,7 @@
 <div class="seite" id="standbild-karten">
   <div class="seite-kopf">
     <h1>Standbild-Situationskarten</h1>
-    <button class="download-btn no-print" onclick="druckeNur('standbild-karten')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('standbild-karten')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 1 · Arbeitsphase A</p>
   <p class="hinweis">Ausdrucken und an den gestrichelten Linien zerschneiden. 8 Karten für bis zu 8 Gruppen, bei kleineren Klassen reicht eine Auswahl.</p>
@@ -146,7 +147,7 @@
 <div class="seite" id="diamond-ranking">
   <div class="seite-kopf">
     <h1>Diamond Ranking: Freundschafts-Eigenschaften</h1>
-    <button class="download-btn no-print" onclick="druckeNur('diamond-ranking')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('diamond-ranking')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 1 · Arbeitsphase B</p>
   <div class="diamond-anleitung">
@@ -177,7 +178,7 @@
 <div class="seite" id="kugellager-fragen">
   <div class="seite-kopf">
     <h1>Kugellager: Diskussionsfragen</h1>
-    <button class="download-btn no-print" onclick="druckeNur('kugellager-fragen')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('kugellager-fragen')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 1 · Diskussionsphase</p>
   <p class="hinweis">Für die Lehrkraft zum Vorlesen, eine Frage pro Runde. Nicht zerschneiden nötig, einfach der Reihe nach vorlesen.</p>
@@ -194,7 +195,7 @@
 <div class="seite" id="motto-karten">
   <div class="seite-kopf">
     <h1>Freundschafts-Motto-Karten</h1>
-    <button class="download-btn no-print" onclick="druckeNur('motto-karten')">Als PDF herunterladen</button>
+    <button class="download-btn no-print" onclick="druckeNur('motto-karten')">Drucken &#47; als PDF speichern</button>
   </div>
   <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 1 · Sicherungsphase</p>
   <p class="hinweis">Eine Karte pro Schüler:in ausdrucken (oder auf Zuruf per Zettel selbst gestalten lassen).</p>
