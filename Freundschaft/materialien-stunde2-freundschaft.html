@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Freundschaft (Stunde 2)</title>
+<style>
+  :root {
+    --ink: #20293a;
+    --muted: #5b6472;
+    --coral: #e0654a;
+    --coral-light: #fbe9e4;
+    --teal: #0f8b8d;
+    --teal-light: #e3f3f2;
+    --gold: #d9a441;
+    --gold-light: #faf1de;
+    --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f2efe9;
+    color: var(--ink);
+    padding: 32px 16px 60px;
+  }
+  .download-btn {
+    display: block;
+    margin: 0 auto 24px;
+    background: var(--coral);
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .seite {
+    background: white;
+    max-width: 880px;
+    margin: 0 auto 20px;
+    padding: 30px 34px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(32,41,58,0.10);
+  }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  h2 { font-size: 1.05rem; margin: 0 0 14px; color: var(--coral); }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+
+  .impuls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .impuls-karte {
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .impuls-karte.a { background: var(--teal-light); }
+  .impuls-karte.b { background: var(--coral-light); }
+  .impuls-icon { font-size: 2.4rem; }
+  .impuls-text { font-weight: 700; font-size: 1.05rem; }
+  .impuls-sub { font-size: 0.85rem; color: var(--muted); }
+
+  .geschichte-karte {
+    border: 1.5px dashed var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    background: #f7f5ef;
+  }
+  .geschichte-karte h3 { margin: 0 0 8px; font-size: 1rem; color: var(--coral); }
+  .geschichte-karte p { margin: 0 0 10px; font-size: 0.94rem; line-height: 1.55; }
+  .geschichte-auftrag {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  .tipp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .tipp-karte {
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    padding: 18px 18px;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--gold-light);
+  }
+  .tipp-karte .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); font-weight: 700; }
+  .tipp-karte .frage { font-size: 0.82rem; margin-top: 6px; color: var(--ink); }
+  .tipp-karte .linie { border-bottom: 1px solid #c9a55f; height: 20px; margin-top: 8px; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; break-after: page; }
+    .seite:last-child { break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<button class="download-btn no-print" onclick="window.print()">Als PDF herunterladen</button>
+
+<!-- Seite 1: Impulskarten -->
+<div class="seite">
+  <h1>Einstiegs-Impulskarten</h1>
+  <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 2 · Einstieg</p>
+  <p class="hinweis">Beide Karten nebeneinander zeigen (Beamer/Ausdruck), Klasse sammelt spontan Vermutungen.</p>
+  <div class="impuls-grid">
+    <div class="impuls-karte a">
+      <div class="impuls-icon">🧒🧒</div>
+      <div class="impuls-text">Beste Freunde mit 10 Jahren</div>
+      <div class="impuls-sub">Unzertrennlich, jeden Tag zusammen</div>
+    </div>
+    <div class="impuls-karte b">
+      <div class="impuls-icon">🚶‍♂️ 🚶‍♀️</div>
+      <div class="impuls-text">Kein Kontakt mehr mit 14 Jahren</div>
+      <div class="impuls-sub">Was ist dazwischen passiert?</div>
+    </div>
+  </div>
+</div>
+
+<!-- Seite 2: Kurzgeschichten -->
+<div class="seite">
+  <h1>Kurzgeschichten für die Gruppenarbeit</h1>
+  <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 2 · Arbeitsphase A</p>
+  <p class="hinweis">4 Karten, eine pro Gruppe. Bei mehr als 4 Gruppen Karten doppelt vergeben.</p>
+
+  <div class="geschichte-karte">
+    <h3>Karte 1 – Umzug</h3>
+    <p>Ihr wart seit der Grundschule die besten Freunde, habt alles zusammen gemacht. Dann ist eine Familie in eine andere Stadt gezogen. Anfangs habt ihr noch jeden Tag geschrieben, aber irgendwann wurden die Nachrichten seltener, bis fast keine mehr kamen.</p>
+    <span class="geschichte-auftrag">Auftrag: Entwickelt ein Rollenspiel, das zeigt, wie es zu dieser Situation kam und wie sich beide Seiten dabei fühlen.</span>
+  </div>
+
+  <div class="geschichte-karte">
+    <h3>Karte 2 – Vertrauensbruch</h3>
+    <p>Du hast deiner besten Freundin ein Geheimnis anvertraut. Ein paar Tage später merkst du, dass es fast die ganze Klasse kennt. Als du sie darauf ansprichst, streitet sie erst alles ab.</p>
+    <span class="geschichte-auftrag">Auftrag: Entwickelt ein Rollenspiel, das zeigt, wie es zu dieser Situation kam und wie sich beide Seiten dabei fühlen.</span>
+  </div>
+
+  <div class="geschichte-karte">
+    <h3>Karte 3 – Auseinanderleben</h3>
+    <p>Früher habt ihr alles zusammen gemacht. Jetzt interessiert sich dein Freund nur noch für eine Sache, die dich gar nicht interessiert, du hast ganz andere Themen im Kopf. Ihr trefft euch kaum noch.</p>
+    <span class="geschichte-auftrag">Auftrag: Entwickelt ein Rollenspiel, das zeigt, wie es zu dieser Situation kam und wie sich beide Seiten dabei fühlen.</span>
+  </div>
+
+  <div class="geschichte-karte">
+    <h3>Karte 4 – Neuer Freundeskreis</h3>
+    <p>Seit dem Wechsel in eine andere Klasse hat deine beste Freundin eine neue Gruppe um sich. Wenn du sie ansprichst, ist sie freundlich, aber irgendwie distanziert, als wärst du nicht mehr richtig dabei.</p>
+    <span class="geschichte-auftrag">Auftrag: Entwickelt ein Rollenspiel, das zeigt, wie es zu dieser Situation kam und wie sich beide Seiten dabei fühlen.</span>
+  </div>
+</div>
+
+<!-- Seite 3: Tipp-Karten -->
+<div class="seite">
+  <h1>Tipp-Karten</h1>
+  <p class="sub">Ethik 8. Klasse · Freundschaft, Stunde 2 · Sicherungsphase</p>
+  <p class="hinweis">Eine Karte pro Schüler:in ausdrucken.</p>
+  <div class="tipp-grid">
+    <div class="tipp-karte"><span class="label">Mein Tipp</span><span class="frage">Was würdest du jemandem raten, der gerade eine Freundschaft verliert?</span><div class="linie"></div><div class="linie"></div></div>
+    <div class="tipp-karte"><span class="label">Mein Tipp</span><span class="frage">Was würdest du jemandem raten, der gerade eine Freundschaft verliert?</span><div class="linie"></div><div class="linie"></div></div>
+    <div class="tipp-karte"><span class="label">Mein Tipp</span><span class="frage">Was würdest du jemandem raten, der gerade eine Freundschaft verliert?</span><div class="linie"></div><div class="linie"></div></div>
+    <div class="tipp-karte"><span class="label">Mein Tipp</span><span class="frage">Was würdest du jemandem raten, der gerade eine Freundschaft verliert?</span><div class="linie"></div><div class="linie"></div></div>
+    <div class="tipp-karte"><span class="label">Mein Tipp</span><span class="frage">Was würdest du jemandem raten, der gerade eine Freundschaft verliert?</span><div class="linie"></div><div class="linie"></div></div>
+    <div class="tipp-karte"><span class="label">Mein Tipp</span><span class="frage">Was würdest du jemandem raten, der gerade eine Freundschaft verliert?</span><div class="linie"></div><div class="linie"></div></div>
+  </div>
+</div>
+
+</body>
+</html>
