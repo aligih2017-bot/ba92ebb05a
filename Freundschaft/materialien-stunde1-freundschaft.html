@@ -184,6 +184,25 @@
   .folien-zaehler { color: white; font-size: 0.85rem; }
   .folien-nav-rechts { display: flex; gap: 10px; }
   .folien-beenden { background: var(--coral) !important; }
+
+  .heft-box {
+    background: #fffdf9;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+  }
+  .heft-box p { margin: 0 0 10px; }
+  .heft-liste { margin: 0 0 10px; padding-left: 20px; line-height: 1.65; }
+  .heft-liste li { margin-bottom: 5px; }
+  .merke {
+    margin-top: 12px;
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
 </style>
 </head>
 <body>
@@ -275,6 +294,28 @@
     <div class="motto-karte"><span class="label">Mein Freundschafts-Motto</span><div class="linie"></div><div class="linie"></div></div>
     <div class="motto-karte"><span class="label">Mein Freundschafts-Motto</span><div class="linie"></div><div class="linie"></div></div>
     <div class="motto-karte"><span class="label">Mein Freundschafts-Motto</span><div class="linie"></div><div class="linie"></div></div>
+  </div>
+</div>
+
+<!-- Hefteintrag -->
+<div class="seite" id="hefteintrag">
+  <div class="seite-kopf">
+    <h1>Hefteintrag zum Abschreiben</h1>
+    <button class="download-btn no-print" onclick="druckeNur('hefteintrag')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse &middot; Freundschaft, Stunde 1 &middot; zum Abschreiben ins Heft</p>
+  <div class="heft-box">
+    <h2 style="margin-top:0;">Was macht eine gute Freundschaft aus?</h2>
+    <p>Eine Freundschaft ist eine freiwillige, gegenseitige Beziehung zwischen Menschen, die nicht auf Verwandtschaft beruht.</p>
+    <p><strong>Wichtige Merkmale einer guten Freundschaft:</strong></p>
+    <ul class="heft-liste">
+      <li>Vertrauen und Ehrlichkeit</li>
+      <li>Gegenseitige Unterstützung, besonders in schwierigen Situationen</li>
+      <li>Verlässlichkeit</li>
+      <li>Akzeptanz der eigenen Persönlichkeit</li>
+      <li>Gemeinsame Interessen (nicht zwingend notwendig)</li>
+    </ul>
+    <div class="merke"><strong>Merke:</strong> Menschen gewichten diese Merkmale unterschiedlich. Es gibt keine einzig richtige Vorstellung von Freundschaft, jede Freundschaft ist individuell.</div>
   </div>
 </div>
 

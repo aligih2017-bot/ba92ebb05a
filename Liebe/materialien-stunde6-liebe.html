@@ -100,6 +100,25 @@
   .folien-zaehler { color: white; font-size: 0.85rem; }
   .folien-nav-rechts { display: flex; gap: 10px; }
   .folien-beenden { background: var(--coral) !important; }
+
+  .heft-box {
+    background: #fffdf9;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+  }
+  .heft-box p { margin: 0 0 10px; }
+  .heft-liste { margin: 0 0 10px; padding-left: 20px; line-height: 1.65; }
+  .heft-liste li { margin-bottom: 5px; }
+  .merke {
+    margin-top: 12px;
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
 </style>
 </head>
 <body>
@@ -147,6 +166,25 @@
   <div class="steckbrief-grid">
     <div class="steckbrief-karte"><div class="frage">Für mich fühlt sich Verliebtsein so an:</div><div class="linie"></div><div class="linie"></div></div>
     <div class="steckbrief-karte"><div class="frage">Das würde ich gern noch verstehen:</div><div class="linie"></div><div class="linie"></div></div>
+  </div>
+</div>
+
+<!-- Hefteintrag -->
+<div class="seite" id="hefteintrag">
+  <div class="seite-kopf">
+    <h1>Hefteintrag zum Abschreiben</h1>
+    <button class="download-btn no-print" onclick="druckeNur('hefteintrag')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse &middot; Liebe, Stunde 6 &middot; zum Abschreiben ins Heft</p>
+  <div class="heft-box">
+    <h2 style="margin-top:0;">Verliebtsein</h2>
+    <p>Man unterscheidet drei Stufen der Zuneigung zu einem anderen Menschen:</p>
+    <ul class="heft-liste">
+      <li><strong>Sympathie:</strong> ein spontanes Wohlgefühl gegenüber jemandem</li>
+      <li><strong>Verliebtheit:</strong> ein intensiver Gefühlszustand, oft mit körperlichen Reaktionen wie Herzklopfen oder "Schmetterlingen im Bauch", meist zeitlich begrenzt</li>
+      <li><strong>Liebe:</strong> eine tiefere, stabilere Bindung, die auch nach der ersten Verliebtheitsphase bestehen bleibt, mit gegenseitigem Vertrauen und Fürsorge</li>
+    </ul>
+    <div class="merke"><strong>Merke:</strong> Verliebtsein ist nicht immer eindeutig oder planbar. Es ist normal, dass Gefühle unterschiedlich intensiv sind oder unterschiedlich lange andauern.</div>
   </div>
 </div>
 

@@ -100,6 +100,25 @@
   .folien-zaehler { color: white; font-size: 0.85rem; }
   .folien-nav-rechts { display: flex; gap: 10px; }
   .folien-beenden { background: var(--coral) !important; }
+
+  .heft-box {
+    background: #fffdf9;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+  }
+  .heft-box p { margin: 0 0 10px; }
+  .heft-liste { margin: 0 0 10px; padding-left: 20px; line-height: 1.65; }
+  .heft-liste li { margin-bottom: 5px; }
+  .merke {
+    margin-top: 12px;
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
 </style>
 </head>
 <body>
@@ -159,6 +178,27 @@
   <div class="warn-grid">
     <div class="warn-karte">Meine 3 wichtigsten Warnsignale:<div class="linie"></div><div class="linie"></div><div class="linie"></div></div>
     <div class="warn-karte">Meine 3 wichtigsten Warnsignale:<div class="linie"></div><div class="linie"></div><div class="linie"></div></div>
+  </div>
+</div>
+
+<!-- Hefteintrag -->
+<div class="seite" id="hefteintrag">
+  <div class="seite-kopf">
+    <h1>Hefteintrag zum Abschreiben</h1>
+    <button class="download-btn no-print" onclick="druckeNur('hefteintrag')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse &middot; Schutz &amp; Medien, Stunde 10 &middot; zum Abschreiben ins Heft</p>
+  <div class="heft-box">
+    <h2 style="margin-top:0;">Sexting und Cybergrooming</h2>
+    <p><strong>Cybergrooming</strong> bezeichnet das gezielte Anbahnen von Kontakt zu Kindern oder Jugendlichen im Internet mit dem Ziel, sexuellen Missbrauch vorzubereiten. Täter bauen dabei gezielt Vertrauen auf.</p>
+    <p><strong>Typische Warnsignale:</strong></p>
+    <ul class="heft-liste">
+      <li>Aufforderung zur Geheimhaltung ("Erzähl niemandem davon")</li>
+      <li>Übertriebene Komplimente oder Geschenke</li>
+      <li>Drängen auf ein persönliches Treffen oder auf Fotos</li>
+    </ul>
+    <p><strong>Sexting</strong> bezeichnet das Versenden intimer Fotos oder Nachrichten. Wer solche Bilder weiterschickt, verliert die Kontrolle darüber, wo sie landen.</p>
+    <div class="merke"><strong>Merke:</strong> Wer verdächtige Nachrichten erhält, sollte den Kontakt abbrechen, das Gespräch als Beweis nicht löschen und sich einer Vertrauensperson mitteilen.</div>
   </div>
 </div>
 
