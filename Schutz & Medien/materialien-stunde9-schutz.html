@@ -33,9 +33,78 @@
     .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; break-after: page; }
     .seite:last-child { break-after: auto; }
   }
+
+  .folien-leiste {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 20px;
+    max-width: 880px;
+  }
+  .folien-start-btn {
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .folien-start-btn:hover { background: #0c6f70; }
+
+  body.folien-modus { overflow: hidden; }
+  body.folien-modus .folien-leiste { display: none; }
+  body.folien-modus .download-btn { display: none; }
+  body.folien-modus .seite {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 64px;
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    overflow-y: auto;
+    padding: 28px 6vw 40px;
+    z-index: 100;
+  }
+  body.folien-modus .seite.aktiv { display: block; }
+
+  .folien-nav {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 64px;
+    background: var(--ink);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    z-index: 200;
+  }
+  body.folien-modus .folien-nav { display: flex; }
+  .folien-nav button {
+    background: rgba(255,255,255,0.14);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .folien-nav button:disabled { opacity: 0.35; cursor: default; }
+  .folien-nav button:hover:not(:disabled) { background: rgba(255,255,255,0.24); }
+  .folien-zaehler { color: white; font-size: 0.85rem; }
+  .folien-nav-rechts { display: flex; gap: 10px; }
+  .folien-beenden { background: var(--coral) !important; }
 </style>
 </head>
 <body>
+
+<div class="folien-leiste no-print">
+  <button class="folien-start-btn" id="folien-start">Folien-Ansicht starten (für iPad)</button>
+</div>
 
 <div class="seite" id="definition">
   <div class="seite-kopf">
@@ -82,6 +151,15 @@
   </div>
 </div>
 
+<div class="folien-nav no-print">
+  <button id="folien-zurueck">&larr; Zurück</button>
+  <span class="folien-zaehler" id="folien-zaehler">1 / 1</span>
+  <div class="folien-nav-rechts">
+    <button id="folien-weiter">Weiter &rarr;</button>
+    <button id="folien-beenden" class="folien-beenden">Beenden</button>
+  </div>
+</div>
+
 <script>
   function druckeNur(id) {
     document.querySelectorAll('.seite').forEach(function(el) {
@@ -92,6 +170,56 @@
   window.onafterprint = function() {
     document.querySelectorAll('.seite').forEach(function(el) { el.style.display = ''; });
   };
+
+  (function() {
+    var seiten = Array.prototype.slice.call(document.querySelectorAll('.seite'));
+    var index = 0;
+
+    function zeigeSlide(i) {
+      index = Math.max(0, Math.min(i, seiten.length - 1));
+      seiten.forEach(function(el, n) { el.classList.toggle('aktiv', n === index); });
+      document.getElementById('folien-zaehler').textContent = (index + 1) + ' / ' + seiten.length;
+      document.getElementById('folien-zurueck').disabled = (index === 0);
+      document.getElementById('folien-weiter').disabled = (index === seiten.length - 1);
+    }
+
+    function starteFolien() {
+      document.body.classList.add('folien-modus');
+      zeigeSlide(0);
+      window.scrollTo(0, 0);
+    }
+
+    function beendeFolien() {
+      document.body.classList.remove('folien-modus');
+      seiten.forEach(function(el) { el.classList.remove('aktiv'); });
+    }
+
+    document.getElementById('folien-start').addEventListener('click', starteFolien);
+    document.getElementById('folien-beenden').addEventListener('click', beendeFolien);
+    document.getElementById('folien-weiter').addEventListener('click', function() { zeigeSlide(index + 1); });
+    document.getElementById('folien-zurueck').addEventListener('click', function() { zeigeSlide(index - 1); });
+
+    document.addEventListener('keydown', function(e) {
+      if (!document.body.classList.contains('folien-modus')) return;
+      if (e.key === 'ArrowRight') zeigeSlide(index + 1);
+      if (e.key === 'ArrowLeft') zeigeSlide(index - 1);
+      if (e.key === 'Escape') beendeFolien();
+    });
+
+    var touchStartX = null;
+    document.addEventListener('touchstart', function(e) {
+      if (!document.body.classList.contains('folien-modus')) return;
+      touchStartX = e.changedTouches[0].clientX;
+    });
+    document.addEventListener('touchend', function(e) {
+      if (!document.body.classList.contains('folien-modus') || touchStartX === null) return;
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) {
+        if (dx < 0) zeigeSlide(index + 1); else zeigeSlide(index - 1);
+      }
+      touchStartX = null;
+    });
+  })();
 </script>
 
 </body>
