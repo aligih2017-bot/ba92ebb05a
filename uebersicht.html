@@ -96,8 +96,46 @@
 
   .hinweis { margin-top: 24px; padding: 14px 18px; background: var(--teal-light); border-radius: 12px; font-size: 0.85rem; color: #0a5457; }
 </style>
+<style>
+  .pw-gate {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #20293a;
+    display: none;
+    align-items: center; justify-content: center;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input {
+    font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456;
+    background: #2a3447; color: #f2efe9; width: 180px; text-align: center;
+  }
+  .pw-box button {
+    font-weight: 700; font-size: 0.9rem;
+    padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer;
+  }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
 </head>
-<body>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
 <div class="wrap">
 
   <span class="kicker">Ethik · 8. Klasse Mittelschule</span>
@@ -334,5 +372,27 @@
   aktualisiere();
 </script>
 
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (sessionStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        sessionStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
 </body>
 </html>
