@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethik 8. Klasse – Sequenz 3: Mit Konsumgütern verantwortungsvoll umgehen</title>
+<style>
+  :root {
+    --ink: #20293a;
+    --muted: #667085;
+    --green: #1a7a3f;
+    --green-light: #e4f8ec;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f4f6fb;
+    color: var(--ink);
+    padding: 32px 16px 60px;
+  }
+  .wrap { max-width: 800px; margin: 0 auto; }
+  .kicker {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--green);
+    background: var(--green-light);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  h1 { font-size: 1.7rem; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; line-height: 1.55; }
+
+  .lehrplan-box {
+    background: var(--green-light);
+    border-left: 3px solid var(--green);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    font-size: 0.87rem;
+    color: #0f4d27;
+    margin-bottom: 22px;
+  }
+
+  .status-hinweis {
+    background: white; border: 1px dashed var(--border); border-radius: 12px;
+    padding: 14px 18px; font-size: 0.86rem; color: var(--muted); margin-bottom: 26px;
+  }
+
+  h2 { font-size: 1.05rem; margin: 26px 0 10px; }
+  h3 { font-size: 0.92rem; margin: 18px 0 6px; color: var(--green); }
+  ul.kompetenzen { margin: 0 0 6px; padding-left: 20px; font-size: 0.92rem; line-height: 1.6; }
+  ul.kompetenzen li { margin-bottom: 4px; }
+
+  table.plan { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 10px 0 10px; }
+  table.plan th, table.plan td { border-bottom: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+  table.plan th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+  table.plan td.nr, table.plan td.kw, table.plan td.datum { color: var(--muted); white-space: nowrap; }
+  .status { font-size: 0.72rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
+  .status.offen { background: #f1f3f7; color: var(--muted); }
+</style>
+<style>
+  .pw-gate {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #20293a;
+    display: none;
+    align-items: center; justify-content: center;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input {
+    font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456;
+    background: #2a3447; color: #f2efe9; width: 180px; text-align: center;
+  }
+  .pw-box button {
+    font-weight: 700; font-size: 0.9rem;
+    padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer;
+  }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <p class="no-print" style="margin:0 0 14px;"><a href="jahresplanung.html" style="font-family:inherit;font-size:0.8rem;color:var(--muted);">&larr; Zur&uuml;ck zur Jahres&uuml;bersicht</a></p>
+
+  <span class="kicker">Ethik &middot; 8. Klasse Mittelschule &middot; Sequenz 3 von 4 &middot; Lernbereich 3</span>
+  <h1>Mit Konsumgütern verantwortungsvoll umgehen</h1>
+  <p class="sub">5 Doppelstunden, Lernbereich 3 nach LehrplanPLUS Bayern, Mittelschule Ethik. Bewusst in zwei Teilen um die Weihnachtszeit gelegt: zuerst der Konsumdruck vor Weihnachten, danach die Fair-Trade-Perspektive im neuen Jahr.</p>
+
+  <div class="lehrplan-box">
+    <strong>Lehrplan-Bezug:</strong> Deckt Lernbereich 3 "Mit Konsumgütern verantwortungsvoll umgehen" ab: Produktionsketten typischer Konsumgüter (Handy, Kleidung) beschreiben und bewerten, soziale/ökologische Folgen von Konsumentscheidungen beurteilen, bewusste Konsumentscheidungen unter Solidaritätsaspekten treffen.
+  </div>
+
+  <div class="status-hinweis">
+    Material für diese Sequenz ist noch nicht erstellt. Diese Seite reserviert den Platz im Jahresplan; Ablaufpläne und Materialien folgen.
+  </div>
+
+  <h2>Kompetenzerwartungen</h2>
+  <ul class="kompetenzen">
+    <li>Produktionsketten von Konsumgütern beschreiben und bewerten.</li>
+    <li>Soziale und ökologische Folgen von Konsumentscheidungen beurteilen.</li>
+    <li>Bewusste Konsumentscheidungen unter Solidaritätsaspekten treffen.</li>
+  </ul>
+
+  <h3>Teil 1 &ndash; Vor Weihnachten: Konsumdruck</h3>
+  <ul class="kompetenzen">
+    <li>Typische Konsumgüter (Handy, Kleidung): Rohstoffgewinnung, Produktion, Transport, Entsorgung.</li>
+    <li>Konsumdruck rund um Weihnachten: Werbung, Wunschzettel, "Bedarf" vs. "Wollen".</li>
+  </ul>
+
+  <h3>Teil 2 &ndash; Nach Weihnachten: Alternativen</h3>
+  <ul class="kompetenzen">
+    <li>Ökologische und soziale Standards, Siegel zur Orientierung.</li>
+    <li>Fair Trade und Eine-Welt-Läden als Alternative.</li>
+    <li>Eigene Konsumentscheidungen reflektieren (Rückblick auf Weihnachtsgeschenke).</li>
+  </ul>
+
+  <h2>Terminliste</h2>
+  <table class="plan">
+    <tr><th>Nr.</th><th>KW</th><th>Datum</th><th>Thema</th><th>Status</th></tr>
+    <tr><td class="nr">1</td><td class="kw">KW 51</td><td class="datum">14.&ndash;18.12.2026</td><td>Vom Rohstoff zum Produkt: Handy &amp; Kleidung</td><td><span class="status offen">offen</span></td></tr>
+    <tr><td class="nr">2</td><td class="kw">KW 52</td><td class="datum">21.&ndash;23.12.2026</td><td>Konsumdruck vor Weihnachten</td><td><span class="status offen">offen</span></td></tr>
+    <tr><td class="nr">3</td><td class="kw">KW 2</td><td class="datum">11.&ndash;15.01.2027</td><td>Rückblick: Was haben wir uns gewünscht/gekauft?</td><td><span class="status offen">offen</span></td></tr>
+    <tr><td class="nr">4</td><td class="kw">KW 3</td><td class="datum">18.&ndash;22.01.2027</td><td>Ökologische &amp; soziale Standards, Siegel</td><td><span class="status offen">offen</span></td></tr>
+    <tr><td class="nr">5</td><td class="kw">KW 4</td><td class="datum">25.&ndash;29.01.2027</td><td>Fair Trade &amp; Eine-Welt-Läden</td><td><span class="status offen">offen</span></td></tr>
+  </table>
+
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (sessionStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        sessionStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

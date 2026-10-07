@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Materialien – Schutz & Medien (Stunde 9)</title>
+<title>Materialien – Schutz & Medien (Stunde 10)</title>
 <style>
   :root {
     --ink: #20293a; --muted: #5b6472; --coral: #e0654a; --coral-light: #fbe9e4;
@@ -19,13 +19,15 @@
   .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
   h2 { font-size: 1.05rem; margin: 0 0 14px; color: var(--coral); }
   .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
-  .info-kasten { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 16px 20px; font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; }
+  .chat-box { background: #f7f5ef; border-radius: 12px; padding: 18px 20px; font-size: 0.92rem; line-height: 1.7; }
+  .info-kasten { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 16px 20px; font-size: 0.9rem; line-height: 1.6; margin-top: 16px; }
   .karten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .karte { border: 1.5px dashed var(--border); border-radius: 12px; padding: 16px 18px; font-size: 0.9rem; line-height: 1.45; min-height: 80px; display: flex; align-items: center; }
-  .karte.szenario { background: #f7f5ef; }
-  .merksatz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .merksatz-karte { border: 2px solid var(--gold); border-radius: 14px; padding: 18px; min-height: 100px; background: var(--gold-light); }
-  .merksatz-karte .linie { border-bottom: 1px solid #c9a55f; height: 20px; margin-top: 8px; }
+  .karte { border: 1.5px dashed var(--border); border-radius: 12px; padding: 16px 18px; font-size: 0.92rem; line-height: 1.45; min-height: 80px; display: flex; align-items: center; }
+  .karte.rolle { background: var(--teal-light); }
+  .karte.rolle h3 { margin: 0 0 6px; font-size: 0.95rem; color: var(--teal); }
+  .warn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .warn-karte { border: 2px solid var(--gold); border-radius: 14px; padding: 18px; min-height: 100px; background: var(--gold-light); }
+  .warn-karte .linie { border-bottom: 1px solid #c9a55f; height: 18px; margin-top: 6px; }
   @media print {
     @page { size: landscape; }
     body { background: white; padding: 0; }
@@ -159,53 +161,62 @@
 </div>
 
 
-<p class="no-print" style="margin:0 0 14px;"><a href="../uebersicht.html" style="font-family:inherit;font-size:0.8rem;color:inherit;">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+<p class="no-print" style="margin:0 0 14px;"><a href="../../jahresplanung.html" style="font-family:inherit;font-size:0.8rem;color:inherit;">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
 <div class="folien-leiste no-print">
   <button class="folien-start-btn" id="folien-start">Folien-Ansicht starten (für iPad)</button>
 </div>
 
-<div class="seite" id="definition">
+<div class="seite" id="chatausschnitt">
   <div class="seite-kopf">
-    <h1>Definition &amp; Gesetzestext</h1>
-    <button class="download-btn no-print" onclick="druckeNur('definition')">Drucken &#47; als PDF speichern</button>
+    <h1>Chat-Ausschnitt</h1>
+    <button class="download-btn no-print" onclick="druckeNur('chatausschnitt')">Drucken &#47; als PDF speichern</button>
   </div>
-  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 9 · Arbeitsphase A</p>
-  <div class="info-kasten">
-    <strong>Pornografie</strong> ist die direkte Darstellung der menschlichen Sexualität oder des Sexualakts, in der Regel mit dem Ziel, den Betrachter sexuell zu erregen.
+  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 10 · Einstieg</p>
+  <div class="chat-box">
+    "Schön, dich wieder zu sehen, ich habe dich vermisst, meine Süße. Ich freue mich schon, dich bald live zu sehen, dich zu umarmen."<br><br>
+    "Ich mich auch, dich kennenzulernen. Küsschen"<br><br>
+    "Ziehst du dann am Wochenende auch deinen Minirock an?"<br><br>
+    "Wenn er dir gefällt, Lisa"
   </div>
-  <div class="info-kasten">
-    <strong>§ 184 StGB (Auszug, sinngemäß):</strong> Wer pornografische Inhalte Personen unter 18 Jahren anbietet, zugänglich macht oder überlässt, wird mit Freiheitsstrafe bis zu einem Jahr oder mit Geldstrafe bestraft.
-  </div>
-  <p class="hinweis">Aufgabe: fasst die wesentlichen Aussagen in 2-3 eigenen Sätzen zusammen.</p>
 </div>
 
-<div class="seite" id="strafbar">
+<div class="seite" id="lisageschichte">
   <div class="seite-kopf">
-    <h1>Strafbar oder nicht? Szenarien</h1>
-    <button class="download-btn no-print" onclick="druckeNur('strafbar')">Drucken &#47; als PDF speichern</button>
+    <h1>Lisas Geschichte &amp; Warnsignal-Checkliste</h1>
+    <button class="download-btn no-print" onclick="druckeNur('lisageschichte')">Drucken &#47; als PDF speichern</button>
   </div>
-  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 9 · Arbeitsphase B</p>
-  <p class="hinweis">Karten ausschneiden, mit Begründung einordnen.</p>
+  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 10 · Arbeitsphase A</p>
+  <div class="chat-box">
+    Nach diesem Chat fragt Lisa ihre Freundin Aylin, ob sie am Wochenende ihr Alibi sein könnte. Sie würde gerne zu ihrem neuen Chat-Bekannten nach Frankfurt fahren, und ihre Mutter sollte das nicht erfahren.
+  </div>
+  <div class="info-kasten">
+    <strong>Cybergrooming</strong> ist das gezielte Ansprechen von Kindern und minderjährigen Jugendlichen im Internet, um sexuellen Kontakt herzustellen oder zu sexuellen Handlungen aufzufordern. <strong>Sexting</strong> ist das Versenden unerwünschter Nacktaufnahmen. Täter nutzen die Anonymität des Internets aus und wissen, dass sich Opfer oft schämen und Vorkommnisse verheimlichen.
+  </div>
+  <p class="hinweis">Aufgabe: markiert alle Warnsignale im Chat und tragt sie in eure eigene Liste ein.</p>
+</div>
+
+<div class="seite" id="rollenspiel">
+  <div class="seite-kopf">
+    <h1>Rollenkarten: Beratungs-Rollenspiel</h1>
+    <button class="download-btn no-print" onclick="druckeNur('rollenspiel')">Drucken &#47; als PDF speichern</button>
+  </div>
+  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 10 · Arbeitsphase B</p>
   <div class="karten-grid">
-    <div class="karte szenario">Ein vermeintlich witziges Bild mit sexuellem Inhalt an die ganze Klassengruppe weiterschicken.</div>
-    <div class="karte szenario">Ein Nacktbild bekommen, das man selbst nicht angefordert hat.</div>
-    <div class="karte szenario">Ein Nacktbild eines Mitschülers/einer Mitschülerin ohne dessen Wissen weiterleiten.</div>
-    <div class="karte szenario">Ein unerwartetes Pop-up-Fenster mit sexuellen Inhalten sofort schließen und niemandem zeigen.</div>
+    <div class="karte rolle"><h3>Rolle: Lisa</h3>Du möchtest deine Freundin Aylin bitten, dein Alibi zu sein, damit du deinen Online-Bekannten in Frankfurt treffen kannst.</div>
+    <div class="karte rolle"><h3>Rolle: Aylin</h3>Deine Freundin Lisa bittet dich um Hilfe. Du machst dir Sorgen. Berate sie, ohne sie zu bevormunden.</div>
   </div>
 </div>
 
-<div class="seite" id="merksatz">
+<div class="seite" id="warnsignale">
   <div class="seite-kopf">
-    <h1>Merksatz-Karten</h1>
-    <button class="download-btn no-print" onclick="druckeNur('merksatz')">Drucken &#47; als PDF speichern</button>
+    <h1>Warnsignale-Karten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('warnsignale')">Drucken &#47; als PDF speichern</button>
   </div>
-  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 9 · Sicherungsphase</p>
+  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 10 · Sicherungsphase</p>
   <p class="hinweis">Eine Karte pro Schüler:in ausdrucken.</p>
-  <div class="merksatz-grid">
-    <div class="merksatz-karte">Wenn ich ungewollt mit solchem Bildmaterial konfrontiert werde, tue ich:<div class="linie"></div><div class="linie"></div></div>
-    <div class="merksatz-karte">Wenn ich ungewollt mit solchem Bildmaterial konfrontiert werde, tue ich:<div class="linie"></div><div class="linie"></div></div>
-    <div class="merksatz-karte">Wenn ich ungewollt mit solchem Bildmaterial konfrontiert werde, tue ich:<div class="linie"></div><div class="linie"></div></div>
-    <div class="merksatz-karte">Wenn ich ungewollt mit solchem Bildmaterial konfrontiert werde, tue ich:<div class="linie"></div><div class="linie"></div></div>
+  <div class="warn-grid">
+    <div class="warn-karte">Meine 3 wichtigsten Warnsignale:<div class="linie"></div><div class="linie"></div><div class="linie"></div></div>
+    <div class="warn-karte">Meine 3 wichtigsten Warnsignale:<div class="linie"></div><div class="linie"></div><div class="linie"></div></div>
   </div>
 </div>
 
@@ -215,12 +226,18 @@
     <h1>Hefteintrag zum Abschreiben</h1>
     <button class="download-btn no-print" onclick="druckeNur('hefteintrag')">Drucken &#47; als PDF speichern</button>
   </div>
-  <p class="sub">Ethik 8. Klasse &middot; Schutz &amp; Medien, Stunde 9 &middot; zum Abschreiben ins Heft</p>
+  <p class="sub">Ethik 8. Klasse &middot; Schutz &amp; Medien, Stunde 10 &middot; zum Abschreiben ins Heft</p>
   <div class="heft-box">
-    <h2 style="margin-top:0;">Pornografie</h2>
-    <p>Pornografie ist eine inszenierte und oft bearbeitete Darstellung von Sexualität, kein realistisches Abbild von Sexualität zwischen echten Menschen.</p>
-    <p><strong>Rechtlicher Rahmen (&sect; 184 StGB):</strong> Der Umgang mit pornografischen Inhalten ist gesetzlich geregelt. Das Weiterleiten bestimmter Bild- oder Videoinhalte, zum Beispiel von oder an Minderjährige, kann strafbar sein, auch wenn man die Inhalte nicht selbst erstellt hat.</p>
-    <div class="merke"><strong>Merke:</strong> Wer unaufgefordert mit solchen Inhalten konfrontiert wird, trifft keine Schuld. Wichtig ist, sich in diesem Fall an eine Vertrauensperson zu wenden.</div>
+    <h2 style="margin-top:0;">Sexting und Cybergrooming</h2>
+    <p><strong>Cybergrooming</strong> bezeichnet das gezielte Anbahnen von Kontakt zu Kindern oder Jugendlichen im Internet mit dem Ziel, sexuellen Missbrauch vorzubereiten. Täter bauen dabei gezielt Vertrauen auf.</p>
+    <p><strong>Typische Warnsignale:</strong></p>
+    <ul class="heft-liste">
+      <li>Aufforderung zur Geheimhaltung ("Erzähl niemandem davon")</li>
+      <li>Übertriebene Komplimente oder Geschenke</li>
+      <li>Drängen auf ein persönliches Treffen oder auf Fotos</li>
+    </ul>
+    <p><strong>Sexting</strong> bezeichnet das Versenden intimer Fotos oder Nachrichten. Wer solche Bilder weiterschickt, verliert die Kontrolle darüber, wo sie landen.</p>
+    <div class="merke"><strong>Merke:</strong> Wer verdächtige Nachrichten erhält, sollte den Kontakt abbrechen, das Gespräch als Beweis nicht löschen und sich einer Vertrauensperson mitteilen.</div>
   </div>
 </div>
 

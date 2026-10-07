@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Materialien – Schutz & Medien (Stunde 8)</title>
+<title>Materialien – Liebe (Stunde 7)</title>
 <style>
   :root {
     --ink: #20293a; --muted: #5b6472; --coral: #e0654a; --coral-light: #fbe9e4;
@@ -21,14 +21,10 @@
   .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
   .karten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .karte { border: 1.5px dashed var(--border); border-radius: 12px; padding: 16px 18px; font-size: 0.9rem; line-height: 1.45; min-height: 80px; display: flex; align-items: center; }
-  .karte.werbung { background: #f7f5ef; }
-  .karte.risiko { background: var(--coral-light); }
-  .cluster-box { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
-  .cluster-seite { background: var(--teal-light); border-radius: 12px; padding: 16px 18px; text-align: center; min-height: 140px; }
-  .cluster-seite .titel { font-weight: 700; color: var(--teal); margin-bottom: 10px; }
-  .anti-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .anti-karte { border: 2px solid var(--gold); border-radius: 14px; padding: 18px; min-height: 90px; background: var(--gold-light); }
-  .anti-karte .linie { border-bottom: 1px solid #c9a55f; height: 20px; margin-top: 8px; }
+  .karte.vorurteil { background: var(--coral-light); font-style: italic; }
+  .karte.fakt { background: var(--teal-light); }
+  .text-box { background: var(--gold-light); border-radius: 12px; padding: 20px 22px; font-size: 0.95rem; line-height: 1.65; }
+  .text-box .autor { text-align: right; font-style: italic; margin-top: 10px; color: var(--gold); font-weight: 700; }
   @media print {
     @page { size: landscape; }
     body { background: white; padding: 0; }
@@ -162,66 +158,58 @@
 </div>
 
 
-<p class="no-print" style="margin:0 0 14px;"><a href="../uebersicht.html" style="font-family:inherit;font-size:0.8rem;color:inherit;">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+<p class="no-print" style="margin:0 0 14px;"><a href="../../jahresplanung.html" style="font-family:inherit;font-size:0.8rem;color:inherit;">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
 <div class="folien-leiste no-print">
   <button class="folien-start-btn" id="folien-start">Folien-Ansicht starten (für iPad)</button>
 </div>
 
-<div class="seite" id="werbespiel">
+<div class="seite" id="vorurteilfakt">
   <div class="seite-kopf">
-    <h1>Werbe-Ratespiel</h1>
-    <button class="download-btn no-print" onclick="druckeNur('werbespiel')">Drucken &#47; als PDF speichern</button>
+    <h1>Vorurteil oder Fakt?</h1>
+    <button class="download-btn no-print" onclick="druckeNur('vorurteilfakt')">Drucken &#47; als PDF speichern</button>
   </div>
-  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 8 · Einstieg</p>
-  <p class="hinweis">Zum Vorlesen, ohne das dazugehörige Bild zu zeigen.</p>
+  <p class="sub">Ethik 8. Klasse · Liebe, Stunde 7 · Einstieg</p>
+  <p class="hinweis">Zum Vorlesen. Keine Auflösung jetzt, die kommt in Arbeitsphase B.</p>
   <div class="karten-grid">
-    <div class="karte werbung">Ein durchtrainierter Mann posiert oben ohne im Bett.</div>
-    <div class="karte werbung">Eine Frau in einem eleganten roten Kleid hält ein Parfümflakon.</div>
-    <div class="karte werbung">Ein muskulöser Mann trainiert im Fitnessstudio.</div>
-    <div class="karte werbung">Eine schlanke Frau posiert in einem weit fließenden Kleid.</div>
+    <div class="karte vorurteil">"Das ist doch krank, seinen besten Freund zu lieben."</div>
+    <div class="karte vorurteil">"Untersuchungen zeigen, dass sexuelles Ausprobieren in der Pubertät keine Homosexualität mit sich bringt."</div>
+    <div class="karte vorurteil">"Homosexualität kann man nicht erben, jeder trägt seine Sexualität von Geburt an in sich."</div>
+    <div class="karte vorurteil">"Wer seine Freundin küsst, ist auf jeden Fall lesbisch."</div>
   </div>
 </div>
 
-<div class="seite" id="cluster">
+<div class="seite" id="fortsetzung">
   <div class="seite-kopf">
-    <h1>Klischee-Cluster-Vorlage</h1>
-    <button class="download-btn no-print" onclick="druckeNur('cluster')">Drucken &#47; als PDF speichern</button>
+    <h1>Fortsetzung: Geht das eigentlich?</h1>
+    <button class="download-btn no-print" onclick="druckeNur('fortsetzung')">Drucken &#47; als PDF speichern</button>
   </div>
-  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 8 · Arbeitsphase A</p>
-  <p class="hinweis">In der Gruppe ausfüllen: welche Eigenschaften werden in der Werbung oft mit Frauen bzw. Männern verbunden?</p>
-  <div class="cluster-box">
-    <div class="cluster-seite"><div class="titel">Typisch Frau (laut Werbung)</div>_____________<br>_____________<br>_____________<br>_____________</div>
-    <div class="cluster-seite"><div class="titel">Typisch Mann (laut Werbung)</div>_____________<br>_____________<br>_____________<br>_____________</div>
+  <p class="sub">Ethik 8. Klasse · Liebe, Stunde 7 · Arbeitsphase A</p>
+  <div class="text-box">
+    "Mensch, dann bin ich also verliebt in dich." "Ich weiß nicht, ob das geht, verliebt sein in eine Freundin?" [...] Dini zieht die Augenbrauen hoch. "Warum nicht", protestiert sie. "Ich kann doch nichts dafür! Es kommt einfach so." "Ja, ich weiß schon, was du meinst. Ich fühle das manchmal auch, aber ich glaube nicht, dass man das Verliebtsein nennen kann." "Warum nicht?", fragt Dini wieder. "Ach ja, warum eigentlich nicht?", meint Helma. "Was ist das alles bloß für ein Blödsinn. Verliebt ist verliebt, fertig aus."
+    <div class="autor">Marion Bloem</div>
   </div>
 </div>
 
-<div class="seite" id="risiken">
+<div class="seite" id="entlarven">
   <div class="seite-kopf">
-    <h1>Schönheitswahn-Risikokarten</h1>
-    <button class="download-btn no-print" onclick="druckeNur('risiken')">Drucken &#47; als PDF speichern</button>
+    <h1>Vorurteile entlarven: Sprechblasen &amp; Fakten</h1>
+    <button class="download-btn no-print" onclick="druckeNur('entlarven')">Drucken &#47; als PDF speichern</button>
   </div>
-  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 8 · Arbeitsphase B</p>
-  <p class="hinweis">Karten ausschneiden, mögliche Folgen gemeinsam diskutieren.</p>
+  <p class="sub">Ethik 8. Klasse · Liebe, Stunde 7 · Arbeitsphase B</p>
+  <p class="hinweis">Karten ausschneiden. Jedem Vorurteil den passenden Fakt zuordnen.</p>
+  <h2>Vorurteile</h2>
   <div class="karten-grid">
-    <div class="karte risiko">Extreme Diäten über lange Zeit</div>
-    <div class="karte risiko">Schönheitsoperationen ohne medizinische Notwendigkeit</div>
-    <div class="karte risiko">Übertriebenes Fitnesstraining, um bestimmte Muskeln zu zeigen</div>
-    <div class="karte risiko">Ständiger Vergleich mit bearbeiteten Fotos in sozialen Medien</div>
+    <div class="karte vorurteil">"Dein Freund hat dich damit angesteckt!"</div>
+    <div class="karte vorurteil">"Das ist doch krank, seinen besten Freund zu lieben."</div>
+    <div class="karte vorurteil">"Die machen sich strafbar."</div>
+    <div class="karte vorurteil">"Halte dich von dem schwulen Typen fern, sonst wirst du auch noch schwul."</div>
   </div>
-</div>
-
-<div class="seite" id="antiklischee">
-  <div class="seite-kopf">
-    <h1>Anti-Klischee-Karten</h1>
-    <button class="download-btn no-print" onclick="druckeNur('antiklischee')">Drucken &#47; als PDF speichern</button>
-  </div>
-  <p class="sub">Ethik 8. Klasse · Schutz &amp; Medien, Stunde 8 · Sicherungsphase</p>
-  <p class="hinweis">Eine Karte pro Schüler:in ausdrucken.</p>
-  <div class="anti-grid">
-    <div class="anti-karte">Mein Anti-Klischee-Satz:<div class="linie"></div><div class="linie"></div></div>
-    <div class="anti-karte">Mein Anti-Klischee-Satz:<div class="linie"></div><div class="linie"></div></div>
-    <div class="anti-karte">Mein Anti-Klischee-Satz:<div class="linie"></div><div class="linie"></div></div>
-    <div class="anti-karte">Mein Anti-Klischee-Satz:<div class="linie"></div><div class="linie"></div></div>
+  <h2 style="margin-top:20px;">Fakten</h2>
+  <div class="karten-grid">
+    <div class="karte fakt">Homosexualität ist keine Krankheit, die man "heilen" soll.</div>
+    <div class="karte fakt">Untersuchungen zeigen: sexuelles Ausprobieren in der Pubertät bringt keine Homosexualität mit sich.</div>
+    <div class="karte fakt">Strafbar ist jede, auch heterosexuelle, sexuelle Handlung zwischen Volljährigen und Jugendlichen unter 16 Jahren, nicht Homosexualität selbst.</div>
+    <div class="karte fakt">Homosexualität kann man nicht "übertragen" oder erben, jeder trägt seine Sexualität von Geburt an in sich.</div>
   </div>
 </div>
 
@@ -231,18 +219,12 @@
     <h1>Hefteintrag zum Abschreiben</h1>
     <button class="download-btn no-print" onclick="druckeNur('hefteintrag')">Drucken &#47; als PDF speichern</button>
   </div>
-  <p class="sub">Ethik 8. Klasse &middot; Schutz &amp; Medien, Stunde 8 &middot; zum Abschreiben ins Heft</p>
+  <p class="sub">Ethik 8. Klasse &middot; Liebe, Stunde 7 &middot; zum Abschreiben ins Heft</p>
   <div class="heft-box">
-    <h2 style="margin-top:0;">Schönheitsideal und Werbung</h2>
-    <p>Werbung arbeitet häufig mit Klischees über "typisch männlich" oder "typisch weiblich" und mit bearbeiteten, unrealistischen Bildern.</p>
-    <p><strong>Mögliche Folgen eines übertriebenen Schönheitsideals:</strong></p>
-    <ul class="heft-liste">
-      <li>Ungesunde Diäten</li>
-      <li>Riskante Fitness- oder Schönheitseingriffe</li>
-      <li>Geringes Selbstwertgefühl</li>
-      <li>In schweren Fällen: Essstörungen</li>
-    </ul>
-    <div class="merke"><strong>Merke:</strong> Bilder in der Werbung sind oft bearbeitet und zeigen kein realistisches Abbild des Körpers. Der eigene Wert hängt nicht vom Aussehen ab.</div>
+    <h2 style="margin-top:0;">Vielfalt der Liebe</h2>
+    <p>Die sexuelle Orientierung beschreibt, zu welchem Geschlecht sich ein Mensch romantisch und sexuell hingezogen fühlt, zum Beispiel heterosexuell, homosexuell oder bisexuell. Sie ist Teil der eigenen Identität, keine bewusste Entscheidung und keine Krankheit.</p>
+    <p>Seit 2017 dürfen gleichgeschlechtliche Paare in Deutschland standesamtlich heiraten ("Ehe für alle"). Sie sind damit rechtlich gleichgestellt.</p>
+    <div class="merke"><strong>Merke:</strong> Liebe hat viele Formen. Respekt gegenüber unterschiedlichen sexuellen Orientierungen ist wichtig, Vorurteile sollten kritisch hinterfragt werden.</div>
   </div>
 </div>
 

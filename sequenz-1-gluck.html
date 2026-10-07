@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethik 8. Klasse – Sequenz 1: Glück</title>
+<style>
+  :root {
+    --ink: #20293a;
+    --muted: #667085;
+    --coral: #e0654a;
+    --coral-light: #fbe9e4;
+    --teal: #0f8b8d;
+    --teal-light: #e3f3f2;
+    --gold: #b8791a;
+    --gold-light: #fdf1dd;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f4f6fb;
+    color: var(--ink);
+    padding: 32px 16px 60px;
+  }
+  .wrap { max-width: 800px; margin: 0 auto; }
+  .kicker {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--gold);
+    background: var(--gold-light);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  h1 { font-size: 1.7rem; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; line-height: 1.55; }
+
+  .lehrplan-box {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    font-size: 0.87rem;
+    color: #7a4f10;
+    margin-bottom: 22px;
+  }
+
+  .status-hinweis {
+    background: white; border: 1px dashed var(--border); border-radius: 12px;
+    padding: 14px 18px; font-size: 0.86rem; color: var(--muted); margin-bottom: 26px;
+  }
+
+  h2 { font-size: 1.05rem; margin: 26px 0 10px; }
+  ul.kompetenzen { margin: 0 0 6px; padding-left: 20px; font-size: 0.92rem; line-height: 1.6; }
+  ul.kompetenzen li { margin-bottom: 4px; }
+
+  table.plan { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 10px 0 10px; }
+  table.plan th, table.plan td { border-bottom: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+  table.plan th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+  table.plan td.nr, table.plan td.kw, table.plan td.datum { color: var(--muted); white-space: nowrap; }
+  .status { font-size: 0.72rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
+  .status.offen { background: #f1f3f7; color: var(--muted); }
+</style>
+<style>
+  .pw-gate {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #20293a;
+    display: none;
+    align-items: center; justify-content: center;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input {
+    font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456;
+    background: #2a3447; color: #f2efe9; width: 180px; text-align: center;
+  }
+  .pw-box button {
+    font-weight: 700; font-size: 0.9rem;
+    padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer;
+  }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <p class="no-print" style="margin:0 0 14px;"><a href="jahresplanung.html" style="font-family:inherit;font-size:0.8rem;color:var(--muted);">&larr; Zur&uuml;ck zur Jahres&uuml;bersicht</a></p>
+
+  <span class="kicker">Ethik &middot; 8. Klasse Mittelschule &middot; Sequenz 1 von 4 &middot; Lernbereich 1</span>
+  <h1>Glück</h1>
+  <p class="sub">6 Doppelstunden, Lernbereich 1 nach LehrplanPLUS Bayern, Mittelschule Ethik. Einstieg ins Schuljahr: Was macht für mich persönlich Glück aus, und wie lässt sich das von Werbe- oder Drogenversprechen unterscheiden?</p>
+
+  <div class="lehrplan-box">
+    <strong>Lehrplan-Bezug:</strong> Deckt Lernbereich 1 "Glück" ab: Glücksquellen erkennen (Liebe, Freundschaft, Gesundheit, Hobbys, Erfolg), eigene Glücksvorstellung entwickeln, Glücksstrategien erproben, unterschiedliche Glücksvorstellungen begründet diskutieren, Glücksversprechungen (Werbung, Drogen, virtuelle Realität) kritisch hinterfragen.
+  </div>
+
+  <div class="status-hinweis">
+    Material für diese Sequenz ist noch nicht erstellt. Diese Seite reserviert den Platz im Jahresplan; Ablaufpläne und Materialien folgen.
+  </div>
+
+  <h2>Kompetenzerwartungen</h2>
+  <ul class="kompetenzen">
+    <li>Verschiedene Glücksquellen erkennen und eine eigene Glücksvorstellung entwickeln.</li>
+    <li>Strategien zur Glücksfindung entwickeln (Selbstvertrauen, kleine Glücksmomente im Alltag).</li>
+    <li>Zu unterschiedlichen Glücksvorstellungen begründet Stellung beziehen.</li>
+    <li>Glücksversprechungen kritisch überprüfen (Werbung, Drogen, virtuelle Realität).</li>
+  </ul>
+
+  <h2>Geplante Inhalte</h2>
+  <ul class="kompetenzen">
+    <li>Quellen des Glücks: Liebe, Freundschaft, Gesundheit, Hobbys, Erfolg.</li>
+    <li>Unterscheidung kurzfristiges Glück (luck) vs. tieferes Wohlbefinden (happiness).</li>
+    <li>Eigene Glücksstrategien entwickeln und ausprobieren.</li>
+    <li>Unterschiedliche Glücksvorstellungen in der Klasse vergleichen.</li>
+    <li>Glücksversprechungen kritisch prüfen: Werbung, Drogen, virtuelle Realität/Social Media.</li>
+  </ul>
+
+  <h2>Terminliste</h2>
+  <table class="plan">
+    <tr><th>Nr.</th><th>KW</th><th>Datum</th><th>Thema</th><th>Status</th></tr>
+    <tr><td class="nr">1</td><td class="kw">KW 38</td><td class="datum">15.&ndash;18.09.2026</td><td>Einstieg: Was ist Glück für mich?</td><td><span class="status offen">offen</span></td></tr>
+    <tr><td class="nr">2</td><td class="kw">KW 39</td><td class="datum">21.&ndash;25.09.2026</td><td>Glücksquellen sammeln und ordnen</td><td><span class="status offen">offen</span></td></tr>
+    <tr><td class="nr">3</td><td class="kw">KW 40</td><td class="datum">28.09.&ndash;02.10.2026</td><td>Luck vs. happiness</td><td><span class="status offen">offen</span></td></tr>
+    <tr><td class="nr">4</td><td class="kw">KW 41</td><td class="datum">05.&ndash;09.10.2026</td><td>Eigene Glücksstrategien</td><td><span class="status offen">offen</span></td></tr>
+    <tr><td class="nr">5</td><td class="kw">KW 42</td><td class="datum">12.&ndash;16.10.2026</td><td>Unterschiedliche Glücksvorstellungen diskutieren</td><td><span class="status offen">offen</span></td></tr>
+    <tr><td class="nr">6</td><td class="kw">KW 43</td><td class="datum">19.&ndash;23.10.2026</td><td>Glücksversprechungen kritisch prüfen</td><td><span class="status offen">offen</span></td></tr>
+  </table>
+
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (sessionStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        sessionStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>
