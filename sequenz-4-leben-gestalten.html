@@ -10,6 +10,8 @@
     --muted: #667085;
     --teal: #0f8b8d;
     --teal-light: #e3f3f2;
+    --green: #1a7a3f;
+    --green-light: #e4f8ec;
     --border: #e2e8f0;
   }
   * { box-sizing: border-box; }
@@ -33,8 +35,8 @@
     border-radius: 999px;
     margin-bottom: 10px;
   }
-  h1 { font-size: 1.7rem; margin: 0 0 6px; }
-  .sub { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; line-height: 1.55; }
+  h1 { font-size: 1.6rem; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 12px; font-size: 0.95rem; line-height: 1.55; }
 
   .lehrplan-box {
     background: var(--teal-light);
@@ -46,21 +48,74 @@
     margin-bottom: 22px;
   }
 
-  .status-hinweis {
-    background: white; border: 1px dashed var(--border); border-radius: 12px;
-    padding: 14px 18px; font-size: 0.86rem; color: var(--muted); margin-bottom: 26px;
+  .fortschritt-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
   }
+  .fortschritt-reihe { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; }
+  .fortschritt-bar { height: 10px; background: var(--teal-light); border-radius: 999px; overflow: hidden; margin-bottom: 4px; }
+  .fortschritt-fill { height: 100%; background: var(--teal); border-radius: 999px; transition: width 0.3s ease; }
+
+  .hinweis-box { background: white; border: 1px dashed var(--border); border-radius: 12px; padding: 14px 18px; font-size: 0.86rem; color: var(--muted); margin-bottom: 24px; }
+  .hinweis-box a { color: var(--teal); }
 
   h2 { font-size: 1.05rem; margin: 26px 0 10px; }
   ul.kompetenzen { margin: 0 0 6px; padding-left: 20px; font-size: 0.92rem; line-height: 1.6; }
   ul.kompetenzen li { margin-bottom: 4px; }
 
-  table.plan { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 10px 0 10px; }
-  table.plan th, table.plan td { border-bottom: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
-  table.plan th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
-  table.plan td.nr, table.plan td.kw, table.plan td.datum { color: var(--muted); white-space: nowrap; }
-  .status { font-size: 0.72rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
+  .themenblock {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+  }
+  .themenblock h2 { font-size: 1.05rem; margin: 0 0 4px; }
+  .themenblock .ordnerpfad { font-size: 0.76rem; color: var(--muted); font-family: "SF Mono", Menlo, Consolas, monospace; margin-bottom: 14px; }
+
+  .stunde { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border); }
+  .stunde:first-of-type { border-top: none; }
+  .status { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 1px; }
+  .status.fertig { background: var(--green-light); color: var(--green); }
   .status.offen { background: #f1f3f7; color: var(--muted); }
+
+  .stunde-inhalt { flex: 1; }
+  .stunde-titel { font-weight: 600; font-size: 0.98rem; }
+  .stunde-untertitel { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .stunde-links { margin-top: 4px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stunde-links a { font-size: 0.85rem; color: var(--teal); text-decoration: none; font-weight: 600; }
+  .stunde-links a:hover { text-decoration: underline; }
+
+  .gehalten-label {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.82rem; color: var(--muted);
+    cursor: pointer;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .gehalten-label input { width: 15px; height: 15px; accent-color: var(--teal); cursor: pointer; }
+  .stunde.gehalten .stunde-titel { text-decoration: line-through; color: var(--muted); }
+
+  .uplan-zeile { margin-top: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .uplan-status { font-size: 0.74rem; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--border); background: white; color: var(--ink); font-family: inherit; cursor: pointer; }
+  .uplan-status[data-wert="geplant"] { background: #f1f3f7; color: var(--muted); }
+  .uplan-status[data-wert="vorbereitung"] { background: #fdf1dd; color: #b8791a; }
+  .uplan-status[data-wert="vorbereitet"] { background: var(--teal-light); color: var(--teal); }
+  .uplan-status[data-wert="durchgefuehrt"] { background: var(--green-light); color: var(--green); }
+  .uplan-notiz-btn { font-size: 0.72rem; background: none; border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; cursor: pointer; color: var(--muted); font-family: inherit; }
+  .uplan-notiz-btn:hover { color: var(--ink); border-color: var(--muted); }
+  .uplan-notiz-feld { display: none; width: 100%; margin-top: 6px; font-family: inherit; font-size: 0.82rem; border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; resize: vertical; min-height: 50px; box-sizing: border-box; }
+  .uplan-notiz-feld.offen { display: block; }
+  .sicherung-leiste { display: flex; gap: 10px; margin-bottom: 18px; font-size: 0.78rem; }
+  .sicherung-leiste button, .sicherung-leiste label { background: white; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; cursor: pointer; color: var(--muted); font-family: inherit; }
+  .sicherung-leiste button:hover, .sicherung-leiste label:hover { color: var(--ink); border-color: var(--muted); }
+  @media print {
+    .uplan-status, .uplan-notiz-btn, .sicherung-leiste, .gehalten-label { display: none !important; }
+    .uplan-notiz-feld { display: block !important; border: none; padding: 0; resize: none; }
+  }
 </style>
 <style>
   .pw-gate {
@@ -114,8 +169,16 @@
     <strong>Lehrplan-Bezug:</strong> Deckt Lernbereich 2 "Das eigene Leben gestalten" ab: eigene Werte und Präferenzen bei der Lebensgestaltung wahrnehmen, Normen als Bedingung des Miteinanders akzeptieren, Rechte und Pflichten im Jugendalter, Autoritäten kritisch hinterfragen, Berufswahl an eigenen Werten ausrichten.
   </div>
 
-  <div class="status-hinweis">
-    Material für diese Sequenz ist noch nicht erstellt. Diese Seite reserviert den Platz im Jahresplan; Ablaufpläne und Materialien folgen.
+  <div class="fortschritt-box">
+    <div class="fortschritt-reihe"><span id="material-text">Material für 6 von 6 Doppelstunden fertig</span></div>
+    <div class="fortschritt-bar"><div class="fortschritt-fill" style="width:100%;"></div></div>
+    <div class="fortschritt-reihe" style="margin-top:10px;"><span id="gehalten-text">0 von 6 Doppelstunden im Unterricht gehalten</span></div>
+    <div class="fortschritt-bar"><div class="fortschritt-fill" id="gehalten-fill" style="width:0%; background:var(--green);"></div></div>
+  </div>
+
+  <div class="sicherung-leiste no-print">
+    <button type="button" onclick="uplanExport()">Stand sichern (Datei)</button>
+    <label>Stand wiederherstellen<input type="file" accept="application/json" style="display:none;" onchange="uplanImport(event)"></label>
   </div>
 
   <h2>Kompetenzerwartungen</h2>
@@ -128,25 +191,96 @@
     <li>Berufliche Orientierung an den eigenen Werten und Grenzen ausrichten.</li>
   </ul>
 
-  <h2>Geplante Inhalte</h2>
-  <ul class="kompetenzen">
-    <li>Persönlicher Lebensplan und eigene Werte.</li>
-    <li>Selbstverwirklichung in Schule und Freizeit.</li>
-    <li>Normen, Rechte und Pflichten im Jugendalter.</li>
-    <li>Autoritätsbegriff, Formen von Autorität, Machtmissbrauch durch falsche Autoritäten.</li>
-    <li>Berufswahl und individuelle Grenzen (Anschluss an Berufsorientierung/BOP).</li>
-  </ul>
+  <div class="themenblock">
+    <h2>Das eigene Leben gestalten</h2>
+    <div class="ordnerpfad">Das eigene Leben gestalten/</div>
 
-  <h2>Terminliste</h2>
-  <table class="plan">
-    <tr><th>Nr.</th><th>KW</th><th>Datum</th><th>Thema</th><th>Status</th></tr>
-    <tr><td class="nr">1</td><td class="kw">KW 11</td><td class="datum">15.&ndash;19.03.2027</td><td>Mein Lebensplan, meine Werte</td><td><span class="status offen">offen</span></td></tr>
-    <tr><td class="nr">2</td><td class="kw">KW 14</td><td class="datum">05.&ndash;09.04.2027</td><td>Selbstverwirklichung in Schule und Freizeit</td><td><span class="status offen">offen</span></td></tr>
-    <tr><td class="nr">3</td><td class="kw">KW 15</td><td class="datum">12.&ndash;16.04.2027</td><td>Normen, Rechte und Pflichten im Jugendalter</td><td><span class="status offen">offen</span></td></tr>
-    <tr><td class="nr">4</td><td class="kw">KW 16</td><td class="datum">19.&ndash;23.04.2027</td><td>Autorität kritisch hinterfragen</td><td><span class="status offen">offen</span></td></tr>
-    <tr><td class="nr">5</td><td class="kw">KW 17</td><td class="datum">26.&ndash;30.04.2027</td><td>Machtmissbrauch durch falsche Autoritäten</td><td><span class="status offen">offen</span></td></tr>
-    <tr><td class="nr">6</td><td class="kw">KW 18</td><td class="datum">03.&ndash;07.05.2027</td><td>Berufswahl und eigene Grenzen</td><td><span class="status offen">offen</span></td></tr>
-  </table>
+    <div class="stunde" data-id="l1">
+      <div class="status fertig">✓</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 1 – Mein Lebensplan, meine Werte</div>
+        <div class="stunde-untertitel">KW 11 &middot; 15.&ndash;19.03.2027</div>
+        <div class="stunde-links">
+          <a href="Das%20eigene%20Leben%20gestalten/ablaufplan-stunde1-werte.html">Ablaufplan</a>
+          <a href="Das%20eigene%20Leben%20gestalten/materialien-stunde1-werte.html">Materialien</a>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="l1"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq4::stunde1"></div>
+      </div>
+    </div>
+
+    <div class="stunde" data-id="l2">
+      <div class="status fertig">✓</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 2 – Selbstverwirklichung in Schule und Freizeit</div>
+        <div class="stunde-untertitel">KW 14 &middot; 05.&ndash;09.04.2027</div>
+        <div class="stunde-links">
+          <a href="Das%20eigene%20Leben%20gestalten/ablaufplan-stunde2-selbstverwirklichung.html">Ablaufplan</a>
+          <a href="Das%20eigene%20Leben%20gestalten/materialien-stunde2-selbstverwirklichung.html">Materialien</a>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="l2"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq4::stunde2"></div>
+      </div>
+    </div>
+
+    <div class="stunde" data-id="l3">
+      <div class="status fertig">✓</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 3 – Normen, Rechte und Pflichten im Jugendalter</div>
+        <div class="stunde-untertitel">KW 15 &middot; 12.&ndash;16.04.2027</div>
+        <div class="stunde-links">
+          <a href="Das%20eigene%20Leben%20gestalten/ablaufplan-stunde3-normen-rechte.html">Ablaufplan</a>
+          <a href="Das%20eigene%20Leben%20gestalten/materialien-stunde3-normen-rechte.html">Materialien</a>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="l3"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq4::stunde3"></div>
+      </div>
+    </div>
+
+    <div class="stunde" data-id="l4">
+      <div class="status fertig">✓</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 4 – Autorität kritisch hinterfragen</div>
+        <div class="stunde-untertitel">KW 16 &middot; 19.&ndash;23.04.2027</div>
+        <div class="stunde-links">
+          <a href="Das%20eigene%20Leben%20gestalten/ablaufplan-stunde4-autoritaet.html">Ablaufplan</a>
+          <a href="Das%20eigene%20Leben%20gestalten/materialien-stunde4-autoritaet.html">Materialien</a>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="l4"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq4::stunde4"></div>
+      </div>
+    </div>
+
+    <div class="stunde" data-id="l5">
+      <div class="status fertig">✓</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 5 – Machtmissbrauch durch falsche Autoritäten</div>
+        <div class="stunde-untertitel">KW 17 &middot; 26.&ndash;30.04.2027</div>
+        <div class="stunde-links">
+          <a href="Das%20eigene%20Leben%20gestalten/ablaufplan-stunde5-machtmissbrauch.html">Ablaufplan</a>
+          <a href="Das%20eigene%20Leben%20gestalten/materialien-stunde5-machtmissbrauch.html">Materialien</a>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="l5"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq4::stunde5"></div>
+      </div>
+    </div>
+
+    <div class="stunde" data-id="l6">
+      <div class="status fertig">✓</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 6 – Berufswahl und eigene Grenzen</div>
+        <div class="stunde-untertitel">KW 18 &middot; 03.&ndash;07.05.2027</div>
+        <div class="stunde-links">
+          <a href="Das%20eigene%20Leben%20gestalten/ablaufplan-stunde6-berufswahl.html">Ablaufplan</a>
+          <a href="Das%20eigene%20Leben%20gestalten/materialien-stunde6-berufswahl.html">Materialien</a>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="l6"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq4::stunde6"></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="hinweis" style="font-size:0.76rem; color:var(--muted); margin-top:8px;">Der Unterrichtsstatus (Geplant/Vorbereitung l&auml;uft/Vorbereitet/Durchgef&uuml;hrt) und Notizen je Stunde werden lokal in diesem Browser gespeichert, genauso wie die H&auml;kchen "im Unterricht gehalten".</p>
 
 </div>
 
@@ -154,14 +288,14 @@
   (function() {
     var PASSWORT = "Ethik8b";
     var SCHLUESSEL = "ethik8-freigeschaltet";
-    if (sessionStorage.getItem(SCHLUESSEL) === "1") {
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
       document.body.classList.remove("pw-locked");
     }
     window.pwPruefen = function(e) {
       e.preventDefault();
       var eingabe = document.getElementById("pw-eingabe").value;
       if (eingabe === PASSWORT) {
-        sessionStorage.setItem(SCHLUESSEL, "1");
+        localStorage.setItem(SCHLUESSEL, "1");
         document.body.classList.remove("pw-locked");
       } else {
         document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
@@ -169,6 +303,148 @@
         document.getElementById("pw-eingabe").focus();
       }
       return false;
+    };
+  })();
+</script>
+<script>
+  var STORAGE_KEY = "ethik8-gehalten-seq4-v1";
+  var TOTAL = 6;
+
+  function ladenGehalten() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function speichernGehalten(daten) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(daten)); } catch (e) {}
+  }
+
+  var gehalten = ladenGehalten();
+
+  function aktualisiereGehalten() {
+    var anzahl = 0;
+    document.querySelectorAll("[data-gehalten]").forEach(function(cb) {
+      var id = cb.getAttribute("data-gehalten");
+      var aktiv = !!gehalten[id];
+      cb.checked = aktiv;
+      cb.closest(".stunde").classList.toggle("gehalten", aktiv);
+      if (aktiv) anzahl++;
+    });
+    document.getElementById("gehalten-text").textContent = anzahl + " von " + TOTAL + " Doppelstunden im Unterricht gehalten";
+    document.getElementById("gehalten-fill").style.width = (anzahl / TOTAL * 100) + "%";
+  }
+
+  document.querySelectorAll("[data-gehalten]").forEach(function(cb) {
+    cb.addEventListener("change", function() {
+      var id = cb.getAttribute("data-gehalten");
+      gehalten[id] = cb.checked;
+      speichernGehalten(gehalten);
+      aktualisiereGehalten();
+    });
+  });
+
+  aktualisiereGehalten();
+</script>
+<script>
+  (function() {
+    var STATUS_OPTIONEN = [
+      ["geplant", "Geplant"],
+      ["vorbereitung", "Vorbereitung läuft"],
+      ["vorbereitet", "Vorbereitet"],
+      ["durchgefuehrt", "Durchgeführt"]
+    ];
+
+    function ladeWert(key, feld) {
+      try {
+        var roh = localStorage.getItem("uplan::" + key);
+        if (!roh) return null;
+        return JSON.parse(roh)[feld] || null;
+      } catch (e) { return null; }
+    }
+    function speichereWert(key, feld, wert) {
+      try {
+        var roh = localStorage.getItem("uplan::" + key);
+        var daten = roh ? JSON.parse(roh) : {};
+        daten[feld] = wert;
+        localStorage.setItem("uplan::" + key, JSON.stringify(daten));
+      } catch (e) {}
+    }
+    function baueZeile(container) {
+      var key = container.getAttribute("data-key");
+      var select = document.createElement("select");
+      select.className = "uplan-status";
+      STATUS_OPTIONEN.forEach(function(opt) {
+        var o = document.createElement("option");
+        o.value = opt[0]; o.textContent = opt[1];
+        select.appendChild(o);
+      });
+      var status = ladeWert(key, "status") || "geplant";
+      select.value = status;
+      select.setAttribute("data-wert", status);
+      select.addEventListener("change", function() {
+        speichereWert(key, "status", select.value);
+        select.setAttribute("data-wert", select.value);
+      });
+
+      var notizBtn = document.createElement("button");
+      notizBtn.type = "button";
+      notizBtn.className = "uplan-notiz-btn";
+      var notizWert = ladeWert(key, "notiz") || "";
+      notizBtn.textContent = notizWert ? "Notiz ✓" : "Notiz";
+
+      var notizFeld = document.createElement("textarea");
+      notizFeld.className = "uplan-notiz-feld";
+      notizFeld.placeholder = "Notizen / Reflexion nach der Stunde ...";
+      notizFeld.value = notizWert;
+      if (notizWert) notizFeld.classList.add("offen");
+
+      notizBtn.addEventListener("click", function() {
+        notizFeld.classList.toggle("offen");
+        if (notizFeld.classList.contains("offen")) notizFeld.focus();
+      });
+      notizFeld.addEventListener("input", function() {
+        speichereWert(key, "notiz", notizFeld.value);
+        notizBtn.textContent = notizFeld.value ? "Notiz ✓" : "Notiz";
+      });
+
+      container.appendChild(select);
+      container.appendChild(notizBtn);
+      container.appendChild(notizFeld);
+    }
+
+    document.querySelectorAll(".uplan-zeile[data-key]").forEach(baueZeile);
+
+    window.uplanExport = function() {
+      var daten = {};
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k.indexOf("uplan::ethik8::") === 0) daten[k] = localStorage.getItem(k);
+      }
+      var blob = new Blob([JSON.stringify(daten, null, 2)], {type: "application/json"});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "ethik8-unterrichtsstand-" + new Date().toISOString().slice(0,10) + ".json";
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+
+    window.uplanImport = function(event) {
+      var datei = event.target.files[0];
+      if (!datei) return;
+      var reader = new FileReader();
+      reader.onload = function() {
+        try {
+          var daten = JSON.parse(reader.result);
+          Object.keys(daten).forEach(function(k) { localStorage.setItem(k, daten[k]); });
+          alert("Stand wiederhergestellt. Seite wird neu geladen.");
+          location.reload();
+        } catch (e) {
+          alert("Datei konnte nicht gelesen werden.");
+        }
+      };
+      reader.readAsText(datei);
     };
   })();
 </script>

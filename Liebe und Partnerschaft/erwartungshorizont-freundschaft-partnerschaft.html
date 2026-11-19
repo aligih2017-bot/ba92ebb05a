@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erwartungshorizont – Freundschaft und Partnerschaft</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --green: #1a7a3f; --green-light: #e4f8ec;
+    --teal: #0f8b8d; --teal-light: #e3f3f2; --gold: #d9a441; --gold-light: #faf1de;
+    --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--green); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #156b38; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 6px; }
+  .warnung { background: #fbe8e2; border-left: 3px solid #c9502f; border-radius: 0 10px 10px 0; padding: 10px 16px; font-size: 0.85rem; font-weight: 700; color: #8a3119; margin: 10px 0 20px; }
+  h2 { font-size: 1.02rem; margin: 20px 0 6px; color: var(--green); }
+  .punkte { font-size: 0.82rem; font-weight: 700; color: var(--teal); float: right; }
+  p.antwort { font-size: 0.92rem; margin: 4px 0 10px; }
+  table.noten { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 10px 0; }
+  table.noten th, table.noten td { border: 1px solid var(--border); padding: 8px 10px; text-align: center; }
+  table.noten th { background: var(--green-light); }
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; }
+  }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <p class="no-print" style="margin:0 0 10px;"><a href="leistungsnachweis-freundschaft-partnerschaft.html" style="font-size:0.8rem;color:var(--muted);">&larr; Zum Leistungsnachweis</a></p>
+      <h1>Erwartungshorizont: Freundschaft und Partnerschaft</h1>
+      <p class="sub">Ethik, 8. Klasse Mittelschule &middot; Musterl&ouml;sung zum LNW Stunde 1&ndash;3</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="warnung">Nur f&uuml;r die Lehrkraft &ndash; nicht an die Klasse austeilen. Gesamtpunkte: 22.</div>
+
+  <h2>Aufgabe 1a: Begriffe zuordnen <span class="punkte">4 P, je 1 P</span></h2>
+  <p class="antwort">1 Verl&auml;sslichkeit &rarr; B &middot; 2 Kompromissbereitschaft &rarr; D &middot; 3 Vertrauensbruch &rarr; A &middot; 4 Akzeptanz &rarr; C</p>
+
+  <h2>Aufgabe 1b: Kurzfragen <span class="punkte">4 P</span></h2>
+  <p class="antwort"><b>1.</b> (2 P) Eine Partnerschaft hat eine h&ouml;here Verbindlichkeit und meist eine romantische Bindung zwischen zwei Menschen &ndash; das unterscheidet sie von einer Freundschaft.</p>
+  <p class="antwort"><b>2.</b> (2 P, je 1 P) Zwei von: Umzug/r&auml;umliche Trennung &middot; unterschiedliche Interessen/Lebenswege &middot; Vertrauensbruch (z. B. weitererz&auml;hlte Geheimnisse) &middot; neue Freundeskreise (neue Schule/neue Hobbys).</p>
+
+  <h2>Aufgabe 2: Anwendung am Fallbeispiel <span class="punkte">4 P</span></h2>
+  <p class="antwort"><b>a)</b> (2 P) Passender Grund: unterschiedliche Interessen/Lebenswege. Beleg: "Mia interessiert sich kaum f&uuml;r Fu&szlig;ball" bzw. Theo verbringt seine Freizeit im Verein, Mia nicht. 1 P f&uuml;r den richtigen Grund, 1 P f&uuml;r einen passenden Textbeleg.</p>
+  <p class="antwort"><b>b)</b> (2 P) Nein. Laut Merksatz ist Auseinanderleben ein normaler Teil des Lebens und bedeutet nicht automatisch, dass jemand schuld ist. Volle Punktzahl auch bei sinngem&auml;&szlig;er Wiedergabe ohne W&ouml;rtlichkeit.</p>
+
+  <h2>Aufgabe 3: Transferfrage <span class="punkte">5 P</span></h2>
+  <p class="antwort"><b>a)</b> (2 P, je 1 P) Zwei plausible &Uuml;berschneidungen, z. B.: Vertrauen und Ehrlichkeit &middot; gegenseitiger Respekt/Akzeptanz der Pers&ouml;nlichkeit bzw. Meinung. Andere im Unterricht genannte, sinnvoll &uuml;bertragene Merkmale ebenfalls anerkennen.</p>
+  <p class="antwort"><b>b)</b> (3 P) Erwartet wird eine eigenst&auml;ndige Erkl&auml;rung (nicht nur Abschreiben), dass eine Partnerschaft eine h&ouml;here Verbindlichkeit und meist eine romantische/emotionale Bindung erfordert, die &uuml;ber das hinausgeht, was eine Freundschaft braucht (z. B. Kompromissbereitschaft im Alltag, engere gemeinsame Zukunftsplanung). Bewertung: 1 P Inhalt korrekt, 1 P eigene Formulierung statt reines Zitat, 1 P nachvollziehbare Begr&uuml;ndung/Beispiel.</p>
+
+  <h2>Aufgabe 4: Meinung mit Beleg <span class="punkte">5 P</span></h2>
+  <p class="antwort">Freie Antwort, beide Richtungen (Zustimmung oder Ablehnung) sind möglich und gleichwertig zu bewerten. Bewertungsma&szlig;stab: 1 P klare Positionierung &middot; 2 P nachvollziehbare Begr&uuml;ndung &middot; 2 P eigenes Beispiel oder konkreter Unterrichtsbezug. Eine Meinung ohne jede Begr&uuml;ndung erh&auml;lt 0 Punkte, unabh&auml;ngig von der Position.</p>
+
+  <h2>Punkte-Noten-Umrechnung</h2>
+  <p class="sub" style="margin-bottom:8px;">Vorschlag, bei Bedarf an die eigene Notenskala anpassen.</p>
+  <table class="noten">
+    <tr><th>Note 1</th><th>Note 2</th><th>Note 3</th><th>Note 4</th><th>Note 5</th><th>Note 6</th></tr>
+    <tr>
+      <td>22&ndash;20<br>(&ge; 91 %)</td>
+      <td>19&ndash;18<br>(82&ndash;86 %)</td>
+      <td>17&ndash;15<br>(68&ndash;77 %)</td>
+      <td>14&ndash;11<br>(50&ndash;64 %)</td>
+      <td>10&ndash;7<br>(32&ndash;45 %)</td>
+      <td>&le; 6<br>(&lt; 30 %)</td>
+    </tr>
+  </table>
+
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

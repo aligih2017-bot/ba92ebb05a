@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canva-Prompt – Konsumdruck vor Weihnachten (Stunde 2)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5c6460; --green: #1a7a3f; --green-licht: #6fe0bf;
+    --green-tint: #e4f8ec; --papier: #f6f7f3;
+    --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--sans); background: #e9ebe6; color: var(--ink); padding: 40px 20px 70px; }
+  .download-btn { display: block; margin: 0 auto 26px; background: var(--ink); color: var(--papier); border: none; padding: 11px 24px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.03em; cursor: pointer; font-family: var(--sans); }
+  .download-btn:hover { background: var(--green); }
+  .blatt { background: var(--papier); max-width: 980px; margin: 0 auto 26px; overflow: hidden; }
+  .kopf { background: var(--ink); color: #eef1ee; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 40px 48px 34px; }
+  .kopf > div:first-child { flex: 1; min-width: 0; }
+  .eyebrow { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; font-weight: 600; color: var(--green-licht); margin: 0 0 12px; }
+  .eyebrow::before { content: "> "; }
+  h1 { font-size: 1.85rem; line-height: 1.15; margin: 0; font-weight: 800; letter-spacing: -0.02em; color: #fff; }
+  .inhalt { padding: 40px 48px 42px; background: var(--papier); }
+  .einordnung { font-size: 0.96rem; line-height: 1.6; color: #30342f; border-left: 3px solid var(--green); padding-left: 16px; margin: 0 0 22px; background: var(--green-tint); padding: 12px 16px; border-radius: 0 6px 6px 0; }
+  .canva-prompt { background: var(--green-tint); padding: 16px 18px; border-radius: 6px; font-size: 0.85rem; line-height: 1.55; white-space: pre-wrap; font-family: var(--mono); }
+  @media print { body { background: white; padding: 0; } .no-print { display: none !important; } .blatt { max-width: 100%; } .kopf { background: white !important; color: var(--ink) !important; border-bottom: 2px solid var(--ink); padding: 0 6px 16px; } .kopf h1 { color: var(--ink) !important; } .eyebrow { color: var(--green) !important; } .inhalt { padding: 16px 6px; } }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<button class="download-btn no-print" onclick="window.print()">Drucken &#47; als PDF speichern</button>
+
+<div class="blatt">
+  <div class="kopf">
+    <div>
+      <p class="eyebrow">Ethik &middot; 8. Klasse &middot; Sequenz 2, Stunde 2 von 5</p>
+      <h1>Canva-Prompt: Konsumdruck vor Weihnachten</h1>
+    </div>
+  </div>
+  <div class="inhalt">
+    <p class="no-print"><a href="ablaufplan-stunde2-konsumdruck.html" style="font-family:var(--mono);font-size:0.78rem;">&larr; Zur&uuml;ck zum Ablaufplan</a></p>
+    <p class="einordnung">Fertiger Prompt zum Kopieren f&uuml;r die Input-Pr&auml;sentation (Canva Magic Design).</p>
+    <div class="canva-prompt">Erstelle eine Präsentation mit genau 6 Folien für einen Lehrervortrag in einer Ethik-Stunde. Zielgruppe: 13- bis 14-jährige Jugendliche, Mittelschule. Stil: sachlich-modern, warme Erdtöne, dunkler Kopfbereich, Akzentfarbe Waldgrün, viel Weißraum, keine Kinder-Optik.
+
+Folie 1 (Titelfolie):
+Überschrift: "Konsumdruck vor Weihnachten"
+Unterzeile: "Warum wir kaufen, was wir kaufen"
+
+Folie 2 (Mechanismus 1):
+Überschrift: "Verknappung"
+Bildidee: eine Sanduhr oder ein Countdown-Symbol
+Stichpunkte:
+- Suggeriert: nur begrenzt verfügbar oder zeitlich knapp
+- Beispiel-Formulierung: "Nur noch heute", "Letzte Stücke"
+- Erzeugt das Gefühl, schnell handeln zu müssen
+
+Folie 3 (Mechanismus 2):
+Überschrift: "Vorbild-Effekt"
+Bildidee: eine Gruppe von Personen, die alle in dieselbe Richtung zeigen oder dasselbe tun
+Stichpunkte:
+- Suggeriert: "alle anderen" haben es schon oder tun es schon
+- Erzeugt den Wunsch, dazuzugehören
+- Wirkt besonders stark in sozialen Netzwerken
+
+Folie 4 (Mechanismus 3):
+Überschrift: "Gefühlsansprache"
+Bildidee: ein Geschenk, das ausgepackt wird, strahlender Gesichtsausdruck
+Stichpunkte:
+- Spricht ein Gefühl an statt eine Sacheigenschaft
+- Beispiel: Belohnung, Besonderheit, Zugehörigkeit
+- Wird oft mit den anderen zwei Mechanismen kombiniert
+
+Folie 5 (Begriffsklärung):
+Überschrift: "Bedürfnis oder Wunsch?"
+Zwei Spalten nebeneinander:
+Links "Bedürfnis": Beispiele Essen, Wohnung, warme Kleidung
+Rechts "Wunsch": Beispiele neuestes Handy-Modell, drittes Paar Sneaker
+
+Folie 6 (Übergabe):
+Überschrift: "Nächste Stunde: Gruppe 2 berichtet"
+Untertext: "Influencer-Werbung: wie Jugendliche heute zum Kaufen animiert werden"</div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

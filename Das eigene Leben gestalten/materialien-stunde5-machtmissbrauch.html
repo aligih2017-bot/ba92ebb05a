@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Machtmissbrauch durch falsche Autoritäten (Stunde 5)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --teal: #0f8b8d; --teal-light: #e3f3f2;
+    --gold: #b8791a; --gold-light: #fdf1dd; --coral: #e0654a; --coral-light: #fbe9e4; --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--teal); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #0a6567; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  .bild-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .bild-karte { border: 1.5px dashed var(--border); border-radius: 10px; padding: 16px; font-size: 0.88rem; background: var(--coral-light); min-height: 60px; display: flex; align-items: center; }
+  .fallbeispiel-box { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 18px 22px; font-size: 0.92rem; line-height: 1.6; }
+  .fragen-liste li { margin-bottom: 14px; font-size: 0.9rem; }
+  .zeile { border-bottom: 1px solid var(--border); height: 20px; margin-top: 4px; }
+  .strategie-box { border: 2px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
+  .strategie-box .label { font-weight: 700; color: #7a4f10; font-size: 0.86rem; }
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; page-break-after: always; }
+    .seite:last-child { page-break-after: auto; }
+  }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <p class="no-print" style="margin:0 0 10px;"><a href="../jahresplanung.html" style="font-size:0.8rem;color:var(--muted);">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+      <h1>Beispielsituationen: Machtmissbrauch</h1>
+      <p class="sub">F&uuml;r den Einstieg.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="bild-grid">
+    <div class="bild-karte">Eine Gruppe schlie&szlig;t gezielt eine Mitsch&uuml;lerin aus allen Chats aus.</div>
+    <div class="bild-karte">Ein &auml;lterer Sch&uuml;ler verlangt von einem J&uuml;ngeren regelm&auml;&szlig;ig Geld, sonst droht er mit &Auml;rger.</div>
+    <div class="bild-karte">Eine Clique verlangt, dass alle Mitglieder dieselbe Meinung vertreten, sonst fliegt man raus.</div>
+    <div class="bild-karte">Jemand verbreitet absichtlich falsche Ger&uuml;chte &uuml;ber eine Person, um sie schlechtzumachen.</div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <h1>Fallbeispiel: Lea</h1>
+      <p class="sub">Frei erfundenes Beispiel, f&uuml;r Erarbeitung A.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="fallbeispiel-box">
+    Lea ist 15 Jahre alt. Seit der Trennung ihrer Eltern f&uuml;hlt sie sich oft allein, in der Schule hat sie kaum noch Kontakt zu ihrer alten Freundesgruppe. Online lernt sie in einem Forum eine neue Gruppe kennen, die sich selbst als "die wahre Gemeinschaft" bezeichnet. Die Mitglieder h&ouml;ren ihr zu, loben sie f&uuml;r jede Nachricht und sagen ihr, dass sie hier endlich "verstanden" wird.<br><br>
+    Nach einigen Wochen beginnt die Gruppe, Leas alte Freunde schlechtzureden und sie zu bitten, immer mehr Zeit nur mit der Gruppe zu verbringen. Fragen stellt Lea kaum noch, die Antworten der Gruppe f&uuml;hlen sich einfach und sicher an.
+  </div>
+  <ol class="fragen-liste" style="margin-top:20px;">
+    <li>Welche Bed&uuml;rfnisse von Lea nutzt die Gruppe aus?<div class="zeile"></div></li>
+    <li>Welche Versprechen oder Angebote macht die Gruppe?<div class="zeile"></div></li>
+    <li>Woran h&auml;tte man schon fr&uuml;h erkennen k&ouml;nnen, dass hier etwas nicht stimmt?<div class="zeile"></div></li>
+    <li>Was w&uuml;rdest du Lea raten?<div class="zeile"></div></li>
+  </ol>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <h1>Strategie-Sammelblatt</h1>
+      <p class="sub">F&uuml;r Erarbeitung B, Gruppenarbeit.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="strategie-box"><span class="label">Woran erkenne ich Manipulation?</span><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div></div>
+  <div class="strategie-box"><span class="label">An wen kann ich mich wenden, wenn ich oder jemand aus meinem Umfeld betroffen ist?</span><div class="zeile"></div><div class="zeile"></div></div>
+  <p class="hinweis">Beispiele f&uuml;r Anlaufstellen: Schulsozialarbeit, eine Vertrauensperson in der Familie, eine unabh&auml;ngige Beratungsstelle.</p>
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

@@ -8,12 +8,12 @@
   :root {
     --ink: #20293a;
     --muted: #667085;
-    --coral: #e0654a;
-    --coral-light: #fbe9e4;
-    --teal: #0f8b8d;
-    --teal-light: #e3f3f2;
     --gold: #b8791a;
     --gold-light: #fdf1dd;
+    --teal: #0f8b8d;
+    --teal-light: #e3f3f2;
+    --green: #1a7a3f;
+    --green-light: #e4f8ec;
     --border: #e2e8f0;
   }
   * { box-sizing: border-box; }
@@ -37,8 +37,8 @@
     border-radius: 999px;
     margin-bottom: 10px;
   }
-  h1 { font-size: 1.7rem; margin: 0 0 6px; }
-  .sub { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; line-height: 1.55; }
+  h1 { font-size: 1.6rem; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 12px; font-size: 0.95rem; line-height: 1.55; }
 
   .lehrplan-box {
     background: var(--gold-light);
@@ -50,21 +50,74 @@
     margin-bottom: 22px;
   }
 
-  .status-hinweis {
-    background: white; border: 1px dashed var(--border); border-radius: 12px;
-    padding: 14px 18px; font-size: 0.86rem; color: var(--muted); margin-bottom: 26px;
+  .fortschritt-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
   }
+  .fortschritt-reihe { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; }
+  .fortschritt-bar { height: 10px; background: var(--gold-light); border-radius: 999px; overflow: hidden; margin-bottom: 4px; }
+  .fortschritt-fill { height: 100%; background: var(--gold); border-radius: 999px; transition: width 0.3s ease; }
+
+  .hinweis-box { background: white; border: 1px dashed var(--border); border-radius: 12px; padding: 14px 18px; font-size: 0.86rem; color: var(--muted); margin-bottom: 24px; }
 
   h2 { font-size: 1.05rem; margin: 26px 0 10px; }
   ul.kompetenzen { margin: 0 0 6px; padding-left: 20px; font-size: 0.92rem; line-height: 1.6; }
   ul.kompetenzen li { margin-bottom: 4px; }
 
-  table.plan { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 10px 0 10px; }
-  table.plan th, table.plan td { border-bottom: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
-  table.plan th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
-  table.plan td.nr, table.plan td.kw, table.plan td.datum { color: var(--muted); white-space: nowrap; }
-  .status { font-size: 0.72rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
+  .themenblock {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+  }
+  .themenblock h2 { font-size: 1.05rem; margin: 0 0 4px; }
+  .themenblock .ordnerpfad { font-size: 0.76rem; color: var(--muted); font-family: "SF Mono", Menlo, Consolas, monospace; margin-bottom: 14px; }
+
+  .stunde { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border); }
+  .stunde:first-of-type { border-top: none; }
+  .status { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 1px; }
+  .status.fertig { background: var(--green-light); color: var(--green); }
   .status.offen { background: #f1f3f7; color: var(--muted); }
+
+  .stunde-inhalt { flex: 1; }
+  .stunde-titel { font-weight: 600; font-size: 0.98rem; }
+  .stunde-untertitel { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .stunde-links { margin-top: 4px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stunde-links a { font-size: 0.85rem; color: var(--gold); text-decoration: none; font-weight: 600; }
+  .stunde-links a:hover { text-decoration: underline; }
+  .stunde-links .kein-link { font-size: 0.85rem; color: var(--muted); font-style: italic; }
+
+  .gehalten-label {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.82rem; color: var(--muted);
+    cursor: pointer;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .gehalten-label input { width: 15px; height: 15px; accent-color: var(--gold); cursor: pointer; }
+  .stunde.gehalten .stunde-titel { text-decoration: line-through; color: var(--muted); }
+
+  .uplan-zeile { margin-top: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .uplan-status { font-size: 0.74rem; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--border); background: white; color: var(--ink); font-family: inherit; cursor: pointer; }
+  .uplan-status[data-wert="geplant"] { background: #f1f3f7; color: var(--muted); }
+  .uplan-status[data-wert="vorbereitung"] { background: #fdf1dd; color: #b8791a; }
+  .uplan-status[data-wert="vorbereitet"] { background: var(--teal-light); color: var(--teal); }
+  .uplan-status[data-wert="durchgefuehrt"] { background: var(--green-light); color: var(--green); }
+  .uplan-notiz-btn { font-size: 0.72rem; background: none; border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; cursor: pointer; color: var(--muted); font-family: inherit; }
+  .uplan-notiz-btn:hover { color: var(--ink); border-color: var(--muted); }
+  .uplan-notiz-feld { display: none; width: 100%; margin-top: 6px; font-family: inherit; font-size: 0.82rem; border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; resize: vertical; min-height: 50px; box-sizing: border-box; }
+  .uplan-notiz-feld.offen { display: block; }
+  .sicherung-leiste { display: flex; gap: 10px; margin-bottom: 18px; font-size: 0.78rem; }
+  .sicherung-leiste button, .sicherung-leiste label { background: white; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; cursor: pointer; color: var(--muted); font-family: inherit; }
+  .sicherung-leiste button:hover, .sicherung-leiste label:hover { color: var(--ink); border-color: var(--muted); }
+  @media print {
+    .uplan-status, .uplan-notiz-btn, .sicherung-leiste, .gehalten-label { display: none !important; }
+    .uplan-notiz-feld { display: block !important; border: none; padding: 0; resize: none; }
+  }
 </style>
 <style>
   .pw-gate {
@@ -118,8 +171,20 @@
     <strong>Lehrplan-Bezug:</strong> Deckt Lernbereich 1 "Glück" ab: Glücksquellen erkennen (Liebe, Freundschaft, Gesundheit, Hobbys, Erfolg), eigene Glücksvorstellung entwickeln, Glücksstrategien erproben, unterschiedliche Glücksvorstellungen begründet diskutieren, Glücksversprechungen (Werbung, Drogen, virtuelle Realität) kritisch hinterfragen.
   </div>
 
-  <div class="status-hinweis">
-    Material für diese Sequenz ist noch nicht erstellt. Diese Seite reserviert den Platz im Jahresplan; Ablaufpläne und Materialien folgen.
+  <div class="fortschritt-box">
+    <div class="fortschritt-reihe"><span id="material-text">Material für 0 von 6 Doppelstunden fertig</span></div>
+    <div class="fortschritt-bar"><div class="fortschritt-fill" style="width:0%;"></div></div>
+    <div class="fortschritt-reihe" style="margin-top:10px;"><span id="gehalten-text">0 von 6 Doppelstunden im Unterricht gehalten</span></div>
+    <div class="fortschritt-bar"><div class="fortschritt-fill" id="gehalten-fill" style="width:0%; background:var(--teal);"></div></div>
+  </div>
+
+  <div class="sicherung-leiste no-print">
+    <button type="button" onclick="uplanExport()">Stand sichern (Datei)</button>
+    <label>Stand wiederherstellen<input type="file" accept="application/json" style="display:none;" onchange="uplanImport(event)"></label>
+  </div>
+
+  <div class="hinweis-box">
+    Material für diese Sequenz ist noch nicht erstellt. Diese Seite reserviert den Platz im Jahresplan und zeigt schon die geplante Struktur; Ablaufpl&auml;ne und Materialien folgen.
   </div>
 
   <h2>Kompetenzerwartungen</h2>
@@ -130,25 +195,88 @@
     <li>Glücksversprechungen kritisch überprüfen (Werbung, Drogen, virtuelle Realität).</li>
   </ul>
 
-  <h2>Geplante Inhalte</h2>
-  <ul class="kompetenzen">
-    <li>Quellen des Glücks: Liebe, Freundschaft, Gesundheit, Hobbys, Erfolg.</li>
-    <li>Unterscheidung kurzfristiges Glück (luck) vs. tieferes Wohlbefinden (happiness).</li>
-    <li>Eigene Glücksstrategien entwickeln und ausprobieren.</li>
-    <li>Unterschiedliche Glücksvorstellungen in der Klasse vergleichen.</li>
-    <li>Glücksversprechungen kritisch prüfen: Werbung, Drogen, virtuelle Realität/Social Media.</li>
-  </ul>
+  <div class="themenblock">
+    <h2>Glück</h2>
+    <div class="ordnerpfad">Glück/ &middot; noch nicht angelegt</div>
 
-  <h2>Terminliste</h2>
-  <table class="plan">
-    <tr><th>Nr.</th><th>KW</th><th>Datum</th><th>Thema</th><th>Status</th></tr>
-    <tr><td class="nr">1</td><td class="kw">KW 4</td><td class="datum">25.&ndash;29.01.2027</td><td>Einstieg: Was ist Glück für mich?</td><td><span class="status offen">offen</span></td></tr>
-    <tr><td class="nr">2</td><td class="kw">KW 5</td><td class="datum">01.&ndash;05.02.2027</td><td>Glücksquellen sammeln und ordnen</td><td><span class="status offen">offen</span></td></tr>
-    <tr><td class="nr">3</td><td class="kw">KW 7</td><td class="datum">15.&ndash;19.02.2027</td><td>Luck vs. happiness</td><td><span class="status offen">offen</span></td></tr>
-    <tr><td class="nr">4</td><td class="kw">KW 8</td><td class="datum">22.&ndash;26.02.2027</td><td>Eigene Glücksstrategien</td><td><span class="status offen">offen</span></td></tr>
-    <tr><td class="nr">5</td><td class="kw">KW 9</td><td class="datum">01.&ndash;05.03.2027</td><td>Unterschiedliche Glücksvorstellungen diskutieren</td><td><span class="status offen">offen</span></td></tr>
-    <tr><td class="nr">6</td><td class="kw">KW 10</td><td class="datum">08.&ndash;12.03.2027</td><td>Glücksversprechungen kritisch prüfen</td><td><span class="status offen">offen</span></td></tr>
-  </table>
+    <div class="stunde" data-id="g1">
+      <div class="status offen">&#9675;</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 1 – Einstieg: Was ist Glück für mich?</div>
+        <div class="stunde-untertitel">KW 4 &middot; 25.&ndash;29.01.2027</div>
+        <div class="stunde-links">
+          <span class="kein-link">Material noch nicht erstellt</span>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="g1"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq3::stunde1"></div>
+      </div>
+    </div>
+
+    <div class="stunde" data-id="g2">
+      <div class="status offen">&#9675;</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 2 – Glücksquellen sammeln und ordnen</div>
+        <div class="stunde-untertitel">KW 5 &middot; 01.&ndash;05.02.2027</div>
+        <div class="stunde-links">
+          <span class="kein-link">Material noch nicht erstellt</span>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="g2"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq3::stunde2"></div>
+      </div>
+    </div>
+
+    <div class="stunde" data-id="g3">
+      <div class="status offen">&#9675;</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 3 – Luck vs. happiness</div>
+        <div class="stunde-untertitel">KW 7 &middot; 15.&ndash;19.02.2027</div>
+        <div class="stunde-links">
+          <span class="kein-link">Material noch nicht erstellt</span>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="g3"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq3::stunde3"></div>
+      </div>
+    </div>
+
+    <div class="stunde" data-id="g4">
+      <div class="status offen">&#9675;</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 4 – Eigene Glücksstrategien</div>
+        <div class="stunde-untertitel">KW 8 &middot; 22.&ndash;26.02.2027</div>
+        <div class="stunde-links">
+          <span class="kein-link">Material noch nicht erstellt</span>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="g4"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq3::stunde4"></div>
+      </div>
+    </div>
+
+    <div class="stunde" data-id="g5">
+      <div class="status offen">&#9675;</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 5 – Unterschiedliche Glücksvorstellungen diskutieren</div>
+        <div class="stunde-untertitel">KW 9 &middot; 01.&ndash;05.03.2027</div>
+        <div class="stunde-links">
+          <span class="kein-link">Material noch nicht erstellt</span>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="g5"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq3::stunde5"></div>
+      </div>
+    </div>
+
+    <div class="stunde" data-id="g6">
+      <div class="status offen">&#9675;</div>
+      <div class="stunde-inhalt">
+        <div class="stunde-titel">Stunde 6 – Glücksversprechungen kritisch prüfen</div>
+        <div class="stunde-untertitel">KW 10 &middot; 08.&ndash;12.03.2027</div>
+        <div class="stunde-links">
+          <span class="kein-link">Material noch nicht erstellt</span>
+          <label class="gehalten-label"><input type="checkbox" data-gehalten="g6"> im Unterricht gehalten</label>
+        </div>
+        <div class="uplan-zeile" data-key="ethik8::seq3::stunde6"></div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
@@ -156,14 +284,14 @@
   (function() {
     var PASSWORT = "Ethik8b";
     var SCHLUESSEL = "ethik8-freigeschaltet";
-    if (sessionStorage.getItem(SCHLUESSEL) === "1") {
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
       document.body.classList.remove("pw-locked");
     }
     window.pwPruefen = function(e) {
       e.preventDefault();
       var eingabe = document.getElementById("pw-eingabe").value;
       if (eingabe === PASSWORT) {
-        sessionStorage.setItem(SCHLUESSEL, "1");
+        localStorage.setItem(SCHLUESSEL, "1");
         document.body.classList.remove("pw-locked");
       } else {
         document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
@@ -171,6 +299,148 @@
         document.getElementById("pw-eingabe").focus();
       }
       return false;
+    };
+  })();
+</script>
+<script>
+  var STORAGE_KEY = "ethik8-gehalten-seq3-v1";
+  var TOTAL = 6;
+
+  function ladenGehalten() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function speichernGehalten(daten) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(daten)); } catch (e) {}
+  }
+
+  var gehalten = ladenGehalten();
+
+  function aktualisiereGehalten() {
+    var anzahl = 0;
+    document.querySelectorAll("[data-gehalten]").forEach(function(cb) {
+      var id = cb.getAttribute("data-gehalten");
+      var aktiv = !!gehalten[id];
+      cb.checked = aktiv;
+      cb.closest(".stunde").classList.toggle("gehalten", aktiv);
+      if (aktiv) anzahl++;
+    });
+    document.getElementById("gehalten-text").textContent = anzahl + " von " + TOTAL + " Doppelstunden im Unterricht gehalten";
+    document.getElementById("gehalten-fill").style.width = (anzahl / TOTAL * 100) + "%";
+  }
+
+  document.querySelectorAll("[data-gehalten]").forEach(function(cb) {
+    cb.addEventListener("change", function() {
+      var id = cb.getAttribute("data-gehalten");
+      gehalten[id] = cb.checked;
+      speichernGehalten(gehalten);
+      aktualisiereGehalten();
+    });
+  });
+
+  aktualisiereGehalten();
+</script>
+<script>
+  (function() {
+    var STATUS_OPTIONEN = [
+      ["geplant", "Geplant"],
+      ["vorbereitung", "Vorbereitung läuft"],
+      ["vorbereitet", "Vorbereitet"],
+      ["durchgefuehrt", "Durchgeführt"]
+    ];
+
+    function ladeWert(key, feld) {
+      try {
+        var roh = localStorage.getItem("uplan::" + key);
+        if (!roh) return null;
+        return JSON.parse(roh)[feld] || null;
+      } catch (e) { return null; }
+    }
+    function speichereWert(key, feld, wert) {
+      try {
+        var roh = localStorage.getItem("uplan::" + key);
+        var daten = roh ? JSON.parse(roh) : {};
+        daten[feld] = wert;
+        localStorage.setItem("uplan::" + key, JSON.stringify(daten));
+      } catch (e) {}
+    }
+    function baueZeile(container) {
+      var key = container.getAttribute("data-key");
+      var select = document.createElement("select");
+      select.className = "uplan-status";
+      STATUS_OPTIONEN.forEach(function(opt) {
+        var o = document.createElement("option");
+        o.value = opt[0]; o.textContent = opt[1];
+        select.appendChild(o);
+      });
+      var status = ladeWert(key, "status") || "geplant";
+      select.value = status;
+      select.setAttribute("data-wert", status);
+      select.addEventListener("change", function() {
+        speichereWert(key, "status", select.value);
+        select.setAttribute("data-wert", select.value);
+      });
+
+      var notizBtn = document.createElement("button");
+      notizBtn.type = "button";
+      notizBtn.className = "uplan-notiz-btn";
+      var notizWert = ladeWert(key, "notiz") || "";
+      notizBtn.textContent = notizWert ? "Notiz ✓" : "Notiz";
+
+      var notizFeld = document.createElement("textarea");
+      notizFeld.className = "uplan-notiz-feld";
+      notizFeld.placeholder = "Notizen / Reflexion nach der Stunde ...";
+      notizFeld.value = notizWert;
+      if (notizWert) notizFeld.classList.add("offen");
+
+      notizBtn.addEventListener("click", function() {
+        notizFeld.classList.toggle("offen");
+        if (notizFeld.classList.contains("offen")) notizFeld.focus();
+      });
+      notizFeld.addEventListener("input", function() {
+        speichereWert(key, "notiz", notizFeld.value);
+        notizBtn.textContent = notizFeld.value ? "Notiz ✓" : "Notiz";
+      });
+
+      container.appendChild(select);
+      container.appendChild(notizBtn);
+      container.appendChild(notizFeld);
+    }
+
+    document.querySelectorAll(".uplan-zeile[data-key]").forEach(baueZeile);
+
+    window.uplanExport = function() {
+      var daten = {};
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k.indexOf("uplan::ethik8::") === 0) daten[k] = localStorage.getItem(k);
+      }
+      var blob = new Blob([JSON.stringify(daten, null, 2)], {type: "application/json"});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "ethik8-unterrichtsstand-" + new Date().toISOString().slice(0,10) + ".json";
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+
+    window.uplanImport = function(event) {
+      var datei = event.target.files[0];
+      if (!datei) return;
+      var reader = new FileReader();
+      reader.onload = function() {
+        try {
+          var daten = JSON.parse(reader.result);
+          Object.keys(daten).forEach(function(k) { localStorage.setItem(k, daten[k]); });
+          alert("Stand wiederhergestellt. Seite wird neu geladen.");
+          location.reload();
+        } catch (e) {
+          alert("Datei konnte nicht gelesen werden.");
+        }
+      };
+      reader.readAsText(datei);
     };
   })();
 </script>

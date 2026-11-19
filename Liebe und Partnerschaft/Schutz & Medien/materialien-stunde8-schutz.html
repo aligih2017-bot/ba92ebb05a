@@ -321,14 +321,14 @@
   (function() {
     var PASSWORT = "Ethik8b";
     var SCHLUESSEL = "ethik8-freigeschaltet";
-    if (sessionStorage.getItem(SCHLUESSEL) === "1") {
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
       document.body.classList.remove("pw-locked");
     }
     window.pwPruefen = function(e) {
       e.preventDefault();
       var eingabe = document.getElementById("pw-eingabe").value;
       if (eingabe === PASSWORT) {
-        sessionStorage.setItem(SCHLUESSEL, "1");
+        localStorage.setItem(SCHLUESSEL, "1");
         document.body.classList.remove("pw-locked");
       } else {
         document.getElementById("pw-fehler").textContent = "Falsches Passwort.";

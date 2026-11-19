@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ablaufplan – Selbstverwirklichung in Schule und Freizeit (Stunde 2)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --teal: #0f8b8d; --teal-light: #e3f3f2;
+    --gold: #b8791a; --gold-light: #fdf1dd; --border: #e5e2dc; --paper: #fffdf9;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .download-btn { display: block; margin: 0 auto 24px; background: var(--teal); color: white; border: none; padding: 11px 22px; border-radius: 999px; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
+  .blatt { background: var(--paper); max-width: 880px; margin: 0 auto 20px; padding: 34px 40px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .kicker { display: inline-block; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; font-weight: 700; color: var(--teal); background: var(--teal-light); padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; }
+  h1 { font-size: 1.7rem; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; }
+  h2 { font-size: 1.15rem; margin: 28px 0 10px; color: var(--teal); }
+  h2:first-of-type { margin-top: 0; }
+  p { line-height: 1.6; }
+  ul, ol { line-height: 1.7; padding-left: 22px; }
+  .kontext-box { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 0.95rem; margin-bottom: 6px; color: #7a4f10; }
+  table.plan { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 0.9rem; }
+  table.plan th { background: var(--teal); color: white; text-align: left; padding: 9px 12px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  table.plan td { padding: 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.plan tr:last-child td { border-bottom: none; }
+  table.plan .zeit { font-weight: 700; color: var(--teal); white-space: nowrap; }
+  table.plan .methode { font-weight: 700; }
+  table.plan .sozialform { display: block; font-weight: 400; font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .material-liste { background: #f7f5ef; border-radius: 10px; padding: 16px 20px; }
+  .hausaufgabe-box { margin-top: 20px; padding: 14px 18px; background: var(--gold-light); border-radius: 10px; font-size: 0.92rem; }
+  .hausaufgabe-box strong { color: #7a4f10; }
+  .tipp { margin-top: 20px; padding: 14px 18px; background: var(--teal-light); border-radius: 10px; font-size: 0.9rem; }
+  .tafelbild { border: 1.5px solid var(--ink); border-radius: 4px; padding: 18px 22px; margin: 4px 0 6px; background: #1c2024; color: #eef1ee; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.85rem; line-height: 1.7; white-space: pre-wrap; }
+  .legende { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.74rem; color: var(--muted); margin-top: 8px; }
+  @media print { body { background: white; padding: 0; } .no-print { display: none !important; } .blatt { box-shadow: none; border: 1px solid var(--border); border-radius: 0; } }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<button class="download-btn no-print" onclick="window.print()">Drucken &#47; als PDF speichern</button>
+
+<div class="blatt">
+  <p class="no-print" style="margin:0 0 14px;"><a href="../jahresplanung.html" style="font-family:inherit;font-size:0.8rem;color:inherit;">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+
+  <span class="kicker">Ethik &middot; 8. Klasse Mittelschule &middot; Doppelstunde 2 von 6 &middot; Sequenz 4: Das eigene Leben gestalten</span>
+  <h1>Selbstverwirklichung in Schule und Freizeit</h1>
+  <p class="sub">Ablaufplan f&uuml;r eine Doppelstunde (90 Minuten). Baut auf der Werte-Reflexion aus Stunde 1 auf.</p>
+
+  <div class="kontext-box">
+    <strong>Einordnung in die Gesamtsequenz:</strong> Die oberste Stufe der Bed&uuml;rfnispyramide aus Stunde 1 wird jetzt vertieft: was bedeutet Selbstverwirklichung konkret, und wo findet sie im eigenen Alltag statt?
+  </div>
+
+  <h2>Lernziele</h2>
+  <ul>
+    <li>Die Sch&uuml;ler:innen erkl&auml;ren den Begriff Selbstverwirklichung in eigenen Worten.</li>
+    <li>Sie benennen konkrete M&ouml;glichkeiten zur Selbstverwirklichung in Schule und Freizeit.</li>
+    <li>Sie erkennen die Bedeutung von Freiheit und Zeit f&uuml;r die eigene Selbstverwirklichung.</li>
+  </ul>
+
+  <h2>Ben&ouml;tigtes Material</h2>
+  <div class="material-liste">
+    <ul>
+      <li>Impuls-Zitate zu Freiheit und Zeit (Materialien-Datei)</li>
+      <li>Reflexionsbogen "Vier Fragen" (Materialien-Datei)</li>
+      <li>Plakat/Flipchart f&uuml;r das Schreibgespr&auml;ch</li>
+    </ul>
+  </div>
+
+  <h2>Ablauf</h2>
+  <table class="plan">
+    <tr><th>Zeit</th><th>Phase / Methode / Sozialform</th><th>Was passiert</th></tr>
+    <tr>
+      <td class="zeit">10 Min</td>
+      <td class="methode">Einstieg<span class="sozialform">Methode: Impuls-Zitat &middot; Sozialform: Partnerarbeit</span></td>
+      <td>Ein kurzes Zitat zu Freiheit vorlesen (Materialien-Datei). Zu zweit kurz austauschen: Was bedeutet das f&uuml;r dich?</td>
+    </tr>
+    <tr>
+      <td class="zeit">20 Min</td>
+      <td class="methode">Erarbeitung A<span class="sozialform">Methode: Schriftliche Einzelreflexion &middot; Sozialform: Einzelarbeit</span></td>
+      <td>Jede:r beantwortet schriftlich die vier Fragen: Was m&ouml;chte ich? Wer m&ouml;chte ich sein? Wie m&ouml;chte ich leben? Was ist mir wichtig? (Reflexionsbogen)</td>
+    </tr>
+    <tr>
+      <td class="zeit">25 Min</td>
+      <td class="methode">Erarbeitung B<span class="sozialform">Methode: Zitate-Ranking &middot; Sozialform: Gruppenarbeit (4er)</span></td>
+      <td>Gruppen bekommen f&uuml;nf kurze Denkanst&ouml;&szlig;e zur Selbstverwirklichung und bringen sie in eine Rangfolge nach "trifft f&uuml;r mich am meisten zu".</td>
+    </tr>
+    <tr>
+      <td class="zeit">20 Min</td>
+      <td class="methode">Sicherung<span class="sozialform">Methode: Schreibgespr&auml;ch &middot; Sozialform: Plenum</span></td>
+      <td>Ein Plakat mit der Frage "Wo kann ich mich in meinem Alltag selbst verwirklichen?" geht reihum, jede:r schreibt eine eigene Idee dazu.</td>
+    </tr>
+    <tr>
+      <td class="zeit">15 Min</td>
+      <td class="methode">Abschluss<span class="sozialform">Methode: Galeriegang &middot; Sozialform: Plenum</span></td>
+      <td>Die Plakat-Ideen gemeinsam durchlesen, 2-3 besonders interessante Eintr&auml;ge im Plenum kurz besprechen.</td>
+    </tr>
+  </table>
+
+  <div class="hausaufgabe-box">
+    <strong>Hausaufgabe:</strong> Finde einen eigenen Satz oder Spruch zur Selbstverwirklichung, den du der Klasse n&auml;chste Stunde kurz vorstellen k&ouml;nntest (freiwillig).
+  </div>
+
+  <div class="tipp">
+    <strong>Sensibel bleiben:</strong> Nicht jede:r hat dieselben M&ouml;glichkeiten zur Selbstverwirklichung (Zeit, Geld, famili&auml;re Situation). Das beim Schreibgespr&auml;ch wertsch&auml;tzend offenlassen, keine Antwort als "besser" bewerten.
+  </div>
+
+  <h2>Tafelbild</h2>
+  <div class="tafelbild">SELBSTVERWIRKLICHUNG
+
+Was moechte ich?        Wer moechte ich sein?
+Wie moechte ich leben?  Was ist mir wichtig?
+
+Braucht: Freiheit, Zeit, Raum, manchmal Mut
+
+Wo in meinem Alltag? -> Plakat sammeln</div>
+  <p class="legende">M&ouml;gliches Tafelbild, als Orientierung f&uuml;r die Anschrift w&auml;hrend der Stunde.</p>
+
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

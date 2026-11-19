@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Berufswahl und eigene Grenzen (Stunde 6)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --teal: #0f8b8d; --teal-light: #e3f3f2;
+    --gold: #b8791a; --gold-light: #fdf1dd; --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--teal); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #0a6567; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  .spalten { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .spalte-box { border: 2px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .spalte-box .label { font-weight: 700; color: var(--teal); font-size: 0.88rem; display: block; margin-bottom: 8px; }
+  .zeile { border-bottom: 1px solid var(--border); height: 20px; margin-top: 4px; margin-bottom: 8px; }
+  .bericht-box { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 16px 20px; font-size: 0.9rem; line-height: 1.55; margin-bottom: 16px; }
+  .bericht-box .person { font-weight: 700; margin-bottom: 6px; display: block; }
+  .sonne-wolke { display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 16px; flex-wrap: wrap; }
+  .sonne, .wolke { border: 2px dashed var(--border); border-radius: 50%; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.78rem; padding: 10px; }
+  .sonne { background: var(--gold-light); }
+  .wolke { background: var(--teal-light); border-radius: 60px; }
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; page-break-after: always; }
+    .seite:last-child { page-break-after: auto; }
+  }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <p class="no-print" style="margin:0 0 10px;"><a href="../jahresplanung.html" style="font-size:0.8rem;color:var(--muted);">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+      <h1>Selbsteinsch&auml;tzungsbogen</h1>
+      <p class="sub">Einzelarbeit.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="kopfzeile" style="display:flex; gap:20px; font-size:0.85rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:10px 0; margin-bottom:20px;">
+    <span>Name: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:140px;">&nbsp;</span></span>
+    <span>Klasse: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:100px;">&nbsp;</span></span>
+    <span>Datum: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:100px;">&nbsp;</span></span>
+  </div>
+  <div class="spalten">
+    <div class="spalte-box">
+      <span class="label">Ich sch&auml;tze mich so ein</span>
+      Meine St&auml;rken sind:<div class="zeile"></div>
+      Meine Schw&auml;chen sind:<div class="zeile"></div>
+      Mein Wunschberuf:<div class="zeile"></div>
+      Das erwarte ich davon:<div class="zeile"></div>
+    </div>
+    <div class="spalte-box">
+      <span class="label">So sch&auml;tzt mich meine Partnerin / mein Partner ein</span>
+      Deine St&auml;rken sind:<div class="zeile"></div>
+      Deine Schw&auml;chen sind:<div class="zeile"></div>
+      Das passt gut zu dir:<div class="zeile"></div>
+      &Uuml;berraschung?<div class="zeile"></div>
+    </div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <h1>Zwei Erfahrungsberichte</h1>
+      <p class="sub">Frei erfunden, f&uuml;r Erarbeitung C.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="bericht-box">
+    <span class="person">Melanie, 19, Tierpflegerin im zweiten Lehrjahr</span>
+    Ich wollte den ganzen Tag mit s&uuml;&szlig;en Tieren kuscheln, so hatte ich mir das vorgestellt. Die Realit&auml;t: viel Ausmisten, fr&uuml;hes Aufstehen, schweres Heben, und manchmal sind die Tiere krank oder aggressiv vor Angst. Trotzdem liebe ich den Beruf, aber aus anderen Gr&uuml;nden als gedacht: ich merke, wie wichtig es mir ist, Verantwortung f&uuml;r jemanden zu &uuml;bernehmen, der sich nicht selbst helfen kann.
+  </div>
+  <div class="bericht-box">
+    <span class="person">Jonas, 20, Konditor</span>
+    Ich dachte, ich w&uuml;rde den ganzen Tag kreative Torten verzieren. Tats&auml;chlich beginnt meine Schicht um drei Uhr nachts, und die meiste Zeit stehe ich am Fließband und forme immer dieselben Teigst&uuml;cke. Die kreativen Torten mache ich vielleicht einmal die Woche. Die R&uuml;ckenschmerzen vom langen Stehen hatte ich nicht auf dem Schirm.
+  </div>
+  <ol class="fragen-liste" style="padding-left:20px; font-size:0.9rem;">
+    <li>Was haben sich Melanie und Jonas vorher jeweils vorgestellt?</li>
+    <li>Was war in der Realit&auml;t anders?</li>
+    <li>Was h&auml;tten beide vorher tun k&ouml;nnen, um das fr&uuml;her herauszufinden?</li>
+  </ol>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <h1>Sonne und Wolke</h1>
+      <p class="sub">Gemeinsam im Plenum zu einem Beispielberuf.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="sonne-wolke">
+    <div class="sonne">Sonnenseite</div>
+    <div class="wolke">Schattenseite</div>
+    <div class="sonne">Sonnenseite</div>
+    <div class="wolke">Schattenseite</div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

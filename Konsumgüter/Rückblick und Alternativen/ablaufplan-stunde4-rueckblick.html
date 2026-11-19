@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ablaufplan – Rückblick nach Weihnachten (Stunde 4)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --green: #1a7a3f; --green-light: #e4f8ec;
+    --teal: #0f8b8d; --teal-light: #e3f3f2; --gold: #d9a441; --gold-light: #faf1de;
+    --border: #e5e2dc; --paper: #fffdf9;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .download-btn { display: block; margin: 0 auto 24px; background: var(--green); color: white; border: none; padding: 11px 22px; border-radius: 999px; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
+  .blatt { background: var(--paper); max-width: 880px; margin: 0 auto 20px; padding: 34px 40px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .kicker { display: inline-block; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; font-weight: 700; color: var(--green); background: var(--green-light); padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; }
+  h1 { font-size: 1.7rem; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; }
+  h2 { font-size: 1.15rem; margin: 28px 0 10px; color: var(--green); }
+  h2:first-of-type { margin-top: 0; }
+  p { line-height: 1.6; }
+  ul, ol { line-height: 1.7; padding-left: 22px; }
+  .kontext-box { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 0.95rem; margin-bottom: 6px; }
+  .gruppen-box { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 0.92rem; margin: 10px 0 6px; }
+  table.plan { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 0.92rem; }
+  table.plan th { background: var(--green); color: white; text-align: left; padding: 9px 12px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  table.plan td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.plan tr:last-child td { border-bottom: none; }
+  table.plan .zeit { font-weight: 700; color: var(--green); white-space: nowrap; }
+  table.plan .methode { font-weight: 700; }
+  .material-liste { background: #f7f5ef; border-radius: 10px; padding: 16px 20px; }
+  .tipp { margin-top: 20px; padding: 14px 18px; background: var(--green-light); border-radius: 10px; font-size: 0.9rem; }
+  .tafelbild { border: 1.5px solid var(--ink); border-radius: 4px; padding: 18px 22px; margin: 4px 0 6px; background: #1c2024; color: #eef1ee; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.85rem; line-height: 1.7; white-space: pre-wrap; }
+  .legende { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.74rem; color: var(--muted); margin-top: 8px; }
+  @media print { body { background: white; padding: 0; } .no-print { display: none !important; } .blatt { box-shadow: none; border: 1px solid var(--border); border-radius: 0; } }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<button class="download-btn no-print" onclick="window.print()">Drucken &#47; als PDF speichern</button>
+
+<div class="blatt">
+  <p class="no-print" style="margin:0 0 14px;"><a href="../../jahresplanung.html" style="font-family:inherit;font-size:0.8rem;color:inherit;">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+
+  <span class="kicker">Ethik &middot; 8. Klasse Mittelschule &middot; Doppelstunde 4 von 5 &middot; Sequenz 2: Konsumg&uuml;ter</span>
+  <h1>R&uuml;ckblick: Was haben wir uns gew&uuml;nscht und gekauft?</h1>
+  <p class="sub">Ablaufplan f&uuml;r eine Doppelstunde (90 Minuten). Erste Stunde nach den Weihnachtsferien. Beginnt mit dem Referat von Gruppe 3.</p>
+
+  <div class="kontext-box">
+    <strong>Einordnung in die Gesamtsequenz:</strong> Greift die Begriffe aus Stunde 2 (Bed&uuml;rfnis/Wunsch, Werbemechanismen) wieder auf, diesmal mit echtem zeitlichen Abstand zu den Weihnachtsgeschenken.
+  </div>
+
+  <h2>Lernziele</h2>
+  <ul>
+    <li>Die Sch&uuml;ler:innen h&ouml;ren und bewerten das Referat von Gruppe 3 (Greenwashing).</li>
+    <li>Sie reflektieren r&uuml;ckblickend, ob ein gew&uuml;nschtes Geschenk die erwartete Zufriedenheit gebracht hat, und warum Freude oft schnell nachl&auml;sst.</li>
+    <li>Gruppe 4 &uuml;bernimmt den Auftrag, eine praktische Alternative zum Neukauf f&uuml;r ein Referat zu vertiefen.</li>
+  </ul>
+
+  <h2>Ben&ouml;tigtes Material</h2>
+  <div class="material-liste">
+    <ul>
+      <li>Plakat/Folien von Gruppe 3</li>
+      <li><a href="../bewertungsraster-referat.html">Bewertungsraster Referat</a></li>
+      <li>Anonyme Reflexionskarte pro Sch&uuml;ler:in (<a href="materialien-stunde4-rueckblick.html">Materialien-Datei</a>), Referatsauftrag Gruppe 4 in derselben Datei</li>
+      <li>Pr&auml;sentation f&uuml;r den kurzen Input (siehe <a href="canva-prompt-stunde4-rueckblick.html">Canva-Anleitung</a>)</li>
+      <li>Tafel oder Flipchart zum Clustern der anonymen Ergebnisse</li>
+    </ul>
+  </div>
+
+  <h2>Ablauf</h2>
+  <table class="plan">
+    <tr><th>Zeit</th><th>Phase</th><th>Was passiert</th></tr>
+    <tr>
+      <td class="zeit">15 Min</td>
+      <td class="methode">Referat Gruppe 3<br><span style="font-weight:400; color:var(--muted);">Vortrag und Feedback</span></td>
+      <td>Gruppe 3 h&auml;lt ihr Referat (8-10 Min), danach 3-5 Min Fragen.</td>
+    </tr>
+    <tr>
+      <td class="zeit">15 Min</td>
+      <td class="methode">Erarbeitung A<br><span style="font-weight:400; color:var(--muted);">Anonyme Kartenabfrage</span></td>
+      <td>Jede:r f&uuml;llt anonym die Reflexionskarte aus: ein gew&uuml;nschtes Geschenk, Zufriedenheit auf einer Skala von 1-5 (jetzt), Nutzungsh&auml;ufigkeit seitdem. Karten einsammeln, mischen.</td>
+    </tr>
+    <tr>
+      <td class="zeit">15 Min</td>
+      <td class="methode">Auswertung<br><span style="font-weight:400; color:var(--muted);">Clustern an der Tafel</span></td>
+      <td>Einige Karten vorlesen (anonym) und clustern. Frage: "F&auml;llt euch ein Muster auf?"</td>
+    </tr>
+    <tr>
+      <td class="zeit">15 Min</td>
+      <td class="methode">Input<br><span style="font-weight:400; color:var(--muted);">Kurzvortrag mit Pr&auml;sentation</span></td>
+      <td>Kurzer Input zum Gew&ouml;hnungseffekt: warum l&auml;sst Freude &uuml;ber Neues oft schnell nach? Verkn&uuml;pfung zu Stunde 2 (Bed&uuml;rfnis/Wunsch, Werbemechanismen).</td>
+    </tr>
+    <tr>
+      <td class="zeit">20 Min</td>
+      <td class="methode">Gruppenauftrag<br><span style="font-weight:400; color:var(--muted);">Vergabe an Gruppe 4</span></td>
+      <td>Referatsauftrag an Gruppe 4 austeilen, gemeinsam lesen. Vortragstermin: Beginn von Stunde 5.</td>
+    </tr>
+    <tr>
+      <td class="zeit">10 Min</td>
+      <td class="methode">Abschluss</td>
+      <td>Transferfrage: "Was w&uuml;rde das f&uuml;r eure n&auml;chste gr&ouml;&szlig;ere Kaufentscheidung bedeuten?" Kurze m&uuml;ndliche Sammlung.</td>
+    </tr>
+  </table>
+
+  <div class="gruppen-box">
+    <strong>Referatsthema Gruppe 4:</strong> "Second Hand, Tauschen und Reparieren &ndash; Alternativen zum Neukauf". Details im Referatsauftrag (Materialien-Datei).
+  </div>
+
+  <div class="tipp">
+    <strong>Sensibel bleiben:</strong> Die Kartenabfrage ist bewusst anonym. Beim Vorlesen darauf achten, dass niemand seine eigene Karte wiedererkennbar kommentieren muss.
+  </div>
+
+  <h2>Tafelbild</h2>
+  <div class="tafelbild">RUECKBLICK: GESCHENKE
+
+Skala 1-5: wie zufrieden bin ich JETZT noch?
+
+Warum laesst Freude oft nach?
+-> wir gewoehnen uns schnell an Neues
+
+Gruppe 4: Referat "Second Hand, Tauschen, Reparieren" -> Beginn Stunde 5</div>
+  <p class="legende">M&ouml;gliches Tafelbild, als Orientierung f&uuml;r die Anschrift w&auml;hrend der Stunde.</p>
+
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

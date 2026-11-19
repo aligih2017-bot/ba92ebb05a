@@ -95,6 +95,24 @@
   .stunde.gehalten .stunde-titel { text-decoration: line-through; color: var(--muted); }
 
   .hinweis { margin-top: 24px; padding: 14px 18px; background: var(--teal-light); border-radius: 12px; font-size: 0.85rem; color: #0a5457; }
+
+  .uplan-zeile { margin-top: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .uplan-status { font-size: 0.74rem; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--border); background: white; color: var(--ink); font-family: inherit; cursor: pointer; }
+  .uplan-status[data-wert="geplant"] { background: #f1f3f7; color: var(--muted); }
+  .uplan-status[data-wert="vorbereitung"] { background: #fdf1dd; color: #b8791a; }
+  .uplan-status[data-wert="vorbereitet"] { background: var(--teal-light); color: var(--teal); }
+  .uplan-status[data-wert="durchgefuehrt"] { background: var(--green-light); color: var(--green); }
+  .uplan-notiz-btn { font-size: 0.72rem; background: none; border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; cursor: pointer; color: var(--muted); font-family: inherit; }
+  .uplan-notiz-btn:hover { color: var(--ink); border-color: var(--muted); }
+  .uplan-notiz-feld { display: none; width: 100%; margin-top: 6px; font-family: inherit; font-size: 0.82rem; border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; resize: vertical; min-height: 50px; box-sizing: border-box; }
+  .uplan-notiz-feld.offen { display: block; }
+  .sicherung-leiste { display: flex; gap: 10px; margin: 10px 0 4px; font-size: 0.78rem; }
+  .sicherung-leiste button, .sicherung-leiste label { background: white; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; cursor: pointer; color: var(--muted); font-family: inherit; }
+  .sicherung-leiste button:hover, .sicherung-leiste label:hover { color: var(--ink); border-color: var(--muted); }
+  @media print {
+    .uplan-status, .uplan-notiz-btn, .sicherung-leiste { display: none !important; }
+    .uplan-notiz-feld { display: block !important; border: none; padding: 0; resize: none; }
+  }
 </style>
 <style>
   .pw-gate {
@@ -155,6 +173,11 @@
     <div class="fortschritt-bar"><div class="fortschritt-fill" id="gehalten-fill" style="width:0%; background:var(--teal);"></div></div>
   </div>
 
+  <div class="sicherung-leiste no-print">
+    <button type="button" onclick="uplanExport()">Stand sichern (Datei)</button>
+    <label>Stand wiederherstellen<input type="file" accept="application/json" style="display:none;" onchange="uplanImport(event)"></label>
+  </div>
+
   <div class="themenblock">
     <h2>Freundschaft</h2>
     <div class="ordnerpfad">Freundschaft/</div>
@@ -172,6 +195,7 @@
           <a href="Liebe%20und%20Partnerschaft/Freundschaft/bild-stunde1-freunde-b.png">Bild B</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s1"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s1"></div>
       </div>
     </div>
 
@@ -188,6 +212,7 @@
           <a href="Liebe%20und%20Partnerschaft/Freundschaft/bild-stunde2-freundesstreit.png">Bild B</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s2"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s2"></div>
       </div>
     </div>
   </div>
@@ -208,6 +233,11 @@
           <a href="Liebe%20und%20Partnerschaft/Partnerschaft/bild-stunde3-bausteine.png">Bild</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s3"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s3"></div>
+        <div class="stunde-links" style="margin-top:6px;">
+          <a href="Liebe%20und%20Partnerschaft/leistungsnachweis-freundschaft-partnerschaft.html"><strong>Leistungsnachweis Stunde 1&ndash;3</strong></a>
+          <a href="Liebe%20und%20Partnerschaft/erwartungshorizont-freundschaft-partnerschaft.html">Erwartungshorizont (nur Lehrkraft)</a>
+        </div>
       </div>
     </div>
 
@@ -223,6 +253,7 @@
           <a href="Liebe%20und%20Partnerschaft/Partnerschaft/bild-stunde4-wege.png">Bild</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s4"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s4"></div>
       </div>
     </div>
 
@@ -238,6 +269,7 @@
           <a href="Liebe%20und%20Partnerschaft/Partnerschaft/bild-stunde5-waage.png">Bild</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s5"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s5"></div>
       </div>
     </div>
   </div>
@@ -258,6 +290,7 @@
           <a href="Liebe%20und%20Partnerschaft/Liebe/bild-stunde6-herz.png">Bild</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s6"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s6"></div>
       </div>
     </div>
 
@@ -273,6 +306,7 @@
           <a href="Liebe%20und%20Partnerschaft/Liebe/bild-stunde7-vielfalt.png">Bild</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s7"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s7"></div>
       </div>
     </div>
   </div>
@@ -291,6 +325,7 @@
           <a href="Liebe%20und%20Partnerschaft/Schutz%20%26%20Medien/materialien-stunde8-schutz.html">Materialien</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s8"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s8"></div>
       </div>
     </div>
 
@@ -304,6 +339,7 @@
           <a href="Liebe%20und%20Partnerschaft/Schutz%20%26%20Medien/materialien-stunde9-schutz.html">Materialien</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s9"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s9"></div>
       </div>
     </div>
 
@@ -317,6 +353,7 @@
           <a href="Liebe%20und%20Partnerschaft/Schutz%20%26%20Medien/materialien-stunde10-schutz.html">Materialien</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s10"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s10"></div>
       </div>
     </div>
 
@@ -330,6 +367,7 @@
           <a href="Liebe%20und%20Partnerschaft/Schutz%20%26%20Medien/materialien-stunde11-schutz.html">Materialien</a>
           <label class="gehalten-label"><input type="checkbox" data-gehalten="s11"> im Unterricht gehalten</label>
         </div>
+        <div class="uplan-zeile" data-key="ethik8::seq1::s11"></div>
       </div>
     </div>
   </div>
@@ -380,19 +418,123 @@
 
   aktualisiere();
 </script>
+<script>
+  (function() {
+    var STATUS_OPTIONEN = [
+      ["geplant", "Geplant"],
+      ["vorbereitung", "Vorbereitung läuft"],
+      ["vorbereitet", "Vorbereitet"],
+      ["durchgefuehrt", "Durchgeführt"]
+    ];
+
+    function ladeWert(key, feld) {
+      try {
+        var roh = localStorage.getItem("uplan::" + key);
+        if (!roh) return null;
+        return JSON.parse(roh)[feld] || null;
+      } catch (e) { return null; }
+    }
+    function speichereWert(key, feld, wert) {
+      try {
+        var roh = localStorage.getItem("uplan::" + key);
+        var daten = roh ? JSON.parse(roh) : {};
+        daten[feld] = wert;
+        localStorage.setItem("uplan::" + key, JSON.stringify(daten));
+      } catch (e) {}
+    }
+    function baueZeile(container) {
+      var key = container.getAttribute("data-key");
+      var select = document.createElement("select");
+      select.className = "uplan-status";
+      STATUS_OPTIONEN.forEach(function(opt) {
+        var o = document.createElement("option");
+        o.value = opt[0]; o.textContent = opt[1];
+        select.appendChild(o);
+      });
+      var gehaltenCheckbox = document.querySelector('[data-gehalten="' + key.split("::").pop() + '"]');
+      var vorgabe = (gehaltenCheckbox && gehaltenCheckbox.checked) ? "durchgefuehrt" : "geplant";
+      var status = ladeWert(key, "status") || vorgabe;
+      select.value = status;
+      select.setAttribute("data-wert", status);
+      select.addEventListener("change", function() {
+        speichereWert(key, "status", select.value);
+        select.setAttribute("data-wert", select.value);
+      });
+
+      var notizBtn = document.createElement("button");
+      notizBtn.type = "button";
+      notizBtn.className = "uplan-notiz-btn";
+      var notizWert = ladeWert(key, "notiz") || "";
+      notizBtn.textContent = notizWert ? "Notiz ✓" : "Notiz";
+
+      var notizFeld = document.createElement("textarea");
+      notizFeld.className = "uplan-notiz-feld";
+      notizFeld.placeholder = "Notizen / Reflexion nach der Stunde ...";
+      notizFeld.value = notizWert;
+      if (notizWert) notizFeld.classList.add("offen");
+
+      notizBtn.addEventListener("click", function() {
+        notizFeld.classList.toggle("offen");
+        if (notizFeld.classList.contains("offen")) notizFeld.focus();
+      });
+      notizFeld.addEventListener("input", function() {
+        speichereWert(key, "notiz", notizFeld.value);
+        notizBtn.textContent = notizFeld.value ? "Notiz ✓" : "Notiz";
+      });
+
+      container.appendChild(select);
+      container.appendChild(notizBtn);
+      container.appendChild(notizFeld);
+    }
+
+    document.querySelectorAll(".uplan-zeile[data-key]").forEach(baueZeile);
+
+    window.uplanExport = function() {
+      var daten = {};
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k.indexOf("uplan::ethik8::") === 0) daten[k] = localStorage.getItem(k);
+      }
+      var blob = new Blob([JSON.stringify(daten, null, 2)], {type: "application/json"});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "ethik8-unterrichtsstand-" + new Date().toISOString().slice(0,10) + ".json";
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+
+    window.uplanImport = function(event) {
+      var datei = event.target.files[0];
+      if (!datei) return;
+      var reader = new FileReader();
+      reader.onload = function() {
+        try {
+          var daten = JSON.parse(reader.result);
+          Object.keys(daten).forEach(function(k) { localStorage.setItem(k, daten[k]); });
+          alert("Stand wiederhergestellt. Seite wird neu geladen.");
+          location.reload();
+        } catch (e) {
+          alert("Datei konnte nicht gelesen werden.");
+        }
+      };
+      reader.readAsText(datei);
+    };
+  })();
+</script>
 
 <script>
   (function() {
     var PASSWORT = "Ethik8b";
     var SCHLUESSEL = "ethik8-freigeschaltet";
-    if (sessionStorage.getItem(SCHLUESSEL) === "1") {
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
       document.body.classList.remove("pw-locked");
     }
     window.pwPruefen = function(e) {
       e.preventDefault();
       var eingabe = document.getElementById("pw-eingabe").value;
       if (eingabe === PASSWORT) {
-        sessionStorage.setItem(SCHLUESSEL, "1");
+        localStorage.setItem(SCHLUESSEL, "1");
         document.body.classList.remove("pw-locked");
       } else {
         document.getElementById("pw-fehler").textContent = "Falsches Passwort.";

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Selbstverwirklichung (Stunde 2)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --teal: #0f8b8d; --teal-light: #e3f3f2;
+    --gold: #b8791a; --gold-light: #fdf1dd; --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--teal); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #0a6567; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  .zitat-box { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 16px 20px; font-size: 1rem; font-style: italic; margin-bottom: 10px; }
+  .zitat-box .autor { display: block; margin-top: 8px; font-size: 0.78rem; font-style: normal; color: var(--muted); text-align: right; }
+  .fragen-liste li { margin-bottom: 16px; font-size: 0.92rem; }
+  .zeile { border-bottom: 1px solid var(--border); height: 22px; margin-top: 4px; }
+  .karten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .denk-karte { border: 1.5px dashed var(--border); border-radius: 10px; padding: 14px 16px; font-size: 0.86rem; background: var(--gold-light); }
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; page-break-after: always; }
+    .seite:last-child { page-break-after: auto; }
+  }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <p class="no-print" style="margin:0 0 10px;"><a href="../jahresplanung.html" style="font-size:0.8rem;color:var(--muted);">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+      <h1>Einstiegs-Zitat</h1>
+      <p class="sub">F&uuml;r den Einstieg, laut vorlesen.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="zitat-box">
+    "Der Mensch ist frei geboren, und &uuml;berall liegt er in Ketten."
+    <span class="autor">Jean-Jacques Rousseau, Gesellschaftstheoretiker (1712&ndash;1778)</span>
+  </div>
+  <p style="font-size:0.88rem;">Frage an die Klasse: Was k&ouml;nnten mit den "Ketten" heute gemeint sein, auch wenn wir nicht mehr in Unfreiheit wie zu Rousseaus Zeiten leben?</p>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <h1>Reflexionsbogen: Vier Fragen</h1>
+      <p class="sub">F&uuml;r jede Sch&uuml;lerin und jeden Sch&uuml;ler, Einzelarbeit.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="kopfzeile" style="display:flex; gap:20px; font-size:0.85rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:10px 0; margin-bottom:20px;">
+    <span>Name: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:140px;">&nbsp;</span></span>
+    <span>Klasse: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:100px;">&nbsp;</span></span>
+    <span>Datum: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:100px;">&nbsp;</span></span>
+  </div>
+  <ol class="fragen-liste">
+    <li><b>Was m&ouml;chte ich?</b><div class="zeile"></div><div class="zeile"></div></li>
+    <li><b>Wer m&ouml;chte ich sein?</b><div class="zeile"></div><div class="zeile"></div></li>
+    <li><b>Wie m&ouml;chte ich leben?</b><div class="zeile"></div><div class="zeile"></div></li>
+    <li><b>Was ist mir wichtig?</b><div class="zeile"></div><div class="zeile"></div></li>
+  </ol>
+  <p class="hinweis">Nimm dir daf&uuml;r wirklich Zeit, es gibt keine falschen Antworten.</p>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <h1>Denkanst&ouml;&szlig;e zum Ranking</h1>
+      <p class="sub">F&uuml;nf Karten pro Gruppe, in eine Rangfolge bringen.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="karten-grid">
+    <div class="denk-karte">Ich verwirkliche mich selbst, wenn ich etwas mache, das wirklich zu mir passt, nicht das, was andere von mir erwarten.</div>
+    <div class="denk-karte">Selbstverwirklichung hei&szlig;t auch, Fehler machen zu d&uuml;rfen, ohne sich daf&uuml;r zu verurteilen.</div>
+    <div class="denk-karte">Man kann sich auch in ganz kleinen Alltagsmomenten selbst verwirklichen, nicht nur bei gro&szlig;en Entscheidungen.</div>
+    <div class="denk-karte">Ohne etwas Freiraum und Zeit f&uuml;r sich ist Selbstverwirklichung schwer m&ouml;glich.</div>
+    <div class="denk-karte">Sich selbst zu verwirklichen bedeutet manchmal, gegen den Strom zu schwimmen.</div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

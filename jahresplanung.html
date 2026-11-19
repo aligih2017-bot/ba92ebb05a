@@ -53,10 +53,14 @@
   h2 { font-size: 1.2rem; margin: 36px 0 14px; }
   .einordnung { color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0 0 16px; }
 
-  .lernbereich-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 8px; }
-  .lernbereich-karte { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; border-left: 4px solid var(--border); }
+  .lernbereich-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 8px; }
+  .lernbereich-karte { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; border-left: 4px solid var(--border); min-height: 150px; display: flex; flex-direction: column; justify-content: flex-start; }
+  @media (max-width: 560px) {
+    .lernbereich-grid { grid-template-columns: 1fr; }
+    .lernbereich-karte { min-height: 0; }
+  }
   .lernbereich-karte h3 { font-size: 0.98rem; margin: 0 0 8px; display: flex; align-items: baseline; gap: 8px; }
-  .lb-nr { font-size: 0.72rem; font-weight: 800; color: white; background: var(--muted); padding: 2px 7px; border-radius: 5px; }
+  .lb-nr { font-size: 0.72rem; font-weight: 800; color: white; background: var(--muted); padding: 2px 7px; border-radius: 5px; white-space: nowrap; flex-shrink: 0; }
   .lernbereich-karte p { font-size: 0.86rem; color: var(--muted); line-height: 1.55; margin: 0; }
   .lernbereich-karte.lb-gluck { border-left-color: var(--gold); }
   .lernbereich-karte.lb-gluck .lb-nr { background: var(--gold); }
@@ -79,18 +83,38 @@
   .tag { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; border-radius: 5px; font-weight: 600; }
   .tag.leer { visibility: hidden; }
 
-  .sequenz-kacheln { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 8px; }
-  .sequenz-kachel {
-    display: flex; flex-direction: column; gap: 4px;
-    background: white; border: 1px solid var(--border); border-radius: 14px;
-    padding: 18px 20px; text-decoration: none; color: var(--ink);
-    position: relative;
+  .wegstrecke { position: relative; display: flex; align-items: flex-start; gap: 16px; margin: 10px 0 26px; }
+  .weg-pfad { position: absolute; left: 0; right: 0; top: 108px; border-top: 2px dashed var(--border); z-index: 0; }
+  .weg-punkt {
+    position: absolute; top: 108px; width: 10px; height: 10px; border-radius: 50%;
+    transform: translate(-50%, -50%); z-index: 1; background: var(--akzent);
+    box-shadow: 0 0 0 4px #f4f6fb;
   }
-  .sequenz-kachel:hover { border-color: var(--coral); }
-  .kachel-nr { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-  .kachel-titel { font-size: 1.05rem; font-weight: 700; }
-  .kachel-meta { font-size: 0.8rem; color: var(--muted); }
-  .kachel-pfeil { position: absolute; top: 18px; right: 20px; color: var(--coral); font-size: 1.1rem; }
+  .weg-kachel {
+    position: relative; z-index: 1; flex: 1 1 0; min-width: 0;
+    display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
+  }
+  .weg-kachel.unten { margin-top: 108px; }
+  .weg-stab { flex: 0 0 auto; width: 2px; height: 12px; align-self: center; background: var(--akzent); opacity: 0.55; }
+  .weg-karte {
+    position: relative;
+    background: white; border: 1px solid var(--border); border-radius: 14px;
+    padding: 12px 34px 12px 12px; display: flex; align-items: center; gap: 12px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .weg-kachel:hover .weg-karte { border-color: var(--akzent); transform: translateY(-2px); }
+  .weg-bild { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; flex: 0 0 auto; display: block; }
+  .weg-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .weg-nr { font-size: 0.68rem; font-weight: 700; color: var(--akzent); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+  .weg-titel { font-size: 0.92rem; font-weight: 700; line-height: 1.25; }
+  .weg-meta { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+  .weg-pfeil { position: absolute; top: 12px; right: 12px; color: var(--akzent); font-size: 1.05rem; }
+
+  @media (max-width: 720px) {
+    .wegstrecke { flex-direction: column; gap: 12px; }
+    .weg-kachel.unten { margin-top: 0; }
+    .weg-pfad, .weg-punkt, .weg-stab { display: none; }
+  }
 
   table.plan { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 10px; }
   table.plan th, table.plan td { border-bottom: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
@@ -98,6 +122,10 @@
   table.plan td.nr, table.plan td.kw { color: var(--muted); white-space: nowrap; }
   table.plan td.datum { white-space: nowrap; }
   table.plan td.thema { font-weight: 600; }
+  @media (max-width: 560px) {
+    table.plan { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table.plan th, table.plan td { white-space: nowrap; }
+  }
 
   .randnotiz { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin-top: 18px; }
   .randnotiz a { color: var(--teal); }
@@ -112,47 +140,72 @@
   @media print {
     body { background: white; padding: 0; }
     .download-btn { display: none; }
-    .sequenz-kachel { break-inside: avoid; }
+    .weg-karte { break-inside: avoid; }
+    .wegstrecke { flex-direction: column; }
+    .weg-kachel.unten { margin-top: 0; }
+    .weg-pfad, .weg-punkt, .weg-stab { display: none; }
     .monat { break-inside: avoid; }
   }
 </style>
 <style>
   .pw-gate {
     position: fixed; inset: 0; z-index: 9999;
-    background: #20293a;
+    background: #12161f;
     display: none;
     align-items: center; justify-content: center;
     font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
   }
   body.pw-locked .pw-gate { display: flex; }
   body.pw-locked > *:not(.pw-gate) { display: none !important; }
-  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
-  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
-  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
-  .pw-box form { display: flex; gap: 8px; justify-content: center; }
-  .pw-box input {
-    font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456;
-    background: #2a3447; color: #f2efe9; width: 180px; text-align: center;
+  .pw-bg { position: absolute; inset: 0; background-image: url('bilder/eingang-collage.jpg'); background-size: cover; background-position: center; filter: blur(10px) brightness(0.4) saturate(1.1); transform: scale(1.06); }
+  .pw-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 38%, rgba(0,0,0,0) 0%, rgba(10,13,20,0.8) 75%); }
+  .pw-schaufenster-wrap { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; padding: 24px; }
+  .pw-schaufenster {
+    width: min(640px, 86vw); aspect-ratio: 16 / 9;
+    padding: 10px; border-radius: 18px;
+    background: linear-gradient(155deg, #3a4559, #1f2636);
+    box-shadow: 0 30px 70px -20px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.08) inset;
   }
-  .pw-box button {
+  .pw-schaufenster-bild {
+    width: 100%; height: 100%; border-radius: 10px;
+    background-image: url('bilder/eingang-collage.jpg'); background-size: cover; background-position: center;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.3) inset, 0 8px 24px rgba(0,0,0,0.4) inset;
+  }
+  .pw-content { position: relative; z-index: 2; text-align: center; color: #f2efe9; padding: 22px 20px 0; max-width: 360px; }
+  .pw-content h2 { font-size: 1.3rem; font-weight: 700; margin: 0 0 4px; }
+  .pw-content .tagline { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.22em; color: #e0654a; margin: 0 0 18px; font-weight: 700; }
+  .pw-content p.hinweis { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-content form { display: flex; gap: 8px; justify-content: center; }
+  .pw-content input {
+    font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456;
+    background: rgba(42,52,71,0.7); color: #f2efe9; width: 180px; text-align: center;
+  }
+  .pw-content button {
     font-weight: 700; font-size: 0.9rem;
     padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer;
   }
-  .pw-box button:hover { background: #c9502f; }
+  .pw-content button:hover { background: #c9502f; }
   .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
 </style>
 </head>
 <body class="pw-locked">
 
 <div class="pw-gate">
-  <div class="pw-box">
-    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
-    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
-    <form id="pw-form" onsubmit="return pwPruefen(event)">
-      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
-      <button type="submit">&Ouml;ffnen</button>
-    </form>
-    <div class="pw-fehler" id="pw-fehler"></div>
+  <div class="pw-bg"></div>
+  <div class="pw-vignette"></div>
+  <div class="pw-schaufenster-wrap">
+    <div class="pw-schaufenster"><div class="pw-schaufenster-bild"></div></div>
+    <div class="pw-content">
+      <h2>Ethik 8. Klasse</h2>
+      <p class="tagline">Gesch&uuml;tzter Bereich</p>
+      <p class="hinweis">Fragen, die euer Leben betreffen. Bitte Passwort eingeben.</p>
+      <form id="pw-form" onsubmit="return pwPruefen(event)">
+        <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+        <button type="submit">&Ouml;ffnen</button>
+      </form>
+      <div class="pw-fehler" id="pw-fehler"></div>
+    </div>
   </div>
 </div>
 
@@ -557,30 +610,64 @@
   </div>
 
   <h2>Sequenzen</h2>
-  <div class="sequenz-kacheln">
-    <a class="sequenz-kachel" href="sequenz-1-liebe-und-partnerschaft.html">
-      <span class="kachel-nr">Sequenz 1 &middot; läuft gerade</span>
-      <span class="kachel-titel">Liebe und Partnerschaft</span>
-      <span class="kachel-meta">Lernbereich 4 &middot; 11 Termine &middot; Sept.&ndash;Dez. 2026 &middot; fertig</span>
-      <span class="kachel-pfeil">&rarr;</span>
+  <p class="einordnung">Der Weg durchs Schuljahr &ndash; vier Etappen, eine nach der anderen.</p>
+  <div class="wegstrecke">
+    <div class="weg-pfad"></div>
+    <div class="weg-punkt" style="left:12.5%; background:#e0654a;"></div>
+    <div class="weg-punkt" style="left:37.5%; background:#1a7a3f;"></div>
+    <div class="weg-punkt" style="left:62.5%; background:#b8791a;"></div>
+    <div class="weg-punkt" style="left:87.5%; background:#0f8b8d;"></div>
+
+    <a class="weg-kachel oben" href="sequenz-1-liebe-und-partnerschaft.html" style="--akzent:#e0654a;">
+      <div class="weg-karte">
+        <img class="weg-bild" src="bilder/sequenz-1-liebe.jpg" alt="Paar beobachtet gemeinsam den Sonnenuntergang am See">
+        <div class="weg-text">
+          <span class="weg-nr">Sequenz 1</span>
+          <span class="weg-titel">Liebe &amp; Partnerschaft</span>
+          <span class="weg-meta">läuft gerade &middot; LB 4 &middot; 11 Termine</span>
+        </div>
+        <span class="weg-pfeil">&rarr;</span>
+      </div>
+      <span class="weg-stab"></span>
     </a>
-    <a class="sequenz-kachel" href="sequenz-2-konsumgueter.html">
-      <span class="kachel-nr">Sequenz 2</span>
-      <span class="kachel-titel">Mit Konsumgütern verantwortungsvoll umgehen</span>
-      <span class="kachel-meta">Lernbereich 3 &middot; 5 Termine &middot; Dez. 2026 &amp; Jan. 2027</span>
-      <span class="kachel-pfeil">&rarr;</span>
+
+    <a class="weg-kachel unten" href="sequenz-2-konsumgueter.html" style="--akzent:#1a7a3f;">
+      <span class="weg-stab"></span>
+      <div class="weg-karte">
+        <img class="weg-bild" src="bilder/sequenz-2-konsum.jpg" alt="Person trägt mehrere Einkaufstüten beim Shoppen">
+        <div class="weg-text">
+          <span class="weg-nr">Sequenz 2</span>
+          <span class="weg-titel">Konsumgüter</span>
+          <span class="weg-meta">LB 3 &middot; 5 Termine &middot; Dez. 2026 &amp; Jan. 2027</span>
+        </div>
+        <span class="weg-pfeil">&rarr;</span>
+      </div>
     </a>
-    <a class="sequenz-kachel" href="sequenz-3-gluck.html">
-      <span class="kachel-nr">Sequenz 3</span>
-      <span class="kachel-titel">Glück</span>
-      <span class="kachel-meta">Lernbereich 1 &middot; 6 Termine &middot; Jan.&ndash;März 2027</span>
-      <span class="kachel-pfeil">&rarr;</span>
+
+    <a class="weg-kachel oben" href="sequenz-3-gluck.html" style="--akzent:#b8791a;">
+      <div class="weg-karte">
+        <img class="weg-bild" src="bilder/sequenz-3-gluck.jpg" alt="Person streckt auf einem Berggipfel die Arme in die Luft">
+        <div class="weg-text">
+          <span class="weg-nr">Sequenz 3</span>
+          <span class="weg-titel">Glück</span>
+          <span class="weg-meta">LB 1 &middot; 6 Termine &middot; Jan.&ndash;März 2027</span>
+        </div>
+        <span class="weg-pfeil">&rarr;</span>
+      </div>
+      <span class="weg-stab"></span>
     </a>
-    <a class="sequenz-kachel" href="sequenz-4-leben-gestalten.html">
-      <span class="kachel-nr">Sequenz 4</span>
-      <span class="kachel-titel">Das eigene Leben gestalten</span>
-      <span class="kachel-meta">Lernbereich 2 &middot; 6 Termine &middot; März&ndash;Mai 2027</span>
-      <span class="kachel-pfeil">&rarr;</span>
+
+    <a class="weg-kachel unten" href="sequenz-4-leben-gestalten.html" style="--akzent:#0f8b8d;">
+      <span class="weg-stab"></span>
+      <div class="weg-karte">
+        <img class="weg-bild" src="bilder/sequenz-4-leben.jpg" alt="Notizbuch mit der Überschrift Pläne und einer Checkliste auf einem Schreibtisch">
+        <div class="weg-text">
+          <span class="weg-nr">Sequenz 4</span>
+          <span class="weg-titel">Leben gestalten</span>
+          <span class="weg-meta">LB 2 &middot; 6 Termine &middot; März&ndash;Mai 2027</span>
+        </div>
+        <span class="weg-pfeil">&rarr;</span>
+      </div>
     </a>
   </div>
 
@@ -608,14 +695,14 @@
   (function() {
     var PASSWORT = "Ethik8b";
     var SCHLUESSEL = "ethik8-freigeschaltet";
-    if (sessionStorage.getItem(SCHLUESSEL) === "1") {
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
       document.body.classList.remove("pw-locked");
     }
     window.pwPruefen = function(e) {
       e.preventDefault();
       var eingabe = document.getElementById("pw-eingabe").value;
       if (eingabe === PASSWORT) {
-        sessionStorage.setItem(SCHLUESSEL, "1");
+        localStorage.setItem(SCHLUESSEL, "1");
         document.body.classList.remove("pw-locked");
       } else {
         document.getElementById("pw-fehler").textContent = "Falsches Passwort.";

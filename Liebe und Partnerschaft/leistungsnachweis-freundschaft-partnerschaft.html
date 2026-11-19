@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leistungsnachweis – Freundschaft und Partnerschaft</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --green: #1a7a3f; --green-light: #e4f8ec;
+    --teal: #0f8b8d; --teal-light: #e3f3f2; --gold: #d9a441; --gold-light: #faf1de;
+    --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 20px 16px 40px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 14px; padding: 22px 30px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--green); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #156b38; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  h2 { font-size: 1.02rem; margin: 14px 0 5px; color: var(--green); }
+  .punkte { font-size: 0.82rem; font-weight: 700; color: var(--teal); float: right; }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+  .kopfzeile { display: flex; gap: 20px; font-size: 0.85rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 7px 0; margin-bottom: 10px; flex-wrap: wrap; }
+  .kopfzeile span { white-space: nowrap; }
+  .kopfzeile b { display: inline-block; min-width: 100px; border-bottom: 1px solid var(--muted); }
+  .punktebox { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 7px 14px; margin-bottom: 12px; font-size: 0.86rem; }
+  .fall { background: var(--teal-light); border-radius: 10px; padding: 10px 16px; margin: 6px 0 10px; font-size: 0.9rem; font-style: italic; }
+  .zeile { border-bottom: 1px solid var(--border); height: 19px; margin-bottom: 3px; }
+  table.zuordnung { width: 100%; border-collapse: collapse; font-size: 0.87rem; margin: 6px 0 4px; }
+  table.zuordnung th, table.zuordnung td { border: 1px solid var(--border); padding: 5px 9px; text-align: left; vertical-align: top; }
+  table.zuordnung th { background: var(--green-light); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  td.loesungsfeld { width: 70px; text-align: center; }
+  .frage { margin: 6px 0 3px; font-size: 0.93rem; }
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; page-break-after: always; }
+    .seite:last-child { page-break-after: auto; }
+  }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <p class="no-print" style="margin:0 0 10px;"><a href="../jahresplanung.html" style="font-size:0.8rem;color:var(--muted);">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+      <h1>Leistungsnachweis: Freundschaft und Partnerschaft</h1>
+      <p class="sub">Ethik, 8. Klasse Mittelschule &middot; Stunde 1&ndash;3 (Hefteintr&auml;ge) &middot; Bearbeitungszeit: 30 Minuten</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken &#47; als PDF speichern</button>
+  </div>
+
+  <div class="kopfzeile">
+    <span>Name: <b>&nbsp;</b></span>
+    <span>Klasse: <b>&nbsp;</b></span>
+    <span>Datum: <b>&nbsp;</b></span>
+  </div>
+
+  <div class="punktebox">Gesamtpunkte: 22 &middot; Erreichte Punkte: ______ / 22 &middot; Note: ____</div>
+
+  <h2>Aufgabe 1a: Begriffe zuordnen <span class="punkte">4 Punkte</span></h2>
+  <p class="hinweis">Ordne jedem Begriff die passende Erkl&auml;rung zu (Buchstabe eintragen).</p>
+  <table class="zuordnung">
+    <tr><th style="width:40px;">Nr.</th><th>Begriff</th><th style="width:70px;">L&ouml;sung</th></tr>
+    <tr><td>1</td><td>Verl&auml;sslichkeit</td><td class="loesungsfeld">&nbsp;</td></tr>
+    <tr><td>2</td><td>Kompromissbereitschaft</td><td class="loesungsfeld">&nbsp;</td></tr>
+    <tr><td>3</td><td>Vertrauensbruch</td><td class="loesungsfeld">&nbsp;</td></tr>
+    <tr><td>4</td><td>Akzeptanz</td><td class="loesungsfeld">&nbsp;</td></tr>
+  </table>
+  <table class="zuordnung">
+    <tr><th style="width:40px;">Buchstabe</th><th>Erkl&auml;rung</th></tr>
+    <tr><td>A</td><td>Ein Geheimnis wird ohne Erlaubnis an andere weitererz&auml;hlt.</td></tr>
+    <tr><td>B</td><td>Man kann sich darauf verlassen, dass der andere zu seinem Wort steht.</td></tr>
+    <tr><td>C</td><td>Die eigene Pers&ouml;nlichkeit bzw. Meinung des anderen wird respektiert, auch wenn man anders ist oder denkt.</td></tr>
+    <tr><td>D</td><td>Bereitschaft, in einer Partnerschaft auch mal nachzugeben, wenn man unterschiedlicher Meinung ist.</td></tr>
+  </table>
+
+  <h2>Aufgabe 1b: Kurzfragen <span class="punkte">4 Punkte</span></h2>
+  <p class="frage"><b>1.</b> Was unterscheidet laut Hefteintrag eine Partnerschaft von einer Freundschaft? (2 P)</p>
+  <div class="zeile"></div>
+  <p class="frage"><b>2.</b> Nenne zwei Gr&uuml;nde, warum sich Freundschaften laut Unterricht ver&auml;ndern oder enden k&ouml;nnen. (2 P)</p>
+  <div class="zeile"></div><div class="zeile"></div>
+
+  <h2>Aufgabe 2: Anwendung an einem Fallbeispiel <span class="punkte">4 Punkte</span></h2>
+  <div class="fall">Mia und Theo waren seit der 5. Klasse unzertrennlich. Seit Theo in der 7. Klasse in den Fu&szlig;ballverein seines neuen Nachbarn eingetreten ist, verbringt er dort fast seine ganze Freizeit. Mia interessiert sich kaum f&uuml;r Fu&szlig;ball. Die beiden sehen sich kaum noch, auch wenn keiner von beiden bewusst den Kontakt abgebrochen hat.</div>
+  <p class="frage"><b>a)</b> Welcher der im Unterricht genannten Gr&uuml;nde f&uuml;r den Wandel von Freundschaften passt am besten zu diesem Beispiel? Belege deine Antwort mit einer Stelle aus dem Text. (2 P)</p>
+  <div class="zeile"></div>
+  <p class="frage"><b>b)</b> Ist es laut Hefteintrag automatisch "jemandes Schuld", dass sich Mia und Theo auseinandergelebt haben? Begr&uuml;nde mit dem Merksatz aus dem Unterricht. (2 P)</p>
+  <div class="zeile"></div>
+</div>
+
+<div class="seite">
+  <h2 style="margin-top:0;">Aufgabe 3: Transferfrage <span class="punkte">5 Punkte</span></h2>
+  <p class="hinweis">In Stunde 1 habt ihr Merkmale einer guten Freundschaft kennengelernt, in Stunde 3 Bausteine einer guten Partnerschaft.</p>
+  <p class="frage"><b>a)</b> Nenne zwei Merkmale, die sowohl in einer Freundschaft als auch in einer Partnerschaft wichtig sind. (2 P)</p>
+  <div class="zeile"></div><div class="zeile"></div>
+  <p class="frage"><b>b)</b> Erkl&auml;re mit eigenen Worten, was eine Partnerschaft laut Hefteintrag zus&auml;tzlich braucht, das eine Freundschaft nicht zwingend braucht. (3 P)</p>
+  <div class="zeile"></div><div class="zeile"></div><div class="zeile"></div>
+
+  <h2>Aufgabe 4: Deine Meinung <span class="punkte">5 Punkte</span></h2>
+  <p class="hinweis">Eine Meinung ohne Begr&uuml;ndung wird nicht gewertet.</p>
+  <div class="fall">Im Hefteintrag zu Stunde 1 steht: &bdquo;Es gibt keine einzig richtige Vorstellung von Freundschaft, jede Freundschaft ist individuell.&ldquo;</div>
+  <p class="frage">Stimmst du dieser Aussage zu, oder nicht? Begr&uuml;nde deine Meinung mit einem eigenen Beispiel oder einem Bezug zum Unterricht (mindestens 3 S&auml;tze).</p>
+  <div class="zeile"></div><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div>
+
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

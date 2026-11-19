@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ablaufplan – Mein Lebensplan, meine Werte (Stunde 1)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --teal: #0f8b8d; --teal-light: #e3f3f2;
+    --gold: #b8791a; --gold-light: #fdf1dd; --green: #1a7a3f; --green-light: #e4f8ec;
+    --border: #e5e2dc; --paper: #fffdf9;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .download-btn { display: block; margin: 0 auto 24px; background: var(--teal); color: white; border: none; padding: 11px 22px; border-radius: 999px; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
+  .blatt { background: var(--paper); max-width: 880px; margin: 0 auto 20px; padding: 34px 40px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .kicker { display: inline-block; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; font-weight: 700; color: var(--teal); background: var(--teal-light); padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; }
+  h1 { font-size: 1.7rem; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; }
+  h2 { font-size: 1.15rem; margin: 28px 0 10px; color: var(--teal); }
+  h2:first-of-type { margin-top: 0; }
+  p { line-height: 1.6; }
+  ul, ol { line-height: 1.7; padding-left: 22px; }
+  .kontext-box { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 0.95rem; margin-bottom: 6px; color: #7a4f10; }
+  table.plan { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 0.9rem; }
+  table.plan th { background: var(--teal); color: white; text-align: left; padding: 9px 12px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  table.plan td { padding: 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.plan tr:last-child td { border-bottom: none; }
+  table.plan .zeit { font-weight: 700; color: var(--teal); white-space: nowrap; }
+  table.plan .methode { font-weight: 700; }
+  table.plan .sozialform { display: block; font-weight: 400; font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .material-liste { background: #f7f5ef; border-radius: 10px; padding: 16px 20px; }
+  .hausaufgabe-box { margin-top: 20px; padding: 14px 18px; background: var(--gold-light); border-radius: 10px; font-size: 0.92rem; }
+  .hausaufgabe-box strong { color: #7a4f10; }
+  .tipp { margin-top: 20px; padding: 14px 18px; background: var(--teal-light); border-radius: 10px; font-size: 0.9rem; }
+  .tafelbild { border: 1.5px solid var(--ink); border-radius: 4px; padding: 18px 22px; margin: 4px 0 6px; background: #1c2024; color: #eef1ee; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.85rem; line-height: 1.7; white-space: pre-wrap; }
+  .legende { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.74rem; color: var(--muted); margin-top: 8px; }
+  @media print { body { background: white; padding: 0; } .no-print { display: none !important; } .blatt { box-shadow: none; border: 1px solid var(--border); border-radius: 0; } }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<button class="download-btn no-print" onclick="window.print()">Drucken &#47; als PDF speichern</button>
+
+<div class="blatt">
+  <p class="no-print" style="margin:0 0 14px;"><a href="../jahresplanung.html" style="font-family:inherit;font-size:0.8rem;color:inherit;">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+
+  <span class="kicker">Ethik &middot; 8. Klasse Mittelschule &middot; Doppelstunde 1 von 6 &middot; Sequenz 4: Das eigene Leben gestalten</span>
+  <h1>Mein Lebensplan, meine Werte</h1>
+  <p class="sub">Ablaufplan f&uuml;r eine Doppelstunde (90 Minuten). Einstieg in die Sequenz: Was ist mir eigentlich wichtig im Leben?</p>
+
+  <div class="kontext-box">
+    <strong>Einordnung in die Gesamtsequenz:</strong> Erste Stunde von Lernbereich 2. Die eigene Werte-Reflexion bildet die Grundlage f&uuml;r die folgenden Stunden zu Selbstverwirklichung, Normen und Berufswahl.
+  </div>
+
+  <h2>Lernziele</h2>
+  <ul>
+    <li>Die Sch&uuml;ler:innen benennen eigene Werte und Priorit&auml;ten f&uuml;r ihr Leben.</li>
+    <li>Sie erkl&auml;ren die Bed&uuml;rfnispyramide nach Maslow in eigenen Worten.</li>
+    <li>Sie unterscheiden zwischen Grundbed&uuml;rfnissen (Defizitbed&uuml;rfnissen) und Wachstumsbed&uuml;rfnissen.</li>
+  </ul>
+
+  <h2>Ben&ouml;tigtes Material</h2>
+  <div class="material-liste">
+    <ul>
+      <li>10 Begriffskarten "Was ist mir wichtig?" (Materialien-Datei)</li>
+      <li>5 Stufen-Karten der Bed&uuml;rfnispyramide (Materialien-Datei)</li>
+      <li>Werte-Tagebuch-Vorlage f&uuml;r die Hausaufgabe (Materialien-Datei)</li>
+    </ul>
+  </div>
+
+  <h2>Ablauf</h2>
+  <table class="plan">
+    <tr><th>Zeit</th><th>Phase / Methode / Sozialform</th><th>Was passiert</th></tr>
+    <tr>
+      <td class="zeit">10 Min</td>
+      <td class="methode">Einstieg<span class="sozialform">Methode: Blitzlicht &middot; Sozialform: Plenum</span></td>
+      <td>Zehn Begriffskarten (Familie, Geld, Freizeit, Gesundheit, Erfolg, Freunde, Sicherheit, Freiheit, Anerkennung, Hobbys) an die Tafel heften. Kurze Runde: "Welcher Begriff w&auml;re f&uuml;r dich spontan am wichtigsten?"</td>
+    </tr>
+    <tr>
+      <td class="zeit">20 Min</td>
+      <td class="methode">Erarbeitung A<span class="sozialform">Methode: Rangfolge legen &middot; Sozialform: Einzelarbeit, dann Partnerarbeit</span></td>
+      <td>Jede:r bringt die zehn Begriffe eigenst&auml;ndig in eine pers&ouml;nliche Rangfolge (wichtigstes zuerst). Danach mit einer Partnerin/einem Partner vergleichen: Wo seid ihr euch einig, wo nicht?</td>
+    </tr>
+    <tr>
+      <td class="zeit">25 Min</td>
+      <td class="methode">Erarbeitung B<span class="sozialform">Methode: Zuordnungsaufgabe &middot; Sozialform: Gruppenarbeit (4er)</span></td>
+      <td>Erst jetzt die f&uuml;nf Stufen der Bed&uuml;rfnispyramide einf&uuml;hren (Grundbed&uuml;rfnisse, Sicherheit, Soziale Bed&uuml;rfnisse, Individualbed&uuml;rfnisse, Selbstverwirklichung). Gruppen ordnen die zehn Begriffe von vorhin den f&uuml;nf Stufen zu.</td>
+    </tr>
+    <tr>
+      <td class="zeit">20 Min</td>
+      <td class="methode">Sicherung<span class="sozialform">Methode: Tafelbild, Diskussion &middot; Sozialform: Plenum</span></td>
+      <td>Pyramide gemeinsam an der Tafel aufbauen und mit den Gruppenergebnissen vergleichen. Diskussion: "Muss man wirklich erst die unteren Stufen erf&uuml;llen, bevor Selbstverwirklichung m&ouml;glich ist? Fallen euch Gegenbeispiele ein?"</td>
+    </tr>
+    <tr>
+      <td class="zeit">15 Min</td>
+      <td class="methode">Transfer<span class="sozialform">Methode: Diskussion &middot; Sozialform: Plenum</span></td>
+      <td>Impuls: "Geh&ouml;rt WLAN oder ein aufgeladenes Handy heute zu den Grundbed&uuml;rfnissen?" Gemeinsam diskutieren, wo eine selbst erg&auml;nzte "digitale Stufe" in der Pyramide stehen k&ouml;nnte.</td>
+    </tr>
+  </table>
+
+  <div class="hausaufgabe-box">
+    <strong>Hausaufgabe:</strong> F&uuml;hre f&uuml;r einen Tag ein kurzes Werte-Tagebuch (Vorlage in der Materialien-Datei): notiere drei Momente, die zeigen, was dir wirklich wichtig ist.
+  </div>
+
+  <div class="tipp">
+    <strong>Zeitpuffer:</strong> Bei Zeitdruck die Transferphase k&uuml;rzen oder als kurzen m&uuml;ndlichen Impuls ohne Diskussion abschlie&szlig;en.
+  </div>
+
+  <h2>Tafelbild</h2>
+  <div class="tafelbild">MEINE BEDUERFNISPYRAMIDE
+
+        Selbstverwirklichung
+      Individualbeduerfnisse
+     Soziale Beduerfnisse
+    Sicherheitsbeduerfnisse
+   Grundbeduerfnisse
+
+Defizitbeduerfnisse (unten) muessen erfuellt sein,
+Wachstumsbeduerfnisse (oben) fuehren zur Zufriedenheit.</div>
+  <p class="legende">M&ouml;gliches Tafelbild, als Orientierung f&uuml;r die Anschrift w&auml;hrend der Stunde.</p>
+
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

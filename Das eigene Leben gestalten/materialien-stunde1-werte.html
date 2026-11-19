@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Mein Lebensplan, meine Werte (Stunde 1)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --teal: #0f8b8d; --teal-light: #e3f3f2;
+    --gold: #b8791a; --gold-light: #fdf1dd; --coral: #e0654a; --coral-light: #fbe9e4;
+    --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--teal); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #0a6567; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  .karten-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .karte { border: 1.5px dashed var(--border); border-radius: 10px; padding: 12px 8px; font-size: 0.86rem; text-align: center; font-weight: 700; min-height: 54px; display: flex; align-items: center; justify-content: center; background: var(--coral-light); }
+  .pyramide-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 16px; }
+  .pyramide-karte { border: 1.5px dashed var(--border); border-radius: 10px; padding: 12px 10px; font-size: 0.78rem; background: var(--teal-light); }
+  .pyramide-karte b { display: block; margin-bottom: 4px; color: var(--teal); font-size: 0.82rem; }
+  .tagebuch-tag { border: 2px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+  .tagebuch-tag .label { font-weight: 700; color: var(--gold); font-size: 0.82rem; }
+  .zeile { border-bottom: 1px solid var(--border); height: 20px; margin-top: 4px; }
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; page-break-after: always; }
+    .seite:last-child { page-break-after: auto; }
+  }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <p class="no-print" style="margin:0 0 10px;"><a href="../jahresplanung.html" style="font-size:0.8rem;color:var(--muted);">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+      <h1>Begriffskarten: Was ist mir wichtig?</h1>
+      <p class="sub">Zehn Karten, zum Ausschneiden. F&uuml;r Erarbeitung A und B.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="karten-grid">
+    <div class="karte">Familie</div><div class="karte">Geld</div><div class="karte">Freizeit</div><div class="karte">Gesundheit</div><div class="karte">Erfolg</div>
+    <div class="karte">Freunde</div><div class="karte">Sicherheit</div><div class="karte">Freiheit</div><div class="karte">Anerkennung</div><div class="karte">Hobbys</div>
+  </div>
+
+  <h2 style="font-size:1rem; color:var(--teal); margin-top:28px;">Pyramiden-Stufenkarten</h2>
+  <p class="hinweis">F&uuml;r Erarbeitung B: die zehn Begriffe oben den f&uuml;nf Stufen zuordnen.</p>
+  <div class="pyramide-grid">
+    <div class="pyramide-karte"><b>1. Grundbed&uuml;rfnisse</b>&uuml;berlebensnotwendig: Essen, Trinken, Schlaf, W&auml;rme</div>
+    <div class="pyramide-karte"><b>2. Sicherheit</b>Schutz vor Gefahren, Wohnung, finanzielle Sicherheit</div>
+    <div class="pyramide-karte"><b>3. Soziale Bed&uuml;rfnisse</b>Liebe, Familie, Freundschaft, Zugeh&ouml;rigkeit</div>
+    <div class="pyramide-karte"><b>4. Individualbed&uuml;rfnisse</b>Anerkennung, Status, Lob</div>
+    <div class="pyramide-karte"><b>5. Selbstverwirklichung</b>eigene Talente und Ideen entfalten</div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <h1>Werte-Tagebuch</h1>
+      <p class="sub">Hausaufgabe nach Stunde 1.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="kopfzeile" style="display:flex; gap:20px; font-size:0.85rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:10px 0; margin-bottom:20px;">
+    <span>Name: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:140px;">&nbsp;</span></span>
+    <span>Klasse: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:100px;">&nbsp;</span></span>
+    <span>Datum: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:100px;">&nbsp;</span></span>
+  </div>
+  <p style="font-size:0.9rem;">Notiere heute drei Momente, die zeigen, was dir wirklich wichtig ist (z.&nbsp;B. ein Gespr&auml;ch, eine Entscheidung, ein Gef&uuml;hl).</p>
+  <div class="tagebuch-tag"><span class="label">Moment 1</span><div class="zeile"></div><div class="zeile"></div></div>
+  <div class="tagebuch-tag"><span class="label">Moment 2</span><div class="zeile"></div><div class="zeile"></div></div>
+  <div class="tagebuch-tag"><span class="label">Moment 3</span><div class="zeile"></div><div class="zeile"></div></div>
+  <p style="font-size:0.9rem; margin-top:16px;"><b>Welcher Wert (aus den zehn Begriffskarten oder ein eigener) zeigt sich bei dir am st&auml;rksten?</b></p>
+  <div class="zeile"></div>
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Vom Rohstoff zum Produkt (Stunde 1)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --green: #1a7a3f; --green-light: #e4f8ec;
+    --teal: #0f8b8d; --teal-light: #e3f3f2; --gold: #d9a441; --gold-light: #faf1de;
+    --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--green); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #156b38; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  h2 { font-size: 1rem; margin: 20px 0 8px; color: var(--green); }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  .kette-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+  .kette-box { border: 2px solid var(--border); border-radius: 10px; padding: 10px 12px; min-height: 110px; }
+  .kette-box .label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 700; margin-bottom: 6px; }
+  .zeile { border-bottom: 1px solid var(--border); height: 20px; margin-bottom: 2px; }
+  .gruppen-kasten { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 16px 20px; margin-top: 10px; }
+  .leitfragen { background: #f7f5ef; border-radius: 10px; padding: 14px 18px; margin: 14px 0; }
+  .leitfragen li { margin-bottom: 8px; }
+  .verweis { font-size: 0.85rem; color: var(--teal); margin-top: 10px; }
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; page-break-after: always; }
+    .seite:last-child { page-break-after: auto; }
+  }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <p class="no-print" style="margin:0 0 10px;"><a href="../../jahresplanung.html" style="font-size:0.8rem;color:var(--muted);">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+      <h1>Infoblatt: Die Produktionskette</h1>
+      <p class="sub">F&uuml;r jede Sch&uuml;lerin und jeden Sch&uuml;ler, Mitschrift w&auml;hrend des Lehrer-Inputs.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+
+  <div class="kopfzeile" style="display:flex; gap:20px; font-size:0.85rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:10px 0; margin-bottom:20px;">
+    <span>Name: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:140px;">&nbsp;</span></span>
+    <span>Klasse: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:100px;">&nbsp;</span></span>
+    <span>Datum: <span style="border-bottom:1px solid var(--muted); display:inline-block; min-width:100px;">&nbsp;</span></span>
+  </div>
+
+  <p class="hinweis">Trage w&auml;hrend des Vortrags zu jeder Phase die wichtigsten Stichpunkte ein.</p>
+  <div class="kette-grid">
+    <div class="kette-box"><span class="label">1 Rohstoffgewinnung</span><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div></div>
+    <div class="kette-box"><span class="label">2 Herstellung</span><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div></div>
+    <div class="kette-box"><span class="label">3 Nutzung</span><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div></div>
+    <div class="kette-box"><span class="label">4 Entsorgung</span><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div><div class="zeile"></div></div>
+  </div>
+
+  <h2>Und bei einem T-Shirt?</h2>
+  <p style="font-size:0.88rem;">Notiere dir stichpunktartig, wie die gleiche Kette bei einem T-Shirt aussehen k&ouml;nnte (Baumwollanbau, F&auml;rben/N&auml;hen, Versand, Entsorgung).</p>
+  <div class="zeile"></div>
+  <div class="zeile"></div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <h1>Referatsauftrag: Gruppe 1</h1>
+      <p class="sub">Referat zum Abschluss der Einstiegsphase von Stunde 2.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+
+  <div class="gruppen-kasten">
+    <p style="margin:0 0 6px; font-weight:700;">Euer Thema: Rohstoffabbau und Kinderarbeit &ndash; ein genauerer Blick</p>
+    <p style="margin:0; font-size:0.9rem;">In unserem Input habt ihr geh&ouml;rt, dass f&uuml;r Smartphones Rohstoffe wie Kobalt und Lithium in Minen rund um die Welt abgebaut werden, teils unter gef&auml;hrlichen Bedingungen. Euer Referat schaut genauer hin.</p>
+  </div>
+
+  <h2>Eure Leitfragen</h2>
+  <div class="leitfragen">
+    <ol>
+      <li>In welchen L&auml;ndern werden die wichtigsten Rohstoffe f&uuml;r Smartphones abgebaut (mindestens zwei Beispiele)?</li>
+      <li>Was bedeutet "Kinderarbeit" genau, und warum kommt sie in manchen Minen &uuml;berhaupt vor?</li>
+      <li>Was unternehmen Hersteller, Organisationen oder Regierungen dagegen? Nennt mindestens ein konkretes Beispiel.</li>
+      <li>Eure eigene Einsch&auml;tzung: Was k&ouml;nnte Verbraucher:innen oder der Politik helfen, die Lage zu verbessern?</li>
+    </ol>
+  </div>
+
+  <p class="verweis">Haltet euch beim Aufbau an die allgemeine Referat-Anleitung (eine Ebene h&ouml;her im Ordner "Konsumg&uuml;ter"). Bewertet wird nach dem gemeinsamen Bewertungsraster Referat.</p>
+
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

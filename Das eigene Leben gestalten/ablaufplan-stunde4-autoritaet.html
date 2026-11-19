@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ablaufplan – Autorität kritisch hinterfragen (Stunde 4)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --teal: #0f8b8d; --teal-light: #e3f3f2;
+    --gold: #b8791a; --gold-light: #fdf1dd; --border: #e5e2dc; --paper: #fffdf9;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .download-btn { display: block; margin: 0 auto 24px; background: var(--teal); color: white; border: none; padding: 11px 22px; border-radius: 999px; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
+  .blatt { background: var(--paper); max-width: 880px; margin: 0 auto 20px; padding: 34px 40px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .kicker { display: inline-block; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; font-weight: 700; color: var(--teal); background: var(--teal-light); padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; }
+  h1 { font-size: 1.7rem; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; }
+  h2 { font-size: 1.15rem; margin: 28px 0 10px; color: var(--teal); }
+  h2:first-of-type { margin-top: 0; }
+  p { line-height: 1.6; }
+  ul, ol { line-height: 1.7; padding-left: 22px; }
+  .kontext-box { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 0.95rem; margin-bottom: 6px; color: #7a4f10; }
+  table.plan { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 0.9rem; }
+  table.plan th { background: var(--teal); color: white; text-align: left; padding: 9px 12px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  table.plan td { padding: 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.plan tr:last-child td { border-bottom: none; }
+  table.plan .zeit { font-weight: 700; color: var(--teal); white-space: nowrap; }
+  table.plan .methode { font-weight: 700; }
+  table.plan .sozialform { display: block; font-weight: 400; font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .material-liste { background: #f7f5ef; border-radius: 10px; padding: 16px 20px; }
+  .hausaufgabe-box { margin-top: 20px; padding: 14px 18px; background: var(--gold-light); border-radius: 10px; font-size: 0.92rem; }
+  .hausaufgabe-box strong { color: #7a4f10; }
+  .tipp { margin-top: 20px; padding: 14px 18px; background: var(--teal-light); border-radius: 10px; font-size: 0.9rem; }
+  .tafelbild { border: 1.5px solid var(--ink); border-radius: 4px; padding: 18px 22px; margin: 4px 0 6px; background: #1c2024; color: #eef1ee; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.85rem; line-height: 1.7; white-space: pre-wrap; }
+  .legende { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.74rem; color: var(--muted); margin-top: 8px; }
+  @media print { body { background: white; padding: 0; } .no-print { display: none !important; } .blatt { box-shadow: none; border: 1px solid var(--border); border-radius: 0; } }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<button class="download-btn no-print" onclick="window.print()">Drucken &#47; als PDF speichern</button>
+
+<div class="blatt">
+  <p class="no-print" style="margin:0 0 14px;"><a href="../jahresplanung.html" style="font-family:inherit;font-size:0.8rem;color:inherit;">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+
+  <span class="kicker">Ethik &middot; 8. Klasse Mittelschule &middot; Doppelstunde 4 von 6 &middot; Sequenz 4: Das eigene Leben gestalten</span>
+  <h1>Autorit&auml;t kritisch hinterfragen</h1>
+  <p class="sub">Ablaufplan f&uuml;r eine Doppelstunde (90 Minuten).</p>
+
+  <div class="kontext-box">
+    <strong>Einordnung in die Gesamtsequenz:</strong> Nach Normen/Rechten/Pflichten jetzt die Frage, WER eigentlich entscheidet, was gilt, und warum wir manchen Menschen mehr folgen als anderen. Bereitet Stunde 5 (Machtmissbrauch) vor.
+  </div>
+
+  <h2>Lernziele</h2>
+  <ul>
+    <li>Die Sch&uuml;ler:innen erkl&auml;ren den Begriff Autorit&auml;t in eigenen Worten.</li>
+    <li>Sie unterscheiden drei Formen von Autorit&auml;t: Amts-, Sach- und pers&ouml;nliche Autorit&auml;t.</li>
+    <li>Sie unterscheiden positiven von negativem Gebrauch von Autorit&auml;t.</li>
+  </ul>
+
+  <h2>Ben&ouml;tigtes Material</h2>
+  <div class="material-liste">
+    <ul>
+      <li>Vier Bildkarten mit Autorit&auml;tspersonen (Materialien-Datei)</li>
+      <li>Zuordnungskarten f&uuml;r die drei Autorit&auml;tsformen (Materialien-Datei)</li>
+      <li>T-Tabelle "Positiver/negativer Gebrauch" (Materialien-Datei)</li>
+    </ul>
+  </div>
+
+  <h2>Ablauf</h2>
+  <table class="plan">
+    <tr><th>Zeit</th><th>Phase / Methode / Sozialform</th><th>Was passiert</th></tr>
+    <tr>
+      <td class="zeit">10 Min</td>
+      <td class="methode">Einstieg<span class="sozialform">Methode: Bildimpuls &middot; Sozialform: Plenum</span></td>
+      <td>Vier Bildkarten zeigen (Polizistin, Lehrer, Elternteil, Schiedsrichter). Frage: "Wer darf hier was bestimmen, und warum d&uuml;rfen die das?"</td>
+    </tr>
+    <tr>
+      <td class="zeit">20 Min</td>
+      <td class="methode">Erarbeitung A<span class="sozialform">Methode: Begriffssammlung &amp; Sortierung &middot; Sozialform: Gruppenarbeit (4er)</span></td>
+      <td>Begriffskarten (Lehrer, Arzt, Eltern, Gesetze, Vereinstrainer, Internetvideo, ...) in zwei Kategorien sortieren: "vertraue ich normalerweise" / "sollte ich kritisch hinterfragen". Begr&uuml;ndung notieren.</td>
+    </tr>
+    <tr>
+      <td class="zeit">25 Min</td>
+      <td class="methode">Erarbeitung B<span class="sozialform">Methode: Zuordnungsaufgabe &middot; Sozialform: Gruppenarbeit (4er)</span></td>
+      <td>Die gleichen bzw. &auml;hnliche Begriffe jetzt den drei Autorit&auml;tsformen zuordnen: Amtsautorit&auml;t (durch ein Amt/Beruf), Sachautorit&auml;t (durch Wissen/K&ouml;nnen), pers&ouml;nliche Autorit&auml;t (durch Pers&ouml;nlichkeit/Ausstrahlung).</td>
+    </tr>
+    <tr>
+      <td class="zeit">20 Min</td>
+      <td class="methode">Sicherung<span class="sozialform">Methode: T-Tabelle &middot; Sozialform: Plenum</span></td>
+      <td>Gemeinsam eine T-Tabelle "Positiver Gebrauch von Autorit&auml;t" / "Negativer Gebrauch" f&uuml;llen, mit eigenen Beispielen aus Schule oder Alltag.</td>
+    </tr>
+    <tr>
+      <td class="zeit">15 Min</td>
+      <td class="methode">Abschluss<span class="sozialform">Methode: Partnergespr&auml;ch &middot; Sozialform: Partnerarbeit</span></td>
+      <td>Austausch zu zweit: "Wer hat an unserer Schule welche Form von Autorit&auml;t, und warum?"</td>
+    </tr>
+  </table>
+
+  <div class="hausaufgabe-box">
+    <strong>Hausaufgabe:</strong> Suche ein Beispiel (historisch oder aktuell) f&uuml;r positiven Gebrauch von Autorit&auml;t und eines f&uuml;r negativen Gebrauch, je ein bis zwei S&auml;tze.
+  </div>
+
+  <div class="tipp">
+    <strong>Vorsicht bei Beispielen:</strong> Wenn Sch&uuml;ler:innen Lehrkr&auml;fte der eigenen Schule als Negativbeispiel nennen wollen, auf eine sachliche, nicht blo&szlig;stellende Ebene lenken (allgemeine Prinzipien statt Namen).
+  </div>
+
+  <h2>Tafelbild</h2>
+  <div class="tafelbild">AUTORITAET
+
+Amtsautoritaet       Sachautoritaet       Persoenliche Autoritaet
+(durch ein Amt)      (durch Wissen/Koennen) (durch Ausstrahlung)
+
+Positiver Gebrauch        Negativer Gebrauch
+Vorbild sein               andere einschuechtern
+Verantwortung uebernehmen  Macht missbrauchen</div>
+  <p class="legende">M&ouml;gliches Tafelbild, als Orientierung f&uuml;r die Anschrift w&auml;hrend der Stunde.</p>
+
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ablaufplan – Gütesiegel (Stunde 3)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --green: #1a7a3f; --green-light: #e4f8ec;
+    --teal: #0f8b8d; --teal-light: #e3f3f2; --gold: #d9a441; --gold-light: #faf1de;
+    --border: #e5e2dc; --paper: #fffdf9;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .download-btn { display: block; margin: 0 auto 24px; background: var(--green); color: white; border: none; padding: 11px 22px; border-radius: 999px; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
+  .blatt { background: var(--paper); max-width: 880px; margin: 0 auto 20px; padding: 34px 40px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .kicker { display: inline-block; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; font-weight: 700; color: var(--green); background: var(--green-light); padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; }
+  h1 { font-size: 1.7rem; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; }
+  h2 { font-size: 1.15rem; margin: 28px 0 10px; color: var(--green); }
+  h2:first-of-type { margin-top: 0; }
+  p { line-height: 1.6; }
+  ul, ol { line-height: 1.7; padding-left: 22px; }
+  .kontext-box { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 0.95rem; margin-bottom: 6px; }
+  .gruppen-box { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 0.92rem; margin: 10px 0 6px; }
+  table.plan { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 0.92rem; }
+  table.plan th { background: var(--green); color: white; text-align: left; padding: 9px 12px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  table.plan td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.plan tr:last-child td { border-bottom: none; }
+  table.plan .zeit { font-weight: 700; color: var(--green); white-space: nowrap; }
+  table.plan .methode { font-weight: 700; }
+  .material-liste { background: #f7f5ef; border-radius: 10px; padding: 16px 20px; }
+  .tipp { margin-top: 20px; padding: 14px 18px; background: var(--green-light); border-radius: 10px; font-size: 0.9rem; }
+  .tafelbild { border: 1.5px solid var(--ink); border-radius: 4px; padding: 18px 22px; margin: 4px 0 6px; background: #1c2024; color: #eef1ee; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.85rem; line-height: 1.7; white-space: pre-wrap; }
+  .legende { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.74rem; color: var(--muted); margin-top: 8px; }
+  @media print { body { background: white; padding: 0; } .no-print { display: none !important; } .blatt { box-shadow: none; border: 1px solid var(--border); border-radius: 0; } }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<button class="download-btn no-print" onclick="window.print()">Drucken &#47; als PDF speichern</button>
+
+<div class="blatt">
+  <p class="no-print" style="margin:0 0 14px;"><a href="../../jahresplanung.html" style="font-family:inherit;font-size:0.8rem;color:inherit;">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+
+  <span class="kicker">Ethik &middot; 8. Klasse Mittelschule &middot; Doppelstunde 3 von 5 &middot; Sequenz 2: Konsumg&uuml;ter</span>
+  <h1>&Ouml;kologische und soziale Standards: G&uuml;tesiegel</h1>
+  <p class="sub">Ablaufplan f&uuml;r eine Doppelstunde (90 Minuten). Letzte Stunde vor den Weihnachtsferien. Beginnt mit dem Referat von Gruppe 2.</p>
+
+  <div class="kontext-box">
+    <strong>Einordnung in die Gesamtsequenz:</strong> Schlie&szlig;t Teil 1 der Sequenz ab. Nach Produktionskette und Konsumdruck geht es jetzt um ein Werkzeug, mit dem man bewusster entscheiden kann.
+  </div>
+
+  <h2>Vorbereitung (in Stunde 2 ank&uuml;ndigen)</h2>
+  <div class="material-liste">
+    Sch&uuml;ler:innen bitten, eine leere Verpackung oder ein Etikett mit einem oder mehreren G&uuml;tesiegeln von zu Hause mitzubringen.
+  </div>
+
+  <h2>Lernziele</h2>
+  <ul>
+    <li>Die Sch&uuml;ler:innen h&ouml;ren und bewerten das Referat von Gruppe 2 (Influencer-Werbung).</li>
+    <li>Sie erkl&auml;ren die Funktion von G&uuml;tesiegeln und unterscheiden mindestens drei reale Siegel.</li>
+    <li>Gruppe 3 &uuml;bernimmt den Auftrag, einen kritischen Aspekt davon f&uuml;r ein Referat zu vertiefen.</li>
+  </ul>
+
+  <h2>Ben&ouml;tigtes Material</h2>
+  <div class="material-liste">
+    <ul>
+      <li>Plakat/Folien von Gruppe 2</li>
+      <li><a href="../bewertungsraster-referat.html">Bewertungsraster Referat</a></li>
+      <li>Pr&auml;sentation f&uuml;r den Input (siehe <a href="canva-prompt-stunde3-guetesiegel.html">Canva-Anleitung</a>)</li>
+      <li>Infoblatt und Referatsauftrag Gruppe 3 (<a href="materialien-stunde3-guetesiegel.html">Materialien-Datei</a>)</li>
+      <li>Mitgebrachte Verpackungen der Sch&uuml;ler:innen</li>
+    </ul>
+  </div>
+
+  <h2>Ablauf</h2>
+  <table class="plan">
+    <tr><th>Zeit</th><th>Phase</th><th>Was passiert</th></tr>
+    <tr>
+      <td class="zeit">15 Min</td>
+      <td class="methode">Referat Gruppe 2<br><span style="font-weight:400; color:var(--muted);">Vortrag und Feedback</span></td>
+      <td>Gruppe 2 h&auml;lt ihr Referat (8-10 Min), danach 3-5 Min Fragen.</td>
+    </tr>
+    <tr>
+      <td class="zeit">10 Min</td>
+      <td class="methode">Einstieg<br><span style="font-weight:400; color:var(--muted);">Sammlung</span></td>
+      <td>Mitgebrachte Verpackungen auf einem Tisch sammeln. Vermutungen sammeln, was die abgebildeten Zeichen bedeuten k&ouml;nnten.</td>
+    </tr>
+    <tr>
+      <td class="zeit">25 Min</td>
+      <td class="methode">Input<br><span style="font-weight:400; color:var(--muted);">Lehrervortrag mit Pr&auml;sentation</span></td>
+      <td>Vortrag zu f&uuml;nf realen Siegeln (Fairtrade, EU-Bio, Blauer Engel, MSC, T&Uuml;V-Pr&uuml;fzeichen). Sch&uuml;ler:innen f&uuml;hren ihr Infoblatt als Mitschrift.</td>
+    </tr>
+    <tr>
+      <td class="zeit">15 Min</td>
+      <td class="methode">Anwendung<br><span style="font-weight:400; color:var(--muted);">Eigener Check</span></td>
+      <td>Die eigenen mitgebrachten Verpackungen pr&uuml;fen: welches Siegel ist dort drauf, wof&uuml;r steht es? Kurzer Austausch zu zweit.</td>
+    </tr>
+    <tr>
+      <td class="zeit">15 Min</td>
+      <td class="methode">Gruppenauftrag<br><span style="font-weight:400; color:var(--muted);">Vergabe an Gruppe 3</span></td>
+      <td>Referatsauftrag an Gruppe 3 austeilen, gemeinsam lesen. Vortragstermin: Beginn von Stunde 4 (nach den Ferien).</td>
+    </tr>
+    <tr>
+      <td class="zeit">10 Min</td>
+      <td class="methode">Abschluss</td>
+      <td>R&uuml;ckblick auf Teil 1 der Sequenz, Ausblick auf die Weihnachtsferien und Stunde 4 danach.</td>
+    </tr>
+  </table>
+
+  <div class="gruppen-box">
+    <strong>Referatsthema Gruppe 3:</strong> "Greenwashing: wenn Siegel oder Werbung t&auml;uschen". Details im Referatsauftrag (Materialien-Datei).
+  </div>
+
+  <div class="tipp">
+    <strong>Kurze Schulwoche:</strong> Falls wegen der Vorweihnachtszeit weniger Zeit bleibt, die Anwendungsphase k&uuml;rzen und direkt mit dem Gruppenauftrag weitermachen.
+  </div>
+
+  <h2>Tafelbild</h2>
+  <div class="tafelbild">GUETESIEGEL
+
+Fairtrade -> fairer Handel, Mindestpreis
+EU-Bio -> oekologische Landwirtschaft
+Blauer Engel -> besonders umweltfreundlich
+MSC -> nachhaltige Fischerei
+TUEV -> Sicherheit, nicht Oekologie!
+
+Gruppe 3: Referat "Greenwashing" -> Beginn Stunde 4 (nach den Ferien)</div>
+  <p class="legende">M&ouml;gliches Tafelbild, als Orientierung f&uuml;r die Anschrift w&auml;hrend der Stunde.</p>
+
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>

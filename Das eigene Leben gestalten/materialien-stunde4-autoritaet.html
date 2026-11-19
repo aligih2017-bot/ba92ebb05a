@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialien – Autorität kritisch hinterfragen (Stunde 4)</title>
+<style>
+  :root {
+    --ink: #20293a; --muted: #5b6472; --teal: #0f8b8d; --teal-light: #e3f3f2;
+    --gold: #b8791a; --gold-light: #fdf1dd; --coral: #e0654a; --coral-light: #fbe9e4; --border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f2efe9; color: var(--ink); padding: 32px 16px 60px; }
+  .seite { background: white; max-width: 880px; margin: 0 auto 20px; padding: 30px 34px; border-radius: 14px; box-shadow: 0 10px 30px rgba(32,41,58,0.10); }
+  .seite-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .download-btn { flex-shrink: 0; background: var(--teal); color: white; border: none; padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .download-btn:hover { background: #0a6567; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px; }
+  .hinweis { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  .bild-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .bild-karte { border: 1.5px dashed var(--border); border-radius: 10px; padding: 16px 10px; text-align: center; font-size: 0.86rem; font-weight: 700; background: var(--coral-light); min-height: 70px; display: flex; align-items: center; justify-content: center; }
+  .begriff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .begriff-karte { border: 1.5px dashed var(--border); border-radius: 10px; padding: 10px; text-align: center; font-size: 0.82rem; background: var(--teal-light); min-height: 50px; display: flex; align-items: center; justify-content: center; }
+  .form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+  .form-box { border: 2px solid var(--border); border-radius: 10px; padding: 12px; background: var(--gold-light); }
+  .form-box .label { font-weight: 700; color: #7a4f10; display: block; margin-bottom: 6px; font-size: 0.86rem; }
+  table.tt { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin-top: 10px; }
+  table.tt th, table.tt td { border: 1px solid var(--border); padding: 10px; text-align: left; vertical-align: top; min-height: 80px; }
+  table.tt th { background: var(--teal-light); color: var(--teal); font-size: 0.78rem; text-transform: uppercase; }
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none !important; }
+    .seite { box-shadow: none; border: 1px solid var(--border); border-radius: 0; page-break-after: always; }
+    .seite:last-child { page-break-after: auto; }
+  }
+</style>
+<style>
+  .pw-gate { position: fixed; inset: 0; z-index: 9999; background: #20293a; display: none; align-items: center; justify-content: center; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body.pw-locked .pw-gate { display: flex; }
+  body.pw-locked > *:not(.pw-gate) { display: none !important; }
+  .pw-box { text-align: center; color: #f2efe9; padding: 20px; max-width: 320px; }
+  .pw-box h2 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 700; }
+  .pw-box p { font-size: 0.82rem; color: #aab0bc; margin: 0 0 18px; }
+  .pw-box form { display: flex; gap: 8px; justify-content: center; }
+  .pw-box input { font-size: 1rem; padding: 10px 14px; border-radius: 999px; border: 1px solid #3a4456; background: #2a3447; color: #f2efe9; width: 180px; text-align: center; }
+  .pw-box button { font-weight: 700; font-size: 0.9rem; padding: 10px 20px; border-radius: 999px; border: none; background: #e0654a; color: white; cursor: pointer; }
+  .pw-box button:hover { background: #c9502f; }
+  .pw-fehler { color: #ff9b85; font-size: 0.8rem; margin-top: 12px; min-height: 1.2em; }
+</style>
+</head>
+<body class="pw-locked">
+
+<div class="pw-gate">
+  <div class="pw-box">
+    <h2>Ethik 8. Klasse &ndash; gesch&uuml;tzter Bereich</h2>
+    <p>Bitte Passwort eingeben, um die Seite zu sehen.</p>
+    <form id="pw-form" onsubmit="return pwPruefen(event)">
+      <input type="password" id="pw-eingabe" autofocus autocomplete="off">
+      <button type="submit">&Ouml;ffnen</button>
+    </form>
+    <div class="pw-fehler" id="pw-fehler"></div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <p class="no-print" style="margin:0 0 10px;"><a href="../jahresplanung.html" style="font-size:0.8rem;color:var(--muted);">&larr; Zur&uuml;ck zur &Uuml;bersicht</a></p>
+      <h1>Bildkarten: Wer darf hier was bestimmen?</h1>
+      <p class="sub">F&uuml;r den Einstieg.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <div class="bild-grid">
+    <div class="bild-karte">Polizistin regelt den Verkehr</div>
+    <div class="bild-karte">Lehrer erkl&auml;rt eine Regel</div>
+    <div class="bild-karte">Elternteil entscheidet Ausgehzeit</div>
+    <div class="bild-karte">Schiedsrichter pfeift Foul</div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <h1>Begriffskarten und Autorit&auml;tsformen</h1>
+      <p class="sub">F&uuml;r Erarbeitung A und B.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <p class="hinweis">Teil 1: sortiere die Begriffe in "vertraue ich normalerweise" / "sollte ich kritisch hinterfragen".</p>
+  <div class="begriff-grid">
+    <div class="begriff-karte">Lehrer</div><div class="begriff-karte">Arzt</div><div class="begriff-karte">Eltern</div><div class="begriff-karte">Gesetze</div>
+    <div class="begriff-karte">Vereinstrainer</div><div class="begriff-karte">Internetvideo</div><div class="begriff-karte">Influencer</div><div class="begriff-karte">Schulbuch</div>
+  </div>
+  <p class="hinweis" style="margin-top:20px;">Teil 2: ordne die gleichen Begriffe jetzt einer der drei Formen zu.</p>
+  <div class="form-grid">
+    <div class="form-box"><span class="label">Amtsautorit&auml;t</span>durch ein Amt, einen Beruf oder eine Position erworben</div>
+    <div class="form-box"><span class="label">Sachautorit&auml;t</span>durch Wissen, F&auml;higkeiten oder Erfahrung erworben</div>
+    <div class="form-box"><span class="label">Pers&ouml;nliche Autorit&auml;t</span>durch Pers&ouml;nlichkeit, Ausstrahlung oder Verhalten erworben</div>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="seite-kopf">
+    <div>
+      <h1>T-Tabelle: Gebrauch von Autorit&auml;t</h1>
+      <p class="sub">Gemeinsam im Plenum ausf&uuml;llen.</p>
+    </div>
+    <button class="download-btn no-print" onclick="window.print()">Drucken</button>
+  </div>
+  <table class="tt">
+    <tr><th>Positiver Gebrauch</th><th>Negativer Gebrauch</th></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </table>
+</div>
+
+<script>
+  (function() {
+    var PASSWORT = "Ethik8b";
+    var SCHLUESSEL = "ethik8-freigeschaltet";
+    if (localStorage.getItem(SCHLUESSEL) === "1") {
+      document.body.classList.remove("pw-locked");
+    }
+    window.pwPruefen = function(e) {
+      e.preventDefault();
+      var eingabe = document.getElementById("pw-eingabe").value;
+      if (eingabe === PASSWORT) {
+        localStorage.setItem(SCHLUESSEL, "1");
+        document.body.classList.remove("pw-locked");
+      } else {
+        document.getElementById("pw-fehler").textContent = "Falsches Passwort.";
+        document.getElementById("pw-eingabe").value = "";
+        document.getElementById("pw-eingabe").focus();
+      }
+      return false;
+    };
+  })();
+</script>
+</body>
+</html>
